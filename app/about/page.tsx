@@ -19,13 +19,13 @@ const founders = [
     name: 'Rin Meng',
     role: 'Co-founder & Developer',
     city: 'Kelowna, BC',
-    bio: 'Rin Meng focuses on clear layout systems and fast page performance. He works closely with local owners to turn rough ideas into practical websites.',
+    bio: 'Rin focuses on frontend design and CMS setup, turning rough ideas into clean, fast sites that local owners can actually manage themselves.',
   },
   {
     name: 'Noah Stewart',
     role: 'Co-founder & Developer',
     city: 'Regina, SK',
-    bio: 'Noah Stewart brings a product mindset to every build, balancing design polish with maintainable structure so clients can grow without starting over.',
+    bio: 'Noah gravitates toward the backend, architecture, data flow, and the kind of complex problems most developers avoid. He makes sure what we build can scale.',
   },
 ];
 
@@ -50,7 +50,8 @@ const principles = [
   },
   {
     title: 'You own your site',
-    description: 'Once launched, your site and content stay in your hands.',
+    description:
+      'Once launched, your domain, site and its content stay in your hands. Copyright is yours, built by Web8th.',
     icon: ShieldCheck,
   },
 ];
@@ -97,18 +98,16 @@ export default function AboutPage() {
                 key={founder.name}
                 className={cn('fade-in-from-bottom', getDelayClass(index + 3))}
               >
-                <CardHeader className='flex flex-row items-start gap-4'>
-                  <Avatar className='mt-1'>
-                    <AvatarFallback>
+                <CardHeader className='flex flex-row items-center gap-4'>
+                  <Avatar className='h-full w-auto aspect-square self-stretch'>
+                    <AvatarFallback className='h-full aspect-square'>
                       {founder.name.slice(0, 2).toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
                   <div>
                     <CardTitle>{founder.name}</CardTitle>
                     <CardDescription>{founder.role}</CardDescription>
-                    <Badge variant='outline' className='mt-2'>
-                      {founder.city}
-                    </Badge>
+                    <Badge variant='outline'>{founder.city}</Badge>
                   </div>
                 </CardHeader>
                 <CardContent>

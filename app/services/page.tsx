@@ -232,6 +232,47 @@ export default function ServicesPage() {
           </div>
         </section>
 
+        {/* Non-profit */}
+        <div
+          className={cn(
+            'fade-in-from-bottom rounded-2xl border border-dashed p-6',
+            'flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between',
+            getDelayClass(6)
+          )}
+        >
+          <div className='flex flex-col gap-3'>
+            <div className='flex flex-wrap items-center gap-2'>
+              <Text topLevel variant='hd-xl' className='text-2xl tracking-tight'>
+                Free websites for non-profits
+              </Text>
+            </div>
+            <Text variant='muted' className='max-w-xl text-muted-foreground'>
+              Are you a non-profit organization? We&apos;ll build your site at minimal
+              charge (may incl. domain fees). If you&apos;re doing good work in your
+              community, we want to help you show it.
+            </Text>
+            <div className='flex flex-wrap gap-2'>
+              {['Custom web design', 'Full development', 'On-page SEO setup'].map(
+                (feature) => (
+                  <Badge key={feature} variant='secondary'>
+                    <Check />
+                    {feature}
+                  </Badge>
+                )
+              )}
+            </div>
+            <Text variant='muted-sm' className='text-xs text-muted-foreground/70'>
+              Non-profit projects are completed on a best-effort basis alongside paid
+              work. We&apos;ll be in touch when capacity allows.
+            </Text>
+          </div>
+          <Button asChild className='shrink-0 sm:self-center'>
+            <Link href='/contact'>
+              Apply now <ArrowRight />
+            </Link>
+          </Button>
+        </div>
+
         {/* Guaranteed services */}
         <section className='space-y-4'>
           <div className='space-y-1 fade-in-from-bottom'>
