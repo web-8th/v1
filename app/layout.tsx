@@ -21,8 +21,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Next.js Starter - Shadcn + Supabase',
-  description: 'A modern Next.js boilerplate with Shadcn UI and Supabase',
+  title: 'Web8th',
+  description: 'Your work, visible.',
 };
 
 export default function RootLayout({
