@@ -31,7 +31,7 @@ const fixedTiers = [
     model: 'One-time flat fee',
     includes: ['Custom web design', 'Full development', 'On-page SEO setup'],
     bestFor:
-      'Every project starts here, a fully built, SEO-ready site you own outright. We will handle the entire build process, from design to deployment.',
+      'Every project starts here, a fully built, SEO-ready site you own outright. We will handle from design to deployment.',
     cta: 'Get a Quote',
     href: '/contact',
     popular: true,

@@ -7,6 +7,7 @@ import {
   MessageCircle,
   Rocket,
   Sparkles,
+  SquareArrowOutUpRight,
   Wrench,
 } from 'lucide-react';
 
@@ -18,6 +19,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
   Separator,
 } from '@/components/ui';
 import { Text } from '@/components/Text';
@@ -25,9 +27,9 @@ import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
 
 const trustStats = [
-  { label: 'Local clients served', value: '20+' },
+  { label: 'Local clients served', value: '6+' },
+  { label: 'Years building websites', value: '4+' },
   { label: 'Cities covered', value: '2' },
-  { label: 'Years building websites', value: '3+' },
   { label: 'Founders behind every project', value: '2' },
 ];
 
@@ -68,7 +70,7 @@ const differentiators = [
   },
   {
     title: 'Clear communication',
-    description: 'No jargon. Just updates you can actually use.',
+    description: 'No technical jargons. Just updates with comprehensible explanations.',
     icon: MessageCircle,
   },
   {
@@ -80,19 +82,25 @@ const differentiators = [
 
 const teaserProjects = [
   {
-    title: 'Lakeside Coffee Co.',
-    summary: 'A cozy local cafe site focused on online ordering and events.',
-    tags: ['Web Design', 'SEO'],
+    title: 'Tseng Photo',
+    summary:
+      'A website built for a photographer, Matthew Tseng, who had reduced their spending by 88% annually, switching from SquareSpace to a custom-built site.',
+    tags: ['Web Design', 'SEO', 'Custom CMS'],
+    url: 'https://tsengphoto.ca',
   },
   {
-    title: 'Prairie Bloom Studio',
-    summary: 'A service-led site with booking, galleries, and social proof.',
-    tags: ['Web Design', 'Content'],
+    title: 'InspirED Sask',
+    summary:
+      'InspirED aims to educate citizens in society to promote a better environment. They focus on fostering practical education rather than traditional academic education.',
+    tags: ['Web Design', 'SEO', 'Custom CMS'],
+    url: 'https://www.inspiredsk.ca/',
   },
   {
-    title: 'Northside Repair',
-    summary: 'A practical small business site built for lead generation.',
-    tags: ['Small Business', 'SEO'],
+    title: 'KPop Dance Team',
+    summary:
+      'A website for the Kpop Dance Team, a club under the SUO at the University of British Columbia Okanagan.',
+    tags: ['Web Design', 'Custom CMS'],
+    url: 'https://kdtsuo.vercel.app',
   },
 ];
 
@@ -199,8 +207,7 @@ export default function HomePage() {
           <div className='space-y-5'>
             <Text
               variant='hd-xl'
-              className='text-3xl tracking-tight fade-in-from-bottom md:text-4xl
-              '
+              className='text-3xl tracking-tight fade-in-from-bottom md:text-4xl'
             >
               Why local businesses choose Web8th
             </Text>
@@ -243,18 +250,21 @@ export default function HomePage() {
 
         <section className='space-y-6'>
           <div className='space-y-2 fade-in-from-bottom'>
-           <Text variant='hd-xl' className='text-3xl tracking-tight md:text-4xl'>
+            <Text variant='hd-xl' className='text-3xl tracking-tight md:text-4xl'>
               A few recent builds
-           </Text>
-           <Text variant='muted' className='max-w-2xl text-muted-foreground'>
+            </Text>
+            <Text variant='muted' className='max-w-2xl text-muted-foreground'>
               Real-world websites for people and businesses in our communities.
-           </Text>
+            </Text>
           </div>
           <div className='grid gap-4 md:grid-cols-3'>
             {teaserProjects.map((project, index) => (
               <Card
                 key={project.title}
-                className={cn('fade-in-from-bottom', getDelayClass(index + 5))}
+                className={cn(
+                  'fade-in-from-bottom flex justify-between',
+                  getDelayClass(index + 5)
+                )}
               >
                 <CardHeader className='space-y-4'>
                   <div
@@ -281,11 +291,14 @@ export default function HomePage() {
                       </Badge>
                     ))}
                   </div>
-                  <Button variant='link' className='px-0' asChild>
-                    <Link href='/portfolio'>
-                      View Project <ArrowRight />
+                  <CardFooter className='px-0 flex justify-end'>
+                    <Link href={project.url} target='_blank'>
+                      <Button variant='link' className='cursor-pointer'>
+                        View Live Site
+                        <SquareArrowOutUpRight />
+                      </Button>
                     </Link>
-                  </Button>
+                  </CardFooter>
                 </CardContent>
               </Card>
             ))}

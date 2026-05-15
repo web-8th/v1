@@ -4,28 +4,37 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui';
 import { Text } from '@/components/Text';
 import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
+import Link from 'next/link';
+import { SquareArrowOutUpRight } from 'lucide-react';
 
 const projects = [
   {
-    name: 'Client Project 1',
-    description: 'Placeholder summary for a local business website focused on bookings.',
-    tags: ['Web Design', 'SEO'],
+    title: 'Tseng Photo',
+    description:
+      'A website built for a photographer, Matthew Tseng, who had reduced their spending by 88% annually, switching from SquareSpace to a custom-built site.',
+    tags: ['Web Design', 'SEO', 'Custom CMS'],
+    url: 'https://tsengphoto.ca',
   },
   {
-    name: 'Client Project 2',
-    description: 'Placeholder summary for a clean service website with strong CTA flow.',
-    tags: ['Small Business', 'Content'],
+    title: 'InspirED Sask',
+    description:
+      'InspirED aims to educate citizens in society to promote a better environment. They focus on fostering practical education rather than traditional academic education.',
+    tags: ['Web Design', 'SEO', 'Custom CMS'],
+    url: 'https://www.inspiredsk.ca/',
   },
   {
-    name: 'Client Project 3',
-    description: 'Placeholder summary for a personal brand website and lead capture.',
-    tags: ['Landing Page', 'Strategy'],
+    title: 'KPop Dance Team',
+    description:
+      'A website for the Kpop Dance Team, a club under the SUO at the University of British Columbia Okanagan.',
+    tags: ['Web Design', 'Custom CMS'],
+    url: 'https://kdtsuo.vercel.app',
   },
 ];
 
@@ -52,8 +61,11 @@ export default function PortfolioPage() {
         <section className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
           {projects.map((project, index) => (
             <Card
-              key={project.name}
-              className={cn('fade-in-from-bottom', getDelayClass(index + 3))}
+              key={project.title}
+              className={cn(
+                'fade-in-from-bottom justify-between',
+                getDelayClass(index + 3)
+              )}
             >
               <CardHeader className='space-y-4'>
                 <div
@@ -68,7 +80,7 @@ export default function PortfolioPage() {
                   </Text>
                 </div>
                 <div>
-                  <CardTitle>{project.name}</CardTitle>
+                  <CardTitle>{project.title}</CardTitle>
                   <CardDescription className='mt-1'>
                     {project.description}
                   </CardDescription>
@@ -82,9 +94,14 @@ export default function PortfolioPage() {
                     </Badge>
                   ))}
                 </div>
-                <Button disabled className='w-full'>
-                  View Live Site
-                </Button>
+                <CardFooter className='w-full px-0'>
+                  <Link href={project.url} target='_blank' className='w-full'>
+                    <Button className='w-full cursor-pointer'>
+                      View Live Site
+                      <SquareArrowOutUpRight />
+                    </Button>
+                  </Link>
+                </CardFooter>
               </CardContent>
             </Card>
           ))}
