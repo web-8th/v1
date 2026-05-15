@@ -108,8 +108,7 @@ export default function ServicesPage() {
           <Badge className='fade-in-from-bottom'>Services</Badge>
           <Text
             variant='hd-xxl'
-            className='text-4xl tracking-tight fade-in-from-bottom delay-[100ms]
-              md:text-5xl'
+            className='tracking-tight fade-in-from-bottom delay-[100ms]'
           >
             Flexible support for where your business is right now
           </Text>
@@ -235,23 +234,25 @@ export default function ServicesPage() {
         {/* Non-profit */}
         <div
           className={cn(
-            'fade-in-from-bottom rounded-2xl border border-dashed p-6',
-            'flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between',
+            'flex gap-4 flex-col items-center justify-between',
             getDelayClass(6)
           )}
         >
           <div className='flex flex-col gap-3'>
-            <div className='flex flex-wrap items-center gap-2'>
-              <Text topLevel variant='hd-xl' className='text-2xl tracking-tight'>
-                Free websites for non-profits
+            <Text topLevel variant='hd-xxl' className='tracking-tight text-center'>
+              Free websites for non-profits
+            </Text>
+            <div className='flex justify-center'>
+              <Text
+                variant='muted'
+                className='text-muted-foreground text-center max-w-xl'
+              >
+                Are you a non-profit organization? We&apos;ll build your site at minimal
+                charge (may incl. domain fees). If you&apos;re doing good work in your
+                community, we want to help you show it.
               </Text>
             </div>
-            <Text variant='muted' className='max-w-xl text-muted-foreground'>
-              Are you a non-profit organization? We&apos;ll build your site at minimal
-              charge (may incl. domain fees). If you&apos;re doing good work in your
-              community, we want to help you show it.
-            </Text>
-            <div className='flex flex-wrap gap-2'>
+            <div className='flex flex-wrap justify-center gap-2'>
               {['Custom web design', 'Full development', 'On-page SEO setup'].map(
                 (feature) => (
                   <Badge key={feature} variant='secondary'>
@@ -261,22 +262,27 @@ export default function ServicesPage() {
                 )
               )}
             </div>
-            <Text variant='muted-sm' className='text-xs text-muted-foreground/70'>
-              Non-profit projects are completed on a best-effort basis alongside paid
-              work. We&apos;ll be in touch when capacity allows.
-            </Text>
           </div>
           <Button asChild className='shrink-0 sm:self-center'>
             <Link href='/contact'>
-              Apply now <ArrowRight />
+              I'm a non-profit
+              <ArrowRight />
             </Link>
           </Button>
+          <div className='flex justify-center'>
+            <Text
+              variant='bd-xs'
+              className='text-muted-foreground/70 text-center max-w-xl'
+            >
+              Non-profit projects are completed on a best-effort basis.
+            </Text>
+          </div>
         </div>
 
         {/* Guaranteed services */}
         <section className='space-y-4'>
           <div className='space-y-1 fade-in-from-bottom'>
-            <Text variant='hd-xl' className='text-3xl tracking-tight'>
+            <Text variant='hd-xl' className='tracking-tight'>
               Included in every project
             </Text>
             <Text variant='muted' className='text-muted-foreground'>
@@ -297,7 +303,7 @@ export default function ServicesPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Text variant='muted-sm' className='text-sm text-muted-foreground'>
+                  <Text variant='muted-sm' className='text-muted-foreground'>
                     {item.description}
                   </Text>
                 </CardContent>
@@ -310,14 +316,17 @@ export default function ServicesPage() {
         <section
           className='rounded-2xl border bg-muted/60 p-6 text-center fade-in-from-bottom'
         >
-          <Text variant='hd-xl' className='text-2xl tracking-tight md:text-3xl'>
+          <Text variant='hd-xl' className='tracking-tight md:text-3xl'>
             Not sure which fits?
           </Text>
           <Text variant='muted' className='mx-auto mt-2 max-w-2xl text-muted-foreground'>
             Tell us where you are now and we&apos;ll recommend the simplest path forward.
           </Text>
-          <Button asChild variant='outline' className='mt-5'>
-            <Link href='/contact'>Let&apos;s talk</Link>
+          <Button asChild className='mt-5'>
+            <Link href='/contact'>
+              Let&apos;s talk
+              <ArrowRight />
+            </Link>
           </Button>
         </section>
       </div>

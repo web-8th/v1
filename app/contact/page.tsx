@@ -124,37 +124,6 @@ export default function ContactPage() {
               </Button>
             </CardContent>
           </Card>
-
-          <div className='grid gap-4 fade-in-from-bottom delay-[100ms]'>
-            <Card>
-              <CardHeader>
-                <CardTitle className='text-lg'>Rin Meng</CardTitle>
-                <CardDescription>Kelowna, BC</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <a
-                  className='text-sm text-primary underline underline-offset-4'
-                  href='mailto:rin@web8th.com'
-                >
-                  rin@web8th.com
-                </a>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className='text-lg'>Noah Stewart</CardTitle>
-                <CardDescription>Regina, SK</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <a
-                  className='text-sm text-primary underline underline-offset-4'
-                  href='mailto:nostew@web8th.com'
-                >
-                  nostew@web8th.com
-                </a>
-              </CardContent>
-            </Card>
-          </div>
         </section>
       </div>
     </div>

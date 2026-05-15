@@ -77,7 +77,14 @@ export function Text({
     topLevel ?? (isHeadingVariant || Comp === 'h1' || Comp === 'h2' || Comp === 'h3');
 
   return (
-    <Comp className={cn(textVariants({ variant: resolvedVariant }), shouldUseSerif && 'font-serif', className)} {...props}>
+    <Comp
+      className={cn(
+        textVariants({ variant: resolvedVariant }),
+        shouldUseSerif && 'font-serif',
+        className
+      )}
+      {...props}
+    >
       {children}
     </Comp>
   );

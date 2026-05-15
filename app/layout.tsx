@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Merriweather } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 
 import { Navbar } from '@/components/Navbar';
+import { Footer } from '@/components/Footer';
 
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
@@ -47,6 +48,7 @@ export default function RootLayout({
             <ToastProvider>
               <Navbar />
               <main>{children}</main>
+              <Footer />
               <Toaster />
               <Analytics />
             </ToastProvider>
