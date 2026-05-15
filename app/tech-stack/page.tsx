@@ -5,6 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui';
+import { Text } from '@/components/Text';
 import { getDelayClass } from '@/utils/animations';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -81,11 +82,13 @@ export default function TechStack() {
       <div className='mx-auto max-w-6xl'>
         {/* Header */}
         <div className='mb-12 text-center fade-in-from-top'>
-          <h1 className='mb-4 text-5xl font-bold'>Tech Stack</h1>
-          <p className='text-xl text-muted-foreground max-w-2xl mx-auto'>
+          <Text variant='hd-xxl' className='mb-4 text-5xl font-bold'>
+            Tech Stack
+          </Text>
+          <Text variant='muted' className='text-xl text-muted-foreground max-w-2xl mx-auto'>
             Built with modern, battle-tested technologies for optimal performance and
             developer experience
-          </p>
+          </Text>
         </div>
 
         {/* Tech Stack Grid */}
@@ -118,7 +121,9 @@ export default function TechStack() {
                 </a>
               </CardHeader>
               <CardContent>
-                <p className='text-sm text-muted-foreground'>{tech.description}</p>
+                <Text variant='muted-sm' className='text-sm text-muted-foreground'>
+                  {tech.description}
+                </Text>
               </CardContent>
             </Card>
           ))}

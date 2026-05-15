@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui';
+import { Text } from '@/components/Text';
 import { Shield, Lock, SquareArrowOutUpRight } from 'lucide-react';
 
 export default function Admin() {
@@ -29,11 +30,13 @@ export default function Admin() {
           <div className='flex items-start gap-3 p-3 sm:p-4 rounded-lg border bg-muted/50'>
             <Lock className='h-5 w-5 text-muted-foreground mt-0.5 shrink-0' />
             <div>
-              <p className='font-medium mb-1 text-sm sm:text-base'>Route Protection</p>
-              <p className='text-xs sm:text-sm text-muted-foreground'>
+              <Text variant='label' className='font-medium mb-1 text-sm sm:text-base'>
+                Route Protection
+              </Text>
+              <Text variant='muted-sm' className='text-xs sm:text-sm text-muted-foreground'>
                 This is an example usage of proxy/middleware to restrict access to
                 authenticated users only.
-              </p>
+              </Text>
             </div>
           </div>
 

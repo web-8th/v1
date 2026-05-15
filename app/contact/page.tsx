@@ -19,6 +19,7 @@ import {
   SelectValue,
   Textarea,
 } from '@/components/ui';
+import { Text } from '@/components/Text';
 import { useToast } from '@/hooks/use-toast';
 
 export default function ContactPage() {
@@ -40,16 +41,20 @@ export default function ContactPage() {
       <div className='mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 sm:px-6 lg:px-8'>
         <section className='space-y-3'>
           <Badge className='fade-in-from-bottom'>Contact</Badge>
-          <h1
+          <Text
+            variant='hd-xxl'
             className='text-4xl tracking-tight fade-in-from-bottom delay-[100ms]
-              md:text-5xl font-serif'
+              md:text-5xl'
           >
             Let&apos;s build something together
-          </h1>
-          <p className='max-w-3xl text-muted-foreground fade-in-from-bottom delay-[200ms]'>
+          </Text>
+          <Text
+            variant='muted'
+            className='max-w-3xl text-muted-foreground fade-in-from-bottom delay-[200ms]'
+          >
             Whether you have a full brief or just an idea, we&apos;d love to hear from
             you.
-          </p>
+          </Text>
         </section>
 
         <section className='grid gap-6 lg:grid-cols-[2fr_1fr]'>

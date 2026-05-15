@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
 import { type VariantProps, cva } from 'class-variance-authority';
-import React from 'react';
+import type { ElementType, HTMLAttributes, ReactNode } from 'react';
 
 const textVariants = cva('', {
   variants: {
@@ -35,12 +35,14 @@ const textVariants = cva('', {
 
 type TextVariant = VariantProps<typeof textVariants>['variant'];
 
-interface TextProps extends React.HTMLAttributes<HTMLElement> {
+interface TextProps extends HTMLAttributes<HTMLElement> {
+  as?: ElementType;
   variant?: TextVariant;
-  children: React.ReactNode;
+  topLevel?: boolean;
+  children: ReactNode;
 }
 
-const VARIANT_ELEMENT_MAP: Record<NonNullable<TextVariant>, React.ElementType> = {
+const VARIANT_ELEMENT_MAP: Record<NonNullable<TextVariant>, ElementType> = {
   'hd-xxl': 'h1',
   'hd-xl': 'h2',
   'hd-lg': 'h3',
@@ -59,11 +61,23 @@ const VARIANT_ELEMENT_MAP: Record<NonNullable<TextVariant>, React.ElementType> =
   'muted-sm': 'p',
 };
 
-export function Text({ variant = 'bd-md', className, children, ...props }: TextProps) {
-  const Comp = VARIANT_ELEMENT_MAP[variant ?? 'bd-md'];
+export function Text({
+  as,
+  variant = 'bd-md',
+  topLevel,
+  className,
+  children,
+  ...props
+}: TextProps) {
+  const resolvedVariant = variant ?? 'bd-md';
+  const defaultComp = VARIANT_ELEMENT_MAP[resolvedVariant];
+  const Comp = as ?? defaultComp;
+  const isHeadingVariant = resolvedVariant.startsWith('hd-');
+  const shouldUseSerif =
+    topLevel ?? (isHeadingVariant || Comp === 'h1' || Comp === 'h2' || Comp === 'h3');
 
   return (
-    <Comp className={cn(textVariants({ variant }), className)} {...props}>
+    <Comp className={cn(textVariants({ variant: resolvedVariant }), shouldUseSerif && 'font-serif', className)} {...props}>
       {children}
     </Comp>
   );

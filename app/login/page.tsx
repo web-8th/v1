@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Logo } from '@/components/Logo';
+import { Text } from '@/components/Text';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -140,13 +141,14 @@ export default function LoginPage() {
       >
         <div className='text-center space-y-6'>
           <Logo iconSize={40} className='text-4xl fade-in-from-left delay-[300ms]' />
-          <p
+          <Text
+            variant='muted'
             className='text-muted-foreground text-lg max-w-md fade-in-from-left
               delay-[400ms]'
           >
             Welcome the admin demo, here you will be able to create an account and test
             logins for admin control over the message board.
-          </p>
+          </Text>
         </div>
       </div>
 
@@ -308,7 +310,7 @@ export default function LoginPage() {
             )}
           </CardContent>
           <CardFooter className='flex flex-col space-y-4 fade-in-from-top delay-[600ms]'>
-            <div className='text-sm text-center text-muted-foreground'>
+            <Text as='div' variant='muted-sm' className='text-sm text-center text-muted-foreground'>
               {isLogin ? "Don't have an account? " : 'Already have an account? '}
               <button
                 onClick={handleToggleMode}
@@ -316,7 +318,7 @@ export default function LoginPage() {
               >
                 {isLogin ? 'Sign up' : 'Sign in'}
               </button>
-            </div>
+            </Text>
           </CardFooter>
         </Card>
       </div>

@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui';
+import { Text } from '@/components/Text';
 import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
 
@@ -60,35 +61,36 @@ export default function AboutPage() {
       <div className='mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 sm:px-6 lg:px-8'>
         <section className='space-y-6'>
           <Badge className='fade-in-from-bottom'>About Web8th</Badge>
-          <h1
+          <Text
+            variant='hd-xxl'
             className='text-4xl leading-tight tracking-tight fade-in-from-bottom
-              delay-[100ms] md:text-5xl font-serif'
+              delay-[100ms] md:text-5xl'
           >
             Born on the same day. Built for this.
-          </h1>
+          </Text>
           <div className='max-w-4xl space-y-4 text-muted-foreground'>
-            <p className='fade-in-from-bottom delay-[200ms]'>
+            <Text variant='muted' className='fade-in-from-bottom delay-[200ms]'>
               We are birthday twins who got into building websites for fun. One project
               became another. Before long, friends and local business owners were asking
               us to build for them too.
-            </p>
-            <p className='fade-in-from-bottom delay-[300ms]'>
+            </Text>
+            <Text variant='muted' className='fade-in-from-bottom delay-[300ms]'>
               What started as a side hustle stayed personal, but it grew quickly. Instead
               of running as two separate freelancers, we brought every project under one
               shared name: Web8th.
-            </p>
-            <p className='fade-in-from-bottom delay-[400ms]'>
+            </Text>
+            <Text variant='muted' className='fade-in-from-bottom delay-[400ms]'>
               That gives our clients a stronger team, a clearer process, and one trusted
               place to find us. Different strengths, one standard, and a shared commitment
               to doing the work right.
-            </p>
+            </Text>
           </div>
         </section>
 
         <section className='space-y-5'>
-          <h2 className='text-3xl tracking-tight fade-in-from-bottom font-serif'>
+          <Text variant='hd-xl' className='text-3xl tracking-tight fade-in-from-bottom'>
             Meet the team
-          </h2>
+          </Text>
           <div className='grid gap-4 md:grid-cols-2'>
             {founders.map((founder, index) => (
               <Card
@@ -110,7 +112,9 @@ export default function AboutPage() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className='text-sm text-muted-foreground'>{founder.bio}</p>
+                  <Text variant='muted-sm' className='text-sm text-muted-foreground'>
+                    {founder.bio}
+                  </Text>
                 </CardContent>
               </Card>
             ))}
@@ -118,9 +122,9 @@ export default function AboutPage() {
         </section>
 
         <section className='space-y-5'>
-          <h2 className='text-3xl tracking-tight fade-in-from-bottom font-serif'>
+          <Text variant='hd-xl' className='text-3xl tracking-tight fade-in-from-bottom'>
             Our approach
-          </h2>
+          </Text>
           <div className='grid gap-4 sm:grid-cols-2'>
             {principles.map((item, index) => (
               <Card

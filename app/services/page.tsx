@@ -1,11 +1,7 @@
 import Link from 'next/link';
-import { ArrowRight, CircleCheck } from 'lucide-react';
+import { ArrowRight, Check, X } from 'lucide-react';
 
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
   Badge,
   Button,
   Card,
@@ -15,51 +11,71 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui';
+import { Text } from '@/components/Text';
 import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
 
-const tiers = [
+const allFeatures = [
+  'Custom web design',
+  'Full development',
+  'On-page SEO setup',
+  'Ongoing maintenance',
+  'Monthly content updates',
+  'Performance & scalability management',
+  'Priority support',
+];
+
+const fixedTiers = [
   {
     name: 'Launch Package',
     model: 'One-time flat fee',
     includes: ['Custom web design', 'Full development', 'On-page SEO setup'],
-    bestFor: 'Businesses that need a great site and want to own it outright.',
-    cta: 'Get a Quote',
-    href: '/contact',
-  },
-  {
-    name: 'Growth Plan',
-    model: 'Monthly retainer (minimum 3 months)',
-    includes: [
-      'Everything in Launch',
-      'Ongoing maintenance',
-      'Monthly updates',
-      'Priority support',
-    ],
-    bestFor: 'Businesses that want a long-term partner to keep things fresh.',
+    bestFor:
+      'Every project starts here, a fully built, SEO-ready site you own outright. We will handle the entire build process, from design to deployment.',
     cta: 'Get a Quote',
     href: '/contact',
     popular: true,
   },
   {
-    name: 'À La Carte',
-    model: 'Per-change flat fee',
+    name: 'Growth Plan',
+    model: 'Monthly retainer · starting at 3 months',
     includes: [
-      'You send a list of updates',
-      'We review and quote a flat fee',
-      'You approve and we implement the batch',
+      'Custom web design',
+      'Full development',
+      'On-page SEO setup',
+      'Ongoing maintenance',
+      'Monthly content updates',
+      'Performance & scalability management',
+      'Priority support',
     ],
-    bestFor: 'Clients with an existing site who need occasional help.',
-    cta: 'Send Us Your List',
+    bestFor:
+      'For businesses that want a dedicated partner post-launch, we handle content, performance, and infrastructure as you scale.',
+    cta: 'Get a Quote',
     href: '/contact',
   },
 ];
 
-const addOns = [
+const alaCarte = {
+  name: 'À La Carte',
+  model: 'Per-batch flat fee · no retainer',
+  includes: [
+    'Custom web design',
+    'Full development',
+    'On-page SEO setup',
+    'Per-batch flat fee updates',
+    'Small fixes at no extra charge',
+  ],
+  bestFor:
+    'For occasional updates, seasonal changes, or post-launch fixes. No commitment, just send us a list when you need something done.',
+  cta: 'Get a Quote',
+  href: '/contact',
+};
+
+const guaranteedServices = [
   {
-    title: 'SEO audit',
+    title: 'Domain & hosting setup',
     description:
-      'A practical review of technical SEO, on-page content, and quick win opportunities.',
+      'We handle everything from picking the right domain name for your business to configuring hosting and deploying your site. You never have to touch a control panel.',
   },
   {
     title: 'Google Business Profile setup',
@@ -67,14 +83,19 @@ const addOns = [
       'Setup or cleanup support so your business appears clearly in local search.',
   },
   {
-    title: 'Logo / brand refresh (referred out)',
+    title: 'Design & structure consulting',
     description:
-      'We can connect you with trusted local creatives when you need a visual refresh.',
+      'Not sure what your site needs? We bring 4+ years of web design experience to help you decide on layout, structure, and what will actually work for your audience.',
   },
   {
-    title: 'Domain & hosting setup help',
+    title: 'Domain name guidance',
     description:
-      'Guidance on purchasing, connecting, and configuring your domain and hosting stack.',
+      'We help you find a domain that fits your brand and budget, clear, memorable, and priced fairly. No upsells, just honest recommendations.',
+  },
+  {
+    title: 'Photography referrals',
+    description:
+      "We'll connect you with trusted local photographers when you need shots for your site. Photographer fees apply, we just make the introduction.",
   },
 ];
 
@@ -82,89 +103,181 @@ export default function ServicesPage() {
   return (
     <div className='nb-padding'>
       <div className='mx-auto flex w-full max-w-6xl flex-col gap-14 px-4 sm:px-6 lg:px-8'>
+        {/* Hero */}
         <section className='space-y-4'>
           <Badge className='fade-in-from-bottom'>Services</Badge>
-          <h1
+          <Text
+            variant='hd-xxl'
             className='text-4xl tracking-tight fade-in-from-bottom delay-[100ms]
-              md:text-5xl font-serif'
+              md:text-5xl'
           >
             Flexible support for where your business is right now
-          </h1>
-          <p className='max-w-3xl text-muted-foreground fade-in-from-bottom delay-[200ms]'>
+          </Text>
+          <Text
+            variant='muted'
+            className='max-w-3xl text-muted-foreground fade-in-from-bottom delay-[200ms]'
+          >
             Start with a one-time launch, keep momentum with ongoing help, or send us a
             list when you need updates.
-          </p>
+          </Text>
         </section>
 
-        <section className='grid gap-4 md:grid-cols-3'>
-          {tiers.map((tier, index) => (
-            <Card
-              key={tier.name}
-              className={cn(
-                'fade-in-from-bottom',
-                tier.popular && 'border-primary ring-1 ring-primary/20',
-                getDelayClass(index + 3)
-              )}
-            >
-              <CardHeader>
-                <div className='mb-2 flex items-center justify-between gap-2'>
-                  <CardTitle>{tier.name}</CardTitle>
-                  {tier.popular ? <Badge>Most Popular</Badge> : null}
-                </div>
-                <CardDescription>{tier.model}</CardDescription>
-              </CardHeader>
-              <CardContent className='space-y-4'>
-                <div className='space-y-2'>
-                  {tier.includes.map((item) => (
-                    <div key={item} className='flex items-start gap-2 text-sm'>
-                      <CircleCheck className='mt-0.5 size-4 text-primary' />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
-                <p className='text-sm text-muted-foreground'>
-                  <strong className='text-foreground'>Best for:</strong> {tier.bestFor}
-                </p>
-              </CardContent>
-              <CardFooter>
-                <Button asChild className='w-full'>
-                  <Link href={tier.href}>
-                    {tier.cta} <ArrowRight />
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
-          ))}
+        {/* Fixed tiers, 2-column grid */}
+        <section className='flex flex-col gap-4'>
+          <div className='grid gap-4 md:grid-cols-2'>
+            {fixedTiers.map((tier, index) => (
+              <Card
+                key={tier.name}
+                className={cn(
+                  'fade-in-from-bottom flex flex-col justify-between gap-4',
+                  tier.popular && 'border-primary ring-1 ring-primary/20',
+                  getDelayClass(index + 3)
+                )}
+              >
+                <CardHeader className='gap-2'>
+                  <div className='flex items-center justify-between gap-2'>
+                    <CardTitle>
+                      <Text topLevel variant='bd-md'>
+                        {tier.name}
+                      </Text>
+                    </CardTitle>
+                    {tier.popular ? <Badge>Most Popular</Badge> : null}
+                  </div>
+                  <CardDescription>
+                    <Badge variant='outline' className='text-muted-foreground'>
+                      {tier.model}
+                    </Badge>
+                  </CardDescription>
+                  {/* Best for, elevated above feature list */}
+                  <div
+                    className='rounded-lg bg-muted/60 px-3 py-2.5 text-sm
+                      text-muted-foreground'
+                  >
+                    <span className='font-semibold text-foreground'>Best for: </span>
+                    {tier.bestFor}
+                  </div>
+                </CardHeader>
+
+                <CardContent className='space-y-4'>
+                  {/* Feature list, X rows quieted */}
+                  <div className='space-y-2'>
+                    {allFeatures.map((feature) => {
+                      const included = tier.includes.includes(feature);
+                      return (
+                        <div key={feature} className='flex items-start gap-2'>
+                          {included ? (
+                            <Check className='mt-0.5 size-3.5 shrink-0 text-primary' />
+                          ) : (
+                            <X className='mt-0.5 size-3.5 shrink-0 text-muted-foreground' />
+                          )}
+                          <Text
+                            variant='muted-sm'
+                            className={cn(
+                              included ? 'text-foreground' : 'text-muted-foreground'
+                            )}
+                          >
+                            {feature}
+                          </Text>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </CardContent>
+
+                <CardFooter>
+                  <Button asChild className='w-full'>
+                    <Link href={tier.href}>
+                      {tier.cta} <ArrowRight />
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+
+          {/* À La Carte, horizontal, dashed, visually distinct */}
+          <div
+            className={cn(
+              'fade-in-from-bottom rounded-2xl border border-primary border-dashed p-6',
+              'flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between',
+              getDelayClass(5)
+            )}
+          >
+            <div className='flex flex-col gap-3'>
+              <div className='flex flex-wrap items-center gap-2'>
+                <Text topLevel variant='bd-md' className='font-bold'>
+                  {alaCarte.name}
+                </Text>
+                <Badge variant='outline' className='text-muted-foreground'>
+                  {alaCarte.model}
+                </Badge>
+              </div>
+              <Text variant='muted-sm' className='max-w-xl text-muted-foreground'>
+                {alaCarte.bestFor}
+              </Text>
+              <div className='flex flex-wrap gap-2'>
+                {alaCarte.includes.map((feature) => (
+                  <Badge key={feature} variant={'secondary'}>
+                    <Check />
+                    {feature}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+            <Button asChild variant='secondary' className='shrink-0 sm:self-center'>
+              <Link href={alaCarte.href}>
+                {alaCarte.cta} <ArrowRight />
+              </Link>
+            </Button>
+          </div>
         </section>
 
+        {/* Guaranteed services */}
+        <section className='space-y-4'>
+          <div className='space-y-1 fade-in-from-bottom'>
+            <Text variant='hd-xl' className='text-3xl tracking-tight'>
+              Included in every project
+            </Text>
+            <Text variant='muted' className='text-muted-foreground'>
+              No matter which plan you choose, these come standard.
+            </Text>
+          </div>
+          <div className='grid gap-4 sm:grid-cols-2'>
+            {guaranteedServices.map((item, index) => (
+              <Card
+                key={item.title}
+                className={cn('fade-in-from-bottom gap-0', getDelayClass(index + 1))}
+              >
+                <CardHeader className='pb-1'>
+                  <CardTitle>
+                    <Text topLevel variant='bd-sm'>
+                      {item.title}
+                    </Text>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Text variant='muted-sm' className='text-sm text-muted-foreground'>
+                    {item.description}
+                  </Text>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Not sure */}
         <section
           className='rounded-2xl border bg-muted/60 p-6 text-center fade-in-from-bottom'
         >
-          <h2 className='text-2xl tracking-tight md:text-3xl font-serif'>
+          <Text variant='hd-xl' className='text-2xl tracking-tight md:text-3xl'>
             Not sure which fits?
-          </h2>
-          <p className='mx-auto mt-2 max-w-2xl text-muted-foreground'>
-            Tell us where you are now and we will recommend the simplest path forward.
-          </p>
+          </Text>
+          <Text variant='muted' className='mx-auto mt-2 max-w-2xl text-muted-foreground'>
+            Tell us where you are now and we&apos;ll recommend the simplest path forward.
+          </Text>
           <Button asChild variant='outline' className='mt-5'>
             <Link href='/contact'>Let&apos;s talk</Link>
           </Button>
-        </section>
-
-        <section className='space-y-4'>
-          <h2 className='text-3xl tracking-tight fade-in-from-bottom'>
-            Optional add-ons
-          </h2>
-          <Accordion type='single' collapsible className='w-full rounded-xl border px-4'>
-            {addOns.map((item, index) => (
-              <AccordionItem key={item.title} value={`addon-${index}`}>
-                <AccordionTrigger>{item.title}</AccordionTrigger>
-                <AccordionContent className='text-muted-foreground'>
-                  {item.description}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
         </section>
       </div>
     </div>

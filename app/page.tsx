@@ -20,6 +20,7 @@ import {
   CardTitle,
   Separator,
 } from '@/components/ui';
+import { Text } from '@/components/Text';
 import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
 
@@ -111,20 +112,22 @@ export default function HomePage() {
             <Badge className='mb-4 fade-in-from-bottom delay-[100ms]'>
               Your work, visible.
             </Badge>
-            <h1
+            <Text
+              variant='hd-xxl'
               className='text-4xl leading-tight tracking-tight fade-in-from-bottom
-                delay-[200ms] md:text-6xl font-serif'
+                delay-[200ms] md:text-6xl'
             >
               Your local web team in Kelowna & Regina
-            </h1>
-            <p
+            </Text>
+            <Text
+              variant='muted'
               className='mt-5 text-lg text-muted-foreground fade-in-from-bottom
                 delay-[300ms] md:text-xl'
             >
               We are two developers building under one shared name: Web8th. You get direct
               access to the people doing the work, practical advice rooted in local
               markets, and a site that is built to support your business.
-            </p>
+            </Text>
             <div className='mt-8 flex flex-wrap gap-3 fade-in-from-bottom delay-[400ms]'>
               <Button asChild size='lg'>
                 <Link href='/contact'>
@@ -147,21 +150,25 @@ export default function HomePage() {
               key={item.label}
               className={cn('fade-in-from-bottom', getDelayClass(index + 2))}
             >
-              <p className='text-2xl font-semibold'>{item.value}</p>
-              <p className='text-sm text-muted-foreground'>{item.label}</p>
+              <Text variant='bd-xl' className='text-2xl font-semibold'>
+                {item.value}
+              </Text>
+              <Text variant='muted-sm' className='text-sm text-muted-foreground'>
+                {item.label}
+              </Text>
             </div>
           ))}
         </section>
 
         <section className='space-y-6'>
           <div className='space-y-2 fade-in-from-bottom'>
-            <h2 className='text-3xl tracking-tight md:text-4xl font-serif'>
+            <Text variant='hd-xl' className='text-3xl tracking-tight md:text-4xl'>
               Services at a glance
-            </h2>
-            <p className='max-w-2xl text-muted-foreground'>
+            </Text>
+            <Text variant='muted' className='max-w-2xl text-muted-foreground'>
               Pick the level of support that fits your business right now. We keep scopes
               simple and outcomes clear.
-            </p>
+            </Text>
           </div>
           <div className='grid gap-4 md:grid-cols-3'>
             {serviceSnapshot.map((service, index) => (
@@ -190,12 +197,13 @@ export default function HomePage() {
 
         <section className='grid items-center gap-8 md:grid-cols-2'>
           <div className='space-y-5'>
-            <h2
+            <Text
+              variant='hd-xl'
               className='text-3xl tracking-tight fade-in-from-bottom md:text-4xl
-                font-serif'
+              '
             >
               Why local businesses choose Web8th
-            </h2>
+            </Text>
             <div className='space-y-4'>
               {differentiators.map((item, index) => (
                 <div
@@ -207,8 +215,12 @@ export default function HomePage() {
                 >
                   <item.icon className='mt-0.5 size-5 text-primary' />
                   <div>
-                    <p className='font-medium'>{item.title}</p>
-                    <p className='text-sm text-muted-foreground'>{item.description}</p>
+                    <Text variant='label' className='font-medium'>
+                      {item.title}
+                    </Text>
+                    <Text variant='muted-sm' className='text-sm text-muted-foreground'>
+                      {item.description}
+                    </Text>
                   </div>
                 </div>
               ))}
@@ -221,22 +233,22 @@ export default function HomePage() {
               className='flex min-h-64 items-center justify-center rounded-lg border
                 border-border bg-card text-center'
             >
-              <p className='max-w-xs text-sm text-muted-foreground'>
+              <Text variant='muted-sm' className='max-w-xs text-sm text-muted-foreground'>
                 Visual placeholder for a local map, founder photo, or process
                 illustration.
-              </p>
+              </Text>
             </div>
           </Card>
         </section>
 
         <section className='space-y-6'>
           <div className='space-y-2 fade-in-from-bottom'>
-            <h2 className='text-3xl tracking-tight md:text-4xl font-serif'>
+           <Text variant='hd-xl' className='text-3xl tracking-tight md:text-4xl'>
               A few recent builds
-            </h2>
-            <p className='max-w-2xl text-muted-foreground'>
+           </Text>
+           <Text variant='muted' className='max-w-2xl text-muted-foreground'>
               Real-world websites for people and businesses in our communities.
-            </p>
+           </Text>
           </div>
           <div className='grid gap-4 md:grid-cols-3'>
             {teaserProjects.map((project, index) => (
@@ -252,7 +264,9 @@ export default function HomePage() {
                       index % 2 === 0 ? 'bg-muted' : 'bg-accent/40'
                     )}
                   >
-                    Project preview placeholder
+                    <Text as='span' variant='muted-sm'>
+                      Project preview placeholder
+                    </Text>
                   </div>
                   <div>
                     <CardTitle>{project.title}</CardTitle>
@@ -281,11 +295,13 @@ export default function HomePage() {
         <section
           className='rounded-2xl border bg-accent/50 p-8 text-center fade-in-from-bottom'
         >
-          <h2 className='text-3xl tracking-tight font-serif'>Ready to get started?</h2>
-          <p className='mx-auto mt-3 max-w-2xl text-muted-foreground'>
+          <Text variant='hd-xl' className='text-3xl tracking-tight'>
+            Ready to get started?
+          </Text>
+          <Text variant='muted' className='mx-auto mt-3 max-w-2xl text-muted-foreground'>
             Tell us what you are building and where you are stuck. We will map out the
             next step together.
-          </p>
+          </Text>
           <Separator className='mx-auto my-6 max-w-md' />
           <Button asChild size='lg'>
             <Link href='/contact'>Book a Free Call</Link>

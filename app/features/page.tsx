@@ -6,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui';
+import { Text } from '@/components/Text';
 import { getDelayClass } from '@/utils/animations';
 import {
   Shield,
@@ -91,14 +92,17 @@ export default function Features() {
       <div className='mx-auto max-w-6xl'>
         {/* Header */}
         <div className='mb-12 text-center'>
-          <h1 className='mb-4 text-5xl font-bold fade-in-from-right'>Features</h1>
-          <p
+          <Text variant='hd-xxl' className='mb-4 text-5xl font-bold fade-in-from-right'>
+            Features
+          </Text>
+          <Text
+            variant='muted'
             className='text-xl text-muted-foreground max-w-2xl mx-auto fade-in-from-right
               delay-[100ms]'
           >
             A comprehensive starter template with everything you need to build modern web
             applications
-          </p>
+          </Text>
         </div>
 
         {/* Feature Cards Grid */}
@@ -134,7 +138,9 @@ export default function Features() {
                           className='flex items-center gap-2 rounded-md'
                         >
                           <ItemIcon className='text-muted-foreground' />
-                          <span className='text-sm'>{item.label}</span>
+                          <Text as='span' variant='bd-sm' className='text-sm'>
+                            {item.label}
+                          </Text>
                         </Badge>
                       );
                     })}

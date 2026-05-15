@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { Text } from '@/components/Text';
 import {
   Card,
   CardContent,
@@ -77,14 +78,14 @@ function AuthResultContent() {
         </CardHeader>
         <CardContent className='text-center'>
           {success ? (
-            <p className='text-sm text-muted-foreground'>
+            <Text variant='muted-sm' className='text-sm text-muted-foreground'>
               Redirecting to home page in {countdown} seconds...
-            </p>
+            </Text>
           ) : (
-            <p className='text-sm text-muted-foreground'>
+            <Text variant='muted-sm' className='text-sm text-muted-foreground'>
               The verification link may have expired or is invalid. Please try signing up
               again.
-            </p>
+            </Text>
           )}
         </CardContent>
         <CardFooter className='flex justify-center gap-2'>

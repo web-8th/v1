@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui';
+import { Text } from '@/components/Text';
 import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
 
@@ -33,14 +34,18 @@ export default function PortfolioPage() {
     <div className='nb-padding'>
       <div className='mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 sm:px-6 lg:px-8'>
         <section className='space-y-3'>
-          <h1
+          <Text
+            variant='hd-xxl'
             className='text-4xl tracking-tight fade-in-from-bottom md:text-5xl font-serif'
           >
             Portfolio
-          </h1>
-          <p className='max-w-3xl text-muted-foreground fade-in-from-bottom delay-[100ms]'>
+          </Text>
+          <Text
+            variant='muted'
+            className='max-w-3xl text-muted-foreground fade-in-from-bottom delay-[100ms]'
+          >
             A selection of sites we&apos;ve built for local businesses and individuals.
-          </p>
+          </Text>
         </section>
 
         {/* TODO: Replace placeholder cards with real client projects */}
@@ -58,7 +63,9 @@ export default function PortfolioPage() {
                     index % 2 === 0 ? 'bg-muted' : 'bg-accent/40'
                   )}
                 >
-                  Project image placeholder
+                  <Text as='span' variant='muted-sm'>
+                    Project image placeholder
+                  </Text>
                 </div>
                 <div>
                   <CardTitle>{project.name}</CardTitle>
