@@ -113,7 +113,7 @@ export default function HomePage() {
             </Badge>
             <h1
               className='text-4xl leading-tight tracking-tight fade-in-from-bottom
-                delay-[200ms] md:text-6xl'
+                delay-[200ms] md:text-6xl font-serif'
             >
               Your local web team in Kelowna & Regina
             </h1>
@@ -155,7 +155,9 @@ export default function HomePage() {
 
         <section className='space-y-6'>
           <div className='space-y-2 fade-in-from-bottom'>
-            <h2 className='text-3xl tracking-tight md:text-4xl'>Services at a glance</h2>
+            <h2 className='text-3xl tracking-tight md:text-4xl font-serif'>
+              Services at a glance
+            </h2>
             <p className='max-w-2xl text-muted-foreground'>
               Pick the level of support that fits your business right now. We keep scopes
               simple and outcomes clear.
@@ -188,7 +190,10 @@ export default function HomePage() {
 
         <section className='grid items-center gap-8 md:grid-cols-2'>
           <div className='space-y-5'>
-            <h2 className='text-3xl tracking-tight fade-in-from-bottom md:text-4xl'>
+            <h2
+              className='text-3xl tracking-tight fade-in-from-bottom md:text-4xl
+                font-serif'
+            >
               Why local businesses choose Web8th
             </h2>
             <div className='space-y-4'>
@@ -226,7 +231,9 @@ export default function HomePage() {
 
         <section className='space-y-6'>
           <div className='space-y-2 fade-in-from-bottom'>
-            <h2 className='text-3xl tracking-tight md:text-4xl'>A few recent builds</h2>
+            <h2 className='text-3xl tracking-tight md:text-4xl font-serif'>
+              A few recent builds
+            </h2>
             <p className='max-w-2xl text-muted-foreground'>
               Real-world websites for people and businesses in our communities.
             </p>
@@ -274,7 +281,7 @@ export default function HomePage() {
         <section
           className='rounded-2xl border bg-accent/50 p-8 text-center fade-in-from-bottom'
         >
-          <h2 className='text-3xl tracking-tight'>Ready to get started?</h2>
+          <h2 className='text-3xl tracking-tight font-serif'>Ready to get started?</h2>
           <p className='mx-auto mt-3 max-w-2xl text-muted-foreground'>
             Tell us what you are building and where you are stuck. We will map out the
             next step together.

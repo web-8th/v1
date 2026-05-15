@@ -85,8 +85,8 @@ export default function ServicesPage() {
         <section className='space-y-4'>
           <Badge className='fade-in-from-bottom'>Services</Badge>
           <h1
-            className='text-4xl tracking-tight fade-in-from-bottom
-              delay-[100ms] md:text-5xl'
+            className='text-4xl tracking-tight fade-in-from-bottom delay-[100ms]
+              md:text-5xl font-serif'
           >
             Flexible support for where your business is right now
           </h1>
@@ -140,7 +140,7 @@ export default function ServicesPage() {
         <section
           className='rounded-2xl border bg-muted/60 p-6 text-center fade-in-from-bottom'
         >
-          <h2 className='text-2xl tracking-tight md:text-3xl'>
+          <h2 className='text-2xl tracking-tight md:text-3xl font-serif'>
             Not sure which fits?
           </h2>
           <p className='mx-auto mt-2 max-w-2xl text-muted-foreground'>

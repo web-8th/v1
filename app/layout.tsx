@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Merriweather } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 
 import { Navbar } from '@/components/Navbar';
@@ -20,6 +20,12 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const merriweather = Merriweather({
+  variable: '--font-serif',
+  subsets: ['latin'],
+  weight: ['300', '400', '700', '900'],
+});
+
 export const metadata: Metadata = {
   title: 'Web8th',
   description: 'Your work, visible.',
@@ -32,7 +38,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${merriweather.variable}
+          antialiased`}
+      >
         <AuthProvider>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
             <ToastProvider>

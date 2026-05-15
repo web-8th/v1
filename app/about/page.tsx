@@ -61,8 +61,8 @@ export default function AboutPage() {
         <section className='space-y-6'>
           <Badge className='fade-in-from-bottom'>About Web8th</Badge>
           <h1
-            className='text-4xl leading-tight tracking-tight
-              fade-in-from-bottom delay-[100ms] md:text-5xl'
+            className='text-4xl leading-tight tracking-tight fade-in-from-bottom
+              delay-[100ms] md:text-5xl font-serif'
           >
             Born on the same day. Built for this.
           </h1>
@@ -86,7 +86,7 @@ export default function AboutPage() {
         </section>
 
         <section className='space-y-5'>
-          <h2 className='text-3xl tracking-tight fade-in-from-bottom'>
+          <h2 className='text-3xl tracking-tight fade-in-from-bottom font-serif'>
             Meet the team
           </h2>
           <div className='grid gap-4 md:grid-cols-2'>
@@ -118,7 +118,7 @@ export default function AboutPage() {
         </section>
 
         <section className='space-y-5'>
-          <h2 className='text-3xl tracking-tight fade-in-from-bottom'>
+          <h2 className='text-3xl tracking-tight fade-in-from-bottom font-serif'>
             Our approach
           </h2>
           <div className='grid gap-4 sm:grid-cols-2'>

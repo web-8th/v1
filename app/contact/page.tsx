@@ -42,7 +42,7 @@ export default function ContactPage() {
           <Badge className='fade-in-from-bottom'>Contact</Badge>
           <h1
             className='text-4xl tracking-tight fade-in-from-bottom delay-[100ms]
-              md:text-5xl'
+              md:text-5xl font-serif'
           >
             Let&apos;s build something together
           </h1>

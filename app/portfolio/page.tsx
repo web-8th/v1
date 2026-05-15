@@ -33,7 +33,9 @@ export default function PortfolioPage() {
     <div className='nb-padding'>
       <div className='mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 sm:px-6 lg:px-8'>
         <section className='space-y-3'>
-          <h1 className='text-4xl tracking-tight fade-in-from-bottom md:text-5xl'>
+          <h1
+            className='text-4xl tracking-tight fade-in-from-bottom md:text-5xl font-serif'
+          >
             Portfolio
           </h1>
           <p className='max-w-3xl text-muted-foreground fade-in-from-bottom delay-[100ms]'>
@@ -44,11 +46,15 @@ export default function PortfolioPage() {
         {/* TODO: Replace placeholder cards with real client projects */}
         <section className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
           {projects.map((project, index) => (
-            <Card key={project.name} className={cn('fade-in-from-bottom', getDelayClass(index + 3))}>
+            <Card
+              key={project.name}
+              className={cn('fade-in-from-bottom', getDelayClass(index + 3))}
+            >
               <CardHeader className='space-y-4'>
                 <div
                   className={cn(
-                    'flex h-40 items-center justify-center rounded-md border text-sm text-muted-foreground',
+                    `flex h-40 items-center justify-center rounded-md border text-sm
+                    text-muted-foreground`,
                     index % 2 === 0 ? 'bg-muted' : 'bg-accent/40'
                   )}
                 >
@@ -56,7 +62,9 @@ export default function PortfolioPage() {
                 </div>
                 <div>
                   <CardTitle>{project.name}</CardTitle>
-                  <CardDescription className='mt-1'>{project.description}</CardDescription>
+                  <CardDescription className='mt-1'>
+                    {project.description}
+                  </CardDescription>
                 </div>
               </CardHeader>
               <CardContent className='space-y-4'>
