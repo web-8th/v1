@@ -108,7 +108,7 @@ export function Navbar() {
               <Link href={link.href}>{link.label}</Link>
             </Button>
           ))}
-          {user ? <LogoutButton user={user} /> : <LoginButton />}
+          {/*{user ? <LogoutButton user={user} /> : <LoginButton />}*/}
           <ModeToggle />
         </div>
 
@@ -136,11 +136,11 @@ export function Navbar() {
                       </Link>
                     </Button>
                   ))}
-                  {user ? (
+                  {/*{user ? (
                     <LogoutButton user={user} onClose={() => setOpen(false)} />
                   ) : (
                     <LoginButton onClose={() => setOpen(false)} />
-                  )}
+                  )}*/}
                   <ModeToggle />
                 </nav>
               </div>
