@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { AuthContext } from '@/contexts/AuthContext';
-import { supabase } from '@/lib/supabase';
+
+type AuthError = { message: string };
+type AuthResult = { data: null; error: AuthError | null };
 
 export function useAuth() {
   const context = useContext(AuthContext);
@@ -11,28 +13,26 @@ export function useAuth() {
 }
 
 export async function signInWithEmail(email: string, password: string) {
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  });
-  return { data, error };
+  void email;
+  void password;
+  // @TODO: Implement supabase login if needed
+  return {
+    data: null,
+    error: { message: 'Login is currently disabled.' },
+  } satisfies AuthResult;
 }
 
 export async function signUpWithEmail(email: string, password: string) {
-  const redirectUrl = window.location.origin;
-  
-  
-  const { data, error } = await supabase.auth.signUp({
-    email,
-    password,
-    options: {
-      emailRedirectTo: `${redirectUrl}/api/v1/auth/callback`,
-    },
-  });
-  return { data, error };
+  void email;
+  void password;
+  // @TODO: Implement supabase login if needed
+  return {
+    data: null,
+    error: { message: 'Signup is currently disabled.' },
+  } satisfies AuthResult;
 }
 
 export async function signOut() {
-  const { error } = await supabase.auth.signOut();
-  return { error };
+  // @TODO: Implement supabase login if needed
+  return { error: null };
 }
