@@ -178,27 +178,37 @@ export default function HomePage() {
         <div
           className='mx-auto flex w-full max-w-6xl flex-col gap-20 px-4 sm:px-6 lg:px-8'
         >
-          <section
-            className={cn(
-              `grid gap-4 rounded-2xl border bg-muted/60 p-5 fade-in-from-bottom
-              sm:grid-cols-2 lg:grid-cols-4`,
-              getDelayClass(1)
-            )}
-          >
-            {trustStats.map((item, index) => (
-              <div
-                key={item.label}
-                className={cn('fade-in-from-bottom', getDelayClass(index + 2))}
-              >
-                <Text variant='bd-xl' className='text-2xl font-semibold'>
-                  {item.value}
-                </Text>
-                <Text variant='muted-sm' className='text-sm text-muted-foreground'>
-                  {item.label}
-                </Text>
-              </div>
-            ))}
-          </section>
+          {/*<section className='space-y-6 fade-in-from-bottom'>
+            <div className={cn('space-y-2 fade-in-from-bottom', getDelayClass(1))}>
+              <Text variant='hd-xl' className='tracking-tight'>
+                Trusted by local businesses
+              </Text>
+              <Text variant='bd-md' className='text-muted-foreground'>
+                Here's our stats.
+              </Text>
+            </div>
+            <div
+              className={cn(
+                `grid gap-4 rounded-2xl border bg-muted/60 p-5 fade-in-from-bottom
+                sm:grid-cols-2 lg:grid-cols-4`,
+                getDelayClass(1)
+              )}
+            >
+              {trustStats.map((item, index) => (
+                <div
+                  key={item.label}
+                  className={cn('fade-in-from-bottom', getDelayClass(index + 2))}
+                >
+                  <Text variant='bd-xl' className='text-2xl font-semibold'>
+                    {item.value}
+                  </Text>
+                  <Text variant='muted-sm' className='text-sm text-muted-foreground'>
+                    {item.label}
+                  </Text>
+                </div>
+              ))}
+            </div>
+          </section>*/}
 
           <section className='space-y-6'>
             <div className={cn('space-y-2 fade-in-from-bottom', getDelayClass(1))}>
