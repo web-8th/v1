@@ -21,6 +21,8 @@ import {
 } from '@/components/ui';
 import { Text } from '@/components/Text';
 import { useToast } from '@/hooks/use-toast';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -71,6 +73,7 @@ export default function ContactPage() {
                 <Input
                   id='name'
                   value={name}
+                  placeholder='John Doe'
                   onChange={(event) => setName(event.target.value)}
                 />
               </div>
@@ -81,6 +84,7 @@ export default function ContactPage() {
                   id='email'
                   type='email'
                   value={email}
+                  placeholder='john@example.com'
                   onChange={(event) => setEmail(event.target.value)}
                 />
               </div>
@@ -90,6 +94,7 @@ export default function ContactPage() {
                 <Input
                   id='businessName'
                   value={businessName}
+                  placeholder='Acme Inc.'
                   onChange={(event) => setBusinessName(event.target.value)}
                 />
               </div>
@@ -101,6 +106,7 @@ export default function ContactPage() {
                     <SelectValue placeholder='Select a range' />
                   </SelectTrigger>
                   <SelectContent>
+                    <SelectItem value='non-profit'>I'm a non-profit</SelectItem>
                     <SelectItem value='under-2k'>Under $250</SelectItem>
                     <SelectItem value='2k-5k'>$250 - $500</SelectItem>
                     <SelectItem value='5k-10k'>$500 - $1,000</SelectItem>
@@ -114,6 +120,7 @@ export default function ContactPage() {
                 <Textarea
                   id='message'
                   value={message}
+                  placeholder='Your message here...'
                   onChange={(event) => setMessage(event.target.value)}
                   rows={6}
                 />
@@ -124,6 +131,44 @@ export default function ContactPage() {
               </Button>
             </CardContent>
           </Card>
+          <div className='flex flex-col'>
+            <Text variant='hd-lg'>Socials</Text>
+            <Text variant='bd-sm'>Here's where you can find us.</Text>
+            <div className='flex flex-col gap-4 mt-4'>
+              <Link
+                href='https://www.linkedin.com/in/nostew/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='border rounded h-20 drop-shadow flex items-center
+                  justify-between gap-4 p-4'
+              >
+                <Image
+                  src='/icons/linkedin-linked-in-svgrepo-com.svg'
+                  alt='LinkedIn'
+                  className='invert-100 not-dark:invert-0'
+                  width={48}
+                  height={48}
+                />
+                <Text variant='hd-sm'>Noah Stewart</Text>
+              </Link>
+              <Link
+                href='https://www.linkedin.com/in/rinmeng/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='border rounded h-20 drop-shadow flex items-center
+                  justify-between gap-4 p-4'
+              >
+                <Image
+                  src='/icons/linkedin-linked-in-svgrepo-com.svg'
+                  alt='LinkedIn'
+                  className='invert-100 not-dark:invert-0'
+                  width={48}
+                  height={48}
+                />
+                <Text variant='hd-sm'>Rin Meng</Text>
+              </Link>
+            </div>
+          </div>
         </section>
       </div>
     </div>
