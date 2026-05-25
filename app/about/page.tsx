@@ -1,9 +1,15 @@
+'use client';
+
+import { useEffect } from 'react';
 import { Handshake, MessageCircle, ShieldCheck, Store } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowDown } from 'lucide-react';
 
 import {
   Avatar,
   AvatarFallback,
   Badge,
+  Button,
   Card,
   CardContent,
   CardDescription,
@@ -13,6 +19,7 @@ import {
 import { Text } from '@/components/Text';
 import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
+import { HexagonBackground } from '@/components/animate-ui/components/backgrounds/hexagon';
 
 const founders = [
   {
@@ -57,45 +64,101 @@ const principles = [
 ];
 
 export default function AboutPage() {
+  useEffect(() => {
+    const scrollToHash = () => {
+      const { hash } = window.location;
+      if (!hash) return;
+      const target = document.getElementById(hash.slice(1));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
+    scrollToHash();
+    window.addEventListener('hashchange', scrollToHash);
+    return () => window.removeEventListener('hashchange', scrollToHash);
+  }, []);
+
   return (
-    <div className='nb-padding'>
-      <div className='mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 sm:px-6 lg:px-8'>
-        <section className='space-y-6'>
-          <Badge className={cn('fade-in-from-bottom', getDelayClass(0))}>
-            About Web8th
-          </Badge>
+    <div>
+      {/* Hero */}
+      <section
+        className='relative flex h-screen flex-col items-start justify-center gap-4
+          overflow-hidden text-center'
+      >
+        <HexagonBackground className='absolute inset-0 rounded-xl' />
+        <div className='pl-20 max-w-4xl space-y-4 pointer-events-none'>
           <Text
             variant='hd-xxl'
             className={cn(
-              'text-4xl leading-tight tracking-tight fade-in-from-bottom md:text-5xl',
+              'tracking-tight fade-in-from-bottom not-dark:text-background text-left',
               getDelayClass(1)
             )}
           >
             Born on the same day. Built for this.
           </Text>
-          <div className='max-w-4xl space-y-4 text-muted-foreground'>
-            <Text variant='muted' className={cn('fade-in-from-bottom', getDelayClass(2))}>
-              We are birthday twins who got into building websites for fun. One project
-              became another. Before long, friends and local business owners were asking
-              us to build for them too.
-            </Text>
-            <Text variant='muted' className={cn('fade-in-from-bottom', getDelayClass(3))}>
-              What started as a side hustle stayed personal, but it grew quickly. Instead
-              of running as two separate freelancers, we brought every project under one
-              shared name: Web8th.
-            </Text>
-            <Text variant='muted' className={cn('fade-in-from-bottom', getDelayClass(4))}>
-              That gives our clients a stronger team, a clearer process, and one trusted
-              place to find us. Different strengths, one standard, and a shared commitment
-              to doing the work right.
-            </Text>
+          <Text
+            variant='muted'
+            className={cn(
+              'not-dark:text-muted-background fade-in-from-bottom text-left',
+              getDelayClass(2)
+            )}
+          >
+            Two developers, one shared name, and a commitment to doing the work right.
+          </Text>
+          <Text
+            variant='muted'
+            className={cn('fade-in-from-bottom text-left', getDelayClass(3))}
+          >
+            We are birthday twins who got into building websites for fun. One project
+            became another. Before long, friends and local business owners were asking us
+            to build for them too.
+          </Text>
+          <Text
+            variant='muted'
+            className={cn('fade-in-from-bottom text-left', getDelayClass(4))}
+          >
+            What started as a side hustle stayed personal, but it grew quickly. Instead of
+            running as two separate freelancers, we brought every project under one shared
+            name: Web8th.
+          </Text>
+          <Text
+            variant='muted'
+            className={cn('fade-in-from-bottom text-left', getDelayClass(5))}
+          >
+            That gives our clients a stronger team, a clearer process, and one trusted
+            place to find us. Different strengths, one standard, and a shared commitment
+            to doing the work right.
+          </Text>
+          <div className='flex justify-end'>
+            <Button
+              asChild
+              className={cn(
+                'mt-4 fade-in-from-bottom pointer-events-auto',
+                getDelayClass(3)
+              )}
+            >
+              <Link href='#meet-the-team'>
+                Learn more <ArrowDown />
+              </Link>
+            </Button>
           </div>
-        </section>
+        </div>
+      </section>
 
+      <div
+        id='meet-the-team'
+        className='nb-padding mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 sm:px-6
+          lg:px-8'
+      >
+        {/* Team */}
         <section className='space-y-5'>
           <Text
             variant='hd-xl'
-            className={cn('text-3xl tracking-tight fade-in-from-bottom', getDelayClass(1))}
+            className={cn(
+              'text-3xl tracking-tight fade-in-from-bottom',
+              getDelayClass(1)
+            )}
           >
             Meet the team
           </Text>
@@ -127,10 +190,14 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Principles */}
         <section className='space-y-5'>
           <Text
             variant='hd-xl'
-            className={cn('text-3xl tracking-tight fade-in-from-bottom', getDelayClass(1))}
+            className={cn(
+              'text-3xl tracking-tight fade-in-from-bottom',
+              getDelayClass(1)
+            )}
           >
             Our approach
           </Text>
