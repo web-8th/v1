@@ -1,19 +1,7 @@
-import {
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui';
 import { Text } from '@/components/Text';
 import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
 import { SitePreview } from '@/components/SitePreview';
-import Link from 'next/link';
-import { SquareArrowOutUpRight } from 'lucide-react';
 
 const projects = [
   {
