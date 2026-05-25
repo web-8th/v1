@@ -282,8 +282,8 @@ export default function ServicesPage() {
         {/* Non-profit */}
         <section
           className={cn(
-            `relative rounded-2xl border overflow-hidden p-6 text-center
-            fade-in-from-bottom`,
+            `relative rounded-2xl border overflow-hidden p-6 text-center bg-accent
+            not-dark:bg-accent fade-in-from-bottom`,
             getDelayClass(1)
           )}
         >
