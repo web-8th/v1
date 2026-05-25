@@ -1,4 +1,9 @@
+'use client';
+
+import { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+
 import { ArrowDown, ArrowRight, Check, X } from 'lucide-react';
 
 import {
@@ -101,6 +106,23 @@ const guaranteedServices = [
 ];
 
 export default function ServicesPage() {
+  useEffect(() => {
+    const scrollToHash = () => {
+      const { hash } = window.location;
+      if (!hash) {
+        return;
+      }
+      const target = document.getElementById(hash.slice(1));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
+    scrollToHash();
+    window.addEventListener('hashchange', scrollToHash);
+    return () => window.removeEventListener('hashchange', scrollToHash);
+  }, []);
+
   return (
     <div>
       {/* Hero */}
@@ -108,6 +130,12 @@ export default function ServicesPage() {
         className='relative flex h-screen flex-col items-center justify-center gap-4
           overflow-hidden text-center'
       >
+        <Image
+          src='/okanagan.jpg'
+          alt=''
+          className='absolute inset-0 rounded-xl brightness-20'
+          fill
+        />
         <GravityStarsBackground className='absolute inset-0 rounded-xl' />
         <div className='relative z-10 flex max-w-3xl flex-col items-center gap-4'>
           <Text
@@ -136,15 +164,13 @@ export default function ServicesPage() {
       </section>
 
       <div
+        id='pricing'
         className='nb-padding mx-auto flex w-full max-w-6xl flex-col gap-14 px-4 sm:px-6
           lg:px-8'
       >
         {/* Fixed tiers, 2-column grid */}
-        <section id='pricing' className='flex flex-col gap-4'>
-          <Text
-            variant='hd-xl'
-            className={cn('fade-in-from-bottom', getDelayClass(1))}
-          >
+        <section className='flex flex-col gap-4'>
+          <Text variant='hd-xl' className={cn('fade-in-from-bottom', getDelayClass(1))}>
             Our Pricing
           </Text>
           <div className='grid gap-4 md:grid-cols-2'>
