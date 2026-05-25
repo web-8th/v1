@@ -140,13 +140,19 @@ export default function ServicesPage() {
         <div className='relative z-10 flex max-w-3xl flex-col items-center gap-4'>
           <Text
             variant='hd-xxl'
-            className={cn('tracking-tight fade-in-from-bottom', getDelayClass(1))}
+            className={cn(
+              'tracking-tight fade-in-from-bottom not-dark:text-background',
+              getDelayClass(1)
+            )}
           >
             Flexible support for where your business is right now
           </Text>
           <Text
             variant='muted'
-            className={cn('text-muted-foreground fade-in-from-bottom', getDelayClass(2))}
+            className={cn(
+              'not-dark:text-muted-background fade-in-from-bottom ',
+              getDelayClass(2)
+            )}
           >
             Start with a one-time launch, keep momentum with ongoing help, or send us a
             list when you need updates.
