@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 import { ArrowDown, ArrowRight, Check, X } from 'lucide-react';
 
@@ -18,8 +17,10 @@ import {
 } from '@/components/ui';
 import { Text } from '@/components/Text';
 import { cn } from '@/lib/utils';
+import { useTheme } from 'next-themes';
 import { getDelayClass } from '@/utils/animations';
 import { StarsBackground } from '@/components/animate-ui/components/backgrounds/stars';
+import { FireworksBackground } from '@/components/animate-ui/components/backgrounds/fireworks';
 
 const allFeatures = [
   'Custom web design',
@@ -106,6 +107,7 @@ const guaranteedServices = [
 ];
 
 export default function ServicesPage() {
+  const { resolvedTheme } = useTheme();
   useEffect(() => {
     const scrollToHash = () => {
       const { hash } = window.location;
@@ -278,44 +280,54 @@ export default function ServicesPage() {
         </section>
 
         {/* Non-profit */}
-        <div
+        <section
           className={cn(
-            'flex gap-4 flex-col items-center justify-between fade-in-from-bottom',
-            getDelayClass(6)
+            `relative rounded-2xl border overflow-hidden p-6 text-center
+            fade-in-from-bottom`,
+            getDelayClass(1)
           )}
         >
-          <div className='flex flex-col gap-3'>
-            <Text topLevel variant='hd-xxl' className='tracking-tight text-center'>
-              Free websites for non-profits
-            </Text>
-            <div className='flex justify-center'>
-              <Text
-                variant='muted'
-                className='text-muted-foreground text-center max-w-xl'
-              >
-                Are you a non-profit organization? We&apos;ll build your site at minimal
-                charge (may incl. domain fees). If you&apos;re doing good work in your
-                community, we want to help you show it.
+          <FireworksBackground
+            className='absolute inset-0'
+            population={3}
+            fireworkSpeed={2}
+            fireworkSize={6}
+            particleSize={1.5}
+            particleSpeed={1.5}
+            color={resolvedTheme === 'dark' ? '#ffffff' : '#000000'}
+          />
+          <div className='relative z-10 flex gap-4 flex-col items-center justify-between'>
+            <div className='flex flex-col gap-3'>
+              <Text topLevel variant='hd-xxl' className='tracking-tight text-center'>
+                Free websites for non-profits
               </Text>
+              <div className='flex justify-center'>
+                <Text
+                  variant='muted'
+                  className='text-muted-foreground text-center max-w-xl'
+                >
+                  Are you a non-profit organization? We&apos;ll build your site at minimal
+                  charge (may incl. domain fees or other maintenance fees). If you&apos;re
+                  doing good work in your community, we want to help you show it.
+                </Text>
+              </div>
+              <div className='flex flex-wrap justify-center gap-2'>
+                {['Custom web design', 'Full development', 'On-page SEO setup'].map(
+                  (feature) => (
+                    <Badge key={feature} variant='secondary'>
+                      <Check />
+                      {feature}
+                    </Badge>
+                  )
+                )}
+              </div>
             </div>
-            <div className='flex flex-wrap justify-center gap-2'>
-              {['Custom web design', 'Full development', 'On-page SEO setup'].map(
-                (feature) => (
-                  <Badge key={feature} variant='secondary'>
-                    <Check />
-                    {feature}
-                  </Badge>
-                )
-              )}
-            </div>
-          </div>
-          <Button asChild className='shrink-0 sm:self-center'>
-            <Link href='/contact'>
-              I'm a non-profit
-              <ArrowRight />
-            </Link>
-          </Button>
-          <div className='flex justify-center'>
+            <Button asChild className='shrink-0 sm:self-center'>
+              <Link href='/contact'>
+                I'm a non-profit
+                <ArrowRight />
+              </Link>
+            </Button>
             <Text
               variant='bd-xs'
               className='text-muted-foreground/70 text-center max-w-xl'
@@ -323,7 +335,7 @@ export default function ServicesPage() {
               Non-profit projects are completed on a best-effort basis.
             </Text>
           </div>
-        </div>
+        </section>
 
         {/* Guaranteed services */}
         <section className='space-y-4'>
