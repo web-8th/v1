@@ -10,6 +10,9 @@ import {
   Sparkles,
   SquareChartGantt,
   Wrench,
+  TrendingDown,
+  Users,
+  FlaskConical,
 } from 'lucide-react';
 
 import {
@@ -300,43 +303,52 @@ export default function HomePage() {
 
               {/* Floating stat card — top right */}
               <Card
-                className='absolute -top-4 -right-2 z-10 w-44 p-3 -rotate-2 shadow-lg
-                  gap-4'
+                className='absolute -top-8 left-1/2 -translate-x-1/2 z-10 p-3 rotate-1
+                  shadow-lg flex flex-row gap-4 items-center whitespace-nowrap'
               >
-                <div className='gap-2'>
-                  <Text variant='bd-xl' className='text-2xl font-semibold'>
-                    88%
-                  </Text>
-                  <Text
-                    variant='muted-sm'
-                    className='text-xs text-muted-foreground leading-tight'
-                  >
-                    cost reduction vs SquareSpace
-                  </Text>
+                <div className='flex items-center gap-2'>
+                  <TrendingDown className='size-5 text-primary shrink-0' />
+                  <div>
+                    <Text variant='bd-xl' className='text-2xl font-semibold'>
+                      88%
+                    </Text>
+                    <Text
+                      variant='muted-sm'
+                      className='text-xs text-muted-foreground leading-tight'
+                    >
+                      cost reduction
+                    </Text>
+                  </div>
                 </div>
-                <Separator />
-                <div className='gap-2'>
-                  <Text variant='bd-xl' className='text-2xl font-semibold'>
-                    6+
-                  </Text>
-                  <Text
-                    variant='muted-sm'
-                    className='text-xs text-muted-foreground leading-tight'
-                  >
-                    local clients served
-                  </Text>
+                <Separator orientation='vertical' className='h-8' />
+                <div className='flex items-center gap-2'>
+                  <Users className='size-5 text-primary shrink-0' />
+                  <div>
+                    <Text variant='bd-xl' className='text-2xl font-semibold'>
+                      6+
+                    </Text>
+                    <Text
+                      variant='muted-sm'
+                      className='text-xs text-muted-foreground leading-tight'
+                    >
+                      clients served
+                    </Text>
+                  </div>
                 </div>
-                <Separator />
-                <div className='gap-2'>
-                  <Text variant='bd-xl' className='text-2xl font-semibold'>
-                    4+
-                  </Text>
-                  <Text
-                    variant='muted-sm'
-                    className='text-xs text-muted-foreground leading-tight'
-                  >
-                    years building websites
-                  </Text>
+                <Separator orientation='vertical' className='h-8' />
+                <div className='flex items-center gap-2'>
+                  <FlaskConical className='size-5 text-primary shrink-0' />
+                  <div>
+                    <Text variant='bd-xl' className='text-2xl font-semibold'>
+                      4+
+                    </Text>
+                    <Text
+                      variant='muted-sm'
+                      className='text-xs text-muted-foreground leading-tight'
+                    >
+                      years building
+                    </Text>
+                  </div>
                 </div>
               </Card>
             </div>
