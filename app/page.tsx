@@ -103,7 +103,7 @@ const teaserProjects = [
     summary:
       'InspirED aims to educate citizens in society to promote a better environment. They focus on fostering practical education rather than traditional academic education.',
     tags: ['Web Design', 'SEO', 'Custom CMS'],
-    url: 'https://www.inspiredsk.ca/',
+    url: 'https://www.inspiredsk.ca',
     imgSrc: '/fullpage-inspired.png',
   },
   {

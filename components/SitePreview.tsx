@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { SquareArrowOutUpRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, SquareArrowOutUpRight } from 'lucide-react';
 import { Badge } from '@/components/ui';
 
 interface SitePreviewProps {
@@ -31,8 +31,10 @@ export function SitePreview({ src, alt, url, title, summary, tags }: SitePreview
             className='ml-2 flex-1 truncate rounded border border-border bg-background
               px-2 py-0.5 font-mono text-[11px] text-muted-foreground'
           >
-            {url.replace('https://', '')}
+            {url}
           </span>
+          <ArrowLeft className='size-4 text-foreground' />
+          <ArrowRight className='size-4 text-foreground' />
         </div>
 
         {/* Scrollable preview */}
