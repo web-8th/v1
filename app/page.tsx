@@ -123,13 +123,13 @@ export default function HomePage() {
     <div>
       {/* Hero */}
       <section
-        className='relative flex h-screen flex-col items-center justify-center gap-4
+        className='relative flex h-screen flex-col items-center justify-center gap-4 px-4
           overflow-hidden text-center'
       >
         <Image
           src='/okanagan.jpg'
           alt=''
-          className='absolute inset-0 rounded-xl brightness-20'
+          className='absolute inset-0 rounded-xl brightness-20 object-cover'
           fill
         />
         <GravityStarsBackground className='absolute inset-0 rounded-xl' />
