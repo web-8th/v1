@@ -28,8 +28,9 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: 'Web8th',
-  description: 'Your work, visible.',
+  title: 'Web8th — Your Work, Visible.',
+  description:
+    'Web8th is a Kelowna-based web development studio serving local businesses in Kelowna, Regina, and across BC and Saskatchewan. From landing pages to full web apps, we build things worth showing off.',
   icons: {
     icon: [
       { url: '/icons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
