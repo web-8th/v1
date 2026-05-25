@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 import {
   Badge,
@@ -10,6 +11,10 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  Form,
+  FormField,
+  FormItem,
+  FormMessage,
   Input,
   Label,
   Select,
@@ -21,6 +26,7 @@ import {
 } from '@/components/ui';
 import { Text } from '@/components/Text';
 import { useToast } from '@/hooks/use-toast';
+import { canSendEmail, getRemainingCooldown, markEmailSent } from '@/lib/rate-limit';
 import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
 import Image from 'next/image';
@@ -33,11 +39,74 @@ export default function ContactPage() {
   const [businessName, setBusinessName] = useState('');
   const [budgetRange, setBudgetRange] = useState('');
   const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const form = useForm<{ formError: string }>({
+    defaultValues: { formError: '' },
+  });
 
-  const handleSubmit = () => {
-    const payload = { name, email, businessName, budgetRange, message };
-    console.log('Contact form submit:', payload);
-    toast.success('Thanks for reaching out. We will get back to you soon.');
+  const formatCooldown = (milliseconds: number) => {
+    if (milliseconds <= 0) return '0m';
+    const totalSeconds = Math.ceil(milliseconds / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    if (minutes === 0) return `${seconds}s`;
+    if (seconds === 0) return `${minutes}m`;
+    return `${minutes}m ${seconds}s`;
+  };
+
+  const handleSubmit = async () => {
+    if (isSubmitting) return;
+    form.clearErrors('formError');
+
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      form.setError('formError', {
+        message: 'Please share your name, email, and a message.',
+      });
+      return;
+    }
+
+    if (!canSendEmail()) {
+      const remaining = getRemainingCooldown();
+      form.setError('formError', {
+        message: `Please wait ${formatCooldown(remaining)} before sending again.`,
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          businessName: businessName.trim() || undefined,
+          budgetRange: budgetRange || undefined,
+          message: message.trim(),
+        }),
+      });
+
+      if (!response.ok) {
+        const payload = await response.json().catch(() => null);
+        throw new Error(payload?.error || 'Failed to send message.');
+      }
+
+      markEmailSent();
+      toast.success('Thanks for reaching out. We will get back to you soon.');
+      form.clearErrors('formError');
+      setName('');
+      setEmail('');
+      setBusinessName('');
+      setBudgetRange('');
+      setMessage('');
+    } catch (error) {
+      const errorMessage =
+        error instanceof Error ? error.message : 'Failed to send message.';
+      form.setError('formError', { message: errorMessage });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -74,67 +143,84 @@ export default function ContactPage() {
               </CardDescription>
             </CardHeader>
             <CardContent className='space-y-4'>
-              <div className='space-y-2'>
-                <Label htmlFor='name'>Name</Label>
-                <Input
-                  id='name'
-                  value={name}
-                  placeholder='John Doe'
-                  onChange={(event) => setName(event.target.value)}
-                />
-              </div>
+              <Form {...form}>
+                <div className='space-y-4'>
+                  <div className='space-y-2'>
+                    <Label htmlFor='name'>Name</Label>
+                    <Input
+                      id='name'
+                      value={name}
+                      placeholder='John Doe'
+                      onChange={(event) => setName(event.target.value)}
+                    />
+                  </div>
 
-              <div className='space-y-2'>
-                <Label htmlFor='email'>Email</Label>
-                <Input
-                  id='email'
-                  type='email'
-                  value={email}
-                  placeholder='john@example.com'
-                  onChange={(event) => setEmail(event.target.value)}
-                />
-              </div>
+                  <div className='space-y-2'>
+                    <Label htmlFor='email'>Email</Label>
+                    <Input
+                      id='email'
+                      type='email'
+                      value={email}
+                      placeholder='john@example.com'
+                      onChange={(event) => setEmail(event.target.value)}
+                    />
+                  </div>
 
-              <div className='space-y-2'>
-                <Label htmlFor='businessName'>Business Name (optional)</Label>
-                <Input
-                  id='businessName'
-                  value={businessName}
-                  placeholder='Acme Inc.'
-                  onChange={(event) => setBusinessName(event.target.value)}
-                />
-              </div>
+                  <div className='space-y-2'>
+                    <Label htmlFor='businessName'>Business Name (optional)</Label>
+                    <Input
+                      id='businessName'
+                      value={businessName}
+                      placeholder='Acme Inc.'
+                      onChange={(event) => setBusinessName(event.target.value)}
+                    />
+                  </div>
 
-              <div className='space-y-2'>
-                <Label>Budget Range (optional)</Label>
-                <Select value={budgetRange} onValueChange={setBudgetRange}>
-                  <SelectTrigger className='w-full'>
-                    <SelectValue placeholder='Select a range' />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value='non-profit'>I'm a non-profit</SelectItem>
-                    <SelectItem value='under-2k'>Under $250</SelectItem>
-                    <SelectItem value='2k-5k'>$250 - $500</SelectItem>
-                    <SelectItem value='5k-10k'>$500 - $1,000</SelectItem>
-                    <SelectItem value='10k-plus'>$1,000+</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+                  <div className='space-y-2'>
+                    <Label>Budget Range (optional)</Label>
+                    <Select value={budgetRange} onValueChange={setBudgetRange}>
+                      <SelectTrigger className='w-full'>
+                        <SelectValue placeholder='Select a range' />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value='non-profit'>I'm a non-profit</SelectItem>
+                        <SelectItem value='under-2k'>Under $250</SelectItem>
+                        <SelectItem value='2k-5k'>$250 - $500</SelectItem>
+                        <SelectItem value='5k-10k'>$500 - $1,000</SelectItem>
+                        <SelectItem value='10k-plus'>$1,000+</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-              <div className='space-y-2'>
-                <Label htmlFor='message'>Message</Label>
-                <Textarea
-                  id='message'
-                  value={message}
-                  placeholder='Your message here...'
-                  onChange={(event) => setMessage(event.target.value)}
-                  rows={6}
-                />
-              </div>
+                  <div className='space-y-2'>
+                    <Label htmlFor='message'>Message</Label>
+                    <Textarea
+                      id='message'
+                      value={message}
+                      placeholder='Your message here...'
+                      onChange={(event) => setMessage(event.target.value)}
+                      rows={6}
+                    />
+                  </div>
 
-              <Button onClick={handleSubmit} className='w-full sm:w-auto'>
-                Send Message
-              </Button>
+                  <FormField
+                    name='formError'
+                    render={() => (
+                      <FormItem>
+                        <FormMessage className='text-red-500 fade-in-from-bottom' />
+                      </FormItem>
+                    )}
+                  />
+
+                  <Button
+                    onClick={handleSubmit}
+                    className='w-full sm:w-auto'
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </Button>
+                </div>
+              </Form>
             </CardContent>
           </Card>
           <div className={cn('flex flex-col fade-in-from-bottom', getDelayClass(4))}>
@@ -150,7 +236,9 @@ export default function ContactPage() {
                 target='_blank'
                 rel='noopener noreferrer'
                 className={cn(
-                  'border border-foreground/40 rounded-xl h-20 drop-shadow-lg flex items-center justify-between gap-4 p-4 bg-accent hover:bg-accent/50 t200e fade-in-from-bottom',
+                  `border border-foreground/40 rounded-xl h-20 drop-shadow-lg flex
+                  items-center justify-between gap-4 p-4 bg-accent hover:bg-accent/50
+                  t200e fade-in-from-bottom`,
                   getDelayClass(8)
                 )}
               >
@@ -168,7 +256,9 @@ export default function ContactPage() {
                 target='_blank'
                 rel='noopener noreferrer'
                 className={cn(
-                  'border border-foreground/40 rounded-xl h-20 drop-shadow-lg flex items-center justify-between gap-4 p-4 bg-accent hover:bg-accent/50 t200e fade-in-from-bottom',
+                  `border border-foreground/40 rounded-xl h-20 drop-shadow-lg flex
+                  items-center justify-between gap-4 p-4 bg-accent hover:bg-accent/50
+                  t200e fade-in-from-bottom`,
                   getDelayClass(9)
                 )}
               >
