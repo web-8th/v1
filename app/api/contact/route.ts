@@ -24,8 +24,7 @@ export async function POST(req: Request) {
   const message = typeof body?.message === 'string' ? body.message.trim() : '';
   const businessName =
     typeof body?.businessName === 'string' ? body.businessName.trim() : '';
-  const budgetRange =
-    typeof body?.budgetRange === 'string' ? body.budgetRange : '';
+  const budgetRange = typeof body?.budgetRange === 'string' ? body.budgetRange : '';
 
   if (!name || !email || !message) {
     return Response.json(
@@ -36,12 +35,11 @@ export async function POST(req: Request) {
 
   const resend = new Resend(resendApiKey);
   const toEmail = process.env.NEXT_PUBLIC_RESEND_EMAIL_TO || 'mail@rinm.dev';
-  const fromEmail =
-    process.env.NEXT_PUBLIC_RESEND_EMAIL_FROM || 'mail@rinm.dev';
+  const fromEmail = process.env.NEXT_PUBLIC_RESEND_EMAIL_FROM || 'mail@rinm.dev';
   const logoUrl =
-    'https://drive.google.com/uc?export=download&id=17EmKrUVMXYos2fcYPExYmjz603qEdoXq';
+    'https://drive.google.com/uc?export=download&id=1ZH_A1lRxNfZgDiryP9yc2ARPGqmiICg5';
 
-  const budgetLabel = budgetRange ? budgetLabels[budgetRange] ?? budgetRange : '';
+  const budgetLabel = budgetRange ? (budgetLabels[budgetRange] ?? budgetRange) : '';
 
   try {
     await Promise.all([

@@ -280,21 +280,17 @@ export default function HomePage() {
             </div>
             <Card
               className={cn(
-                'fade-in-from-right border-dashed bg-accent/40 p-6',
+                'fade-in-from-right border-dashed bg-accent/40 overflow-hidden p-0',
                 getDelayClass(3)
               )}
             >
-              <div
-                className='flex min-h-64 items-center justify-center rounded-lg border
-                  border-border bg-card text-center'
-              >
-                <Text
-                  variant='muted-sm'
-                  className='max-w-xs text-sm text-muted-foreground'
-                >
-                  Visual placeholder for a local map, founder photo, or process
-                  illustration.
-                </Text>
+              <div className='relative w-full aspect-3/2'>
+                <Image
+                  src='/tsengphoto.png'
+                  alt='tsengphoto'
+                  className='object-contain'
+                  fill
+                />
               </div>
             </Card>
           </section>
