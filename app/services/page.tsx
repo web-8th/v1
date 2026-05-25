@@ -151,11 +151,7 @@ export default function ServicesPage() {
             Start with a one-time launch, keep momentum with ongoing help, or send us a
             list when you need updates.
           </Text>
-          <Button
-            asChild
-            variant='secondary'
-            className={cn('mt-4 fade-in-from-bottom', getDelayClass(3))}
-          >
+          <Button asChild className={cn('mt-4 fade-in-from-bottom', getDelayClass(3))}>
             <Link href='#pricing'>
               View pricing <ArrowDown />
             </Link>
