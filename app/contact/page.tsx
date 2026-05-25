@@ -22,6 +22,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
+  Spinner,
   Textarea,
 } from '@/components/ui';
 import { Text } from '@/components/Text';
@@ -212,13 +213,16 @@ export default function ContactPage() {
                     )}
                   />
 
-                  <Button
-                    onClick={handleSubmit}
-                    className='w-full sm:w-auto'
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
-                  </Button>
+                  <div className='flex justify-end'>
+                    <Button
+                      onClick={handleSubmit}
+                      className='w-full sm:w-auto'
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                      {isSubmitting && <Spinner />}
+                    </Button>
+                  </div>
                 </div>
               </Form>
             </CardContent>
