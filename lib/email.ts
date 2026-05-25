@@ -38,12 +38,14 @@ export function buildEmailHtml({
   businessName,
   budgetRange,
   message,
+  logoUrl,
 }: {
   name: string;
   email: string;
   businessName?: string;
   budgetRange?: string;
   message?: string;
+  logoUrl?: string;
 }) {
   const optionalRow = (label: string, value?: string) =>
     value
@@ -60,6 +62,11 @@ export function buildEmailHtml({
   const safeBudgetRange = budgetRange ? escapeHtml(budgetRange) : undefined;
   const formattedMessage = message ? formatMessage(message) : undefined;
   const firstName = getFirstName(name);
+  const logoMarkup = logoUrl
+    ? `<div style="background:#000;padding:16px;border-radius:6px;">
+        <img src="${logoUrl}" alt="Logo" style="display:block;width:100%;max-width:560px;height:auto;border-radius:4px;" />
+      </div>`
+    : '';
 
   const optionalMessage = formattedMessage
     ? `
@@ -95,27 +102,39 @@ export function buildEmailHtml({
         ${optionalMessage}
 
         <a href="mailto:${safeEmail}?subject=${encodeURIComponent(
-          `Re: Your Web8th inquiry, ${firstName}`
+          `Re: Your inquiry, ${firstName}`
         )}"
           style="display:block;text-align:center;background:${COLORS.primary};color:${COLORS.background};text-decoration:none;padding:14px;border-radius:6px;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;">
           Reply to ${escapeHtml(firstName)}
         </a>
 
-        <div style="margin-top:1.5rem;font-size:11px;color:${COLORS.mutedForeground};text-align:center;">Sent from Web8th website</div>
+        ${logoMarkup ? `<div style="margin-top:1.5rem;">${logoMarkup}</div>` : ''}
+        <div style="margin-top:1.25rem;font-size:11px;color:${COLORS.mutedForeground};text-align:center;">Sent from the website</div>
       </div>
-      
+
     </div>
   `;
 }
 
-export function buildConfirmationHtml({ name }: { name: string }) {
+export function buildConfirmationHtml({
+  name,
+  logoUrl,
+}: {
+  name: string;
+  logoUrl?: string;
+}) {
   const firstName = getFirstName(name);
+  const logoMarkup = logoUrl
+    ? `<div style="background:#000;padding:16px;border-radius:6px;">
+        <img src="${logoUrl}" alt="Logo" style="display:block;width:100%;max-width:560px;height:auto;border-radius:4px;" />
+      </div>`
+    : '';
 
   return `
     <div style="font-family:Georgia, serif;max-width:560px;margin:0 auto;background:${COLORS.background};border:1px solid ${COLORS.border};border-radius:6px;overflow:hidden;">
-      
+
       <div style="background:${COLORS.primary};padding:2rem;text-align:center;">
-        <p style="color:${COLORS.background};font-size:24px;font-weight:400;margin:0;letter-spacing:0.05em;">Web8th</p>
+        <p style="color:${COLORS.background};font-size:24px;font-weight:400;margin:0;letter-spacing:0.05em;">Message received</p>
       </div>
 
       <div style="padding:2rem;">
@@ -128,6 +147,7 @@ export function buildConfirmationHtml({ name }: { name: string }) {
         <p style="font-size:14px;color:${COLORS.mutedForeground};line-height:1.7;margin:0;font-family:Georgia, serif;">
           — Web8th Team
         </p>
+        ${logoMarkup ? `<div style="margin-top:1.5rem;">${logoMarkup}</div>` : ''}
       </div>
 
     </div>

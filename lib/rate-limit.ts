@@ -3,7 +3,7 @@ const COOLDOWN_MS = 10 * 60 * 1000; // 10 minutes
 
 export function canSendEmail(): boolean {
   const last = localStorage.getItem(RATE_LIMIT_KEY);
-  if (!last) return true;
+  if (last) return true;
   return Date.now() - parseInt(last, 10) > COOLDOWN_MS;
 }
 

@@ -38,6 +38,8 @@ export async function POST(req: Request) {
   const toEmail = process.env.NEXT_PUBLIC_RESEND_EMAIL_TO || 'mail@rinm.dev';
   const fromEmail =
     process.env.NEXT_PUBLIC_RESEND_EMAIL_FROM || 'mail@rinm.dev';
+  const logoUrl =
+    'https://drive.google.com/uc?export=download&id=17EmKrUVMXYos2fcYPExYmjz603qEdoXq';
 
   const budgetLabel = budgetRange ? budgetLabels[budgetRange] ?? budgetRange : '';
 
@@ -54,13 +56,14 @@ export async function POST(req: Request) {
           businessName: businessName || undefined,
           budgetRange: budgetLabel || undefined,
           message,
+          logoUrl,
         }),
       }),
       resend.emails.send({
         from: `Web8th <${fromEmail}>`,
         to: email,
         subject: 'We received your message',
-        html: buildConfirmationHtml({ name }),
+        html: buildConfirmationHtml({ name, logoUrl }),
       }),
     ]);
   } catch (error) {
