@@ -263,7 +263,7 @@ export default function HomePage() {
                       getDelayClass(index + 3)
                     )}
                   >
-                    <item.icon className='size-10 text-primary' />
+                    <item.icon className='mt-0.5 size-5 text-primary' />
                     <div>
                       <Text variant='label' className='font-medium'>
                         {item.title}
@@ -276,21 +276,70 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-            <Card
-              className={cn(
-                'fade-in-from-right border-dashed bg-accent/40 overflow-hidden p-0',
-                getDelayClass(3)
-              )}
+
+            {/* Right side: stacked mockup + floating stat card */}
+            <div
+              className={cn('relative fade-in-from-right px-6 py-8 ', getDelayClass(3))}
             >
-              <div className='relative w-full aspect-3/2'>
-                <Image
+              {/* Slightly rotated background card for depth */}
+              <div
+                className='absolute inset-6 rotate-2 rounded-lg border border-border
+                  bg-muted/40 shadow-md'
+              />
+
+              {/* Main site preview */}
+              <div className='relative'>
+                <SitePreview
+                  className='drop-shadow-none shadow-md'
                   src='/fullpage-tsengphoto.png'
                   alt='tsengphoto'
-                  className='object-contain'
-                  fill
+                  url='https://tsengphoto.ca'
+                  title='Tseng Photo'
                 />
               </div>
-            </Card>
+
+              {/* Floating stat card — top right */}
+              <Card
+                className='absolute -top-4 -right-2 z-10 w-44 p-3 -rotate-2 shadow-lg
+                  gap-4'
+              >
+                <div className='gap-2'>
+                  <Text variant='bd-xl' className='text-2xl font-semibold'>
+                    88%
+                  </Text>
+                  <Text
+                    variant='muted-sm'
+                    className='text-xs text-muted-foreground leading-tight'
+                  >
+                    cost reduction vs SquareSpace
+                  </Text>
+                </div>
+                <Separator />
+                <div className='gap-2'>
+                  <Text variant='bd-xl' className='text-2xl font-semibold'>
+                    6+
+                  </Text>
+                  <Text
+                    variant='muted-sm'
+                    className='text-xs text-muted-foreground leading-tight'
+                  >
+                    local clients served
+                  </Text>
+                </div>
+                <Separator />
+                <div className='gap-2'>
+                  <Text variant='bd-xl' className='text-2xl font-semibold'>
+                    4+
+                  </Text>
+                  <Text
+                    variant='muted-sm'
+                    className='text-xs text-muted-foreground leading-tight'
+                  >
+                    years building websites
+                  </Text>
+                </div>
+              </Card>
+            </div>
           </section>
 
           <section className='space-y-6'>
