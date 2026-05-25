@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, SquareArrowOutUpRight } from 'lucide-react';
 import { Badge } from '@/components/ui';
+import { cn } from '@/lib/utils';
 
 interface SitePreviewProps {
   src: string;
@@ -10,13 +11,25 @@ interface SitePreviewProps {
   title: string;
   summary?: string;
   tags?: string[];
+  className?: string;
 }
 
-export function SitePreview({ src, alt, url, title, summary, tags }: SitePreviewProps) {
+export function SitePreview({
+  src,
+  alt,
+  url,
+  title,
+  summary,
+  tags,
+  className,
+}: SitePreviewProps) {
   return (
     <div
-      className='overflow-hidden flex flex-col justify-between rounded-lg drop-shadow-xl
-        border border-border bg-card'
+      className={cn(
+        'overflow-hidden flex flex-col justify-between rounded-lg',
+        'drop-shadow-xl border border-border bg-card',
+        className
+      )}
     >
       <div>
         {/* Browser chrome */}

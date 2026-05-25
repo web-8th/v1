@@ -66,9 +66,10 @@ export default function PortfolioPage() {
             A selection of sites we&apos;ve built for local businesses and individuals.
           </Text>
         </section>
-        <section className='grid gap-4 lg:grid-cols-2'>
+        <section className={'grid gap-4 lg:grid-cols-2'}>
           {projects.map((project, index) => (
             <SitePreview
+              className={cn('fade-in-from-bottom', getDelayClass(index + 3))}
               key={project.url}
               src={project.imgSrc}
               alt={project.title}
