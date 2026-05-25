@@ -97,7 +97,6 @@ const teaserProjects = [
     tags: ['Web Design', 'SEO', 'Custom CMS'],
     url: 'https://tsengphoto.ca',
     imgSrc: '/fullpage-tsengphoto.png',
-    imgHeight: 400,
   },
   {
     title: 'InspirED Sask',
@@ -106,7 +105,6 @@ const teaserProjects = [
     tags: ['Web Design', 'SEO', 'Custom CMS'],
     url: 'https://www.inspiredsk.ca/',
     imgSrc: '/fullpage-inspired.png',
-    imgHeight: 400,
   },
   {
     title: 'KPop Dance Team',
@@ -115,7 +113,6 @@ const teaserProjects = [
     tags: ['Web Design', 'Custom CMS'],
     url: 'https://kdtsuo.vercel.app',
     imgSrc: '/fullpage-kdtsuo.png',
-    imgHeight: 400,
   },
 ];
 
@@ -308,11 +305,13 @@ export default function HomePage() {
             <div className='grid gap-4 md:grid-cols-2'>
               {teaserProjects.map((project, index) => (
                 <SitePreview
+                  key={project.url}
                   src={project.imgSrc}
                   alt={project.title}
                   url={project.url}
                   title={project.title}
-                  imageHeight={project.imgHeight}
+                  summary={project.summary}
+                  tags={project.tags}
                 />
               ))}
             </div>
