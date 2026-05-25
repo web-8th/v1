@@ -87,7 +87,10 @@ export default function AboutPage() {
           overflow-hidden text-center'
       >
         <HexagonBackground className='absolute inset-0 rounded-xl' />
-        <div className='pl-20 max-w-4xl space-y-4 pointer-events-none'>
+        <div
+          className='lg:pl-20 max-w-4xl space-y-4 pointer-events-none flex flex-col px-6
+            lg:justify-start'
+        >
           <Text
             variant='hd-xxl'
             className={cn(
