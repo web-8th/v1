@@ -1,4 +1,7 @@
+import { Infinity } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Text } from './Text';
 
 const START_YEAR = 2025;
 
@@ -21,6 +24,27 @@ export function Footer() {
           height={57}
           className='h-auto w-60 dark:invert'
         />
+        <Text variant='muted'>brought to you by</Text>
+        <div className='flex items-center gap-3'>
+          <Link href='https://rinm.dev' target='_blank'>
+            <Image
+              src='/rmlogov2.png'
+              alt='Rin logo'
+              width={40}
+              height={40}
+              className='object-cover'
+            />
+          </Link>
+          <Link href='https://nostew.me' target='_blank'>
+            <Image
+              src='https://raw.githubusercontent.com/noahstew/personal-website-3.0/master/public/favicon.png'
+              alt='Noah logo'
+              width={40}
+              height={40}
+              className='object-cover rounded'
+            />
+          </Link>
+        </div>
       </div>
     </footer>
   );
