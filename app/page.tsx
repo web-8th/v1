@@ -263,7 +263,7 @@ export default function HomePage() {
                       getDelayClass(index + 3)
                     )}
                   >
-                    <item.icon className='mt-0.5 size-5 text-primary' />
+                    <item.icon className='size-10 text-primary' />
                     <div>
                       <Text variant='label' className='font-medium'>
                         {item.title}
