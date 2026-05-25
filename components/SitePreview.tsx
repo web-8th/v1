@@ -83,8 +83,7 @@ export function SitePreview({
         <Link
           href={url}
           target='_blank'
-          className='flex items-center gap-1 text-xs text-muted-foreground
-            hover:text-foreground'
+          className='flex items-center gap-1 text-xs text-primary hover:text-foreground'
         >
           View live <SquareArrowOutUpRight className='size-3' />
         </Link>
