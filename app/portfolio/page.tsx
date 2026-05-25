@@ -45,7 +45,10 @@ export default function PortfolioPage() {
         <section className='space-y-3'>
           <Text
             variant='hd-xxl'
-            className='text-4xl tracking-tight fade-in-from-bottom md:text-5xl font-serif'
+            className={cn(
+              'text-4xl tracking-tight fade-in-from-bottom md:text-5xl font-serif',
+              getDelayClass(1)
+            )}
           >
             Portfolio
           </Text>
@@ -53,7 +56,7 @@ export default function PortfolioPage() {
             variant='muted'
             className={cn(
               'max-w-3xl text-muted-foreground fade-in-from-bottom',
-              getDelayClass(1)
+              getDelayClass(2)
             )}
           >
             A selection of sites we&apos;ve built for local businesses and individuals.

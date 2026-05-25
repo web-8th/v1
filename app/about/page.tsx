@@ -61,7 +61,9 @@ export default function AboutPage() {
     <div className='nb-padding'>
       <div className='mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 sm:px-6 lg:px-8'>
         <section className='space-y-6'>
-          <Badge className='fade-in-from-bottom'>About Web8th</Badge>
+          <Badge className={cn('fade-in-from-bottom', getDelayClass(0))}>
+            About Web8th
+          </Badge>
           <Text
             variant='hd-xxl'
             className={cn(
@@ -91,7 +93,10 @@ export default function AboutPage() {
         </section>
 
         <section className='space-y-5'>
-          <Text variant='hd-xl' className='text-3xl tracking-tight fade-in-from-bottom'>
+          <Text
+            variant='hd-xl'
+            className={cn('text-3xl tracking-tight fade-in-from-bottom', getDelayClass(1))}
+          >
             Meet the team
           </Text>
           <div className='grid gap-4 md:grid-cols-2'>
@@ -123,7 +128,10 @@ export default function AboutPage() {
         </section>
 
         <section className='space-y-5'>
-          <Text variant='hd-xl' className='text-3xl tracking-tight fade-in-from-bottom'>
+          <Text
+            variant='hd-xl'
+            className={cn('text-3xl tracking-tight fade-in-from-bottom', getDelayClass(1))}
+          >
             Our approach
           </Text>
           <div className='grid gap-4 sm:grid-cols-2'>

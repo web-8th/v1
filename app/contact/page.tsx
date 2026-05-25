@@ -66,7 +66,7 @@ export default function ContactPage() {
         </section>
 
         <section className='grid gap-6 lg:grid-cols-[2fr_1fr]'>
-          <Card className='fade-in-from-bottom'>
+          <Card className={cn('fade-in-from-bottom', getDelayClass(3))}>
             <CardHeader>
               <CardTitle>Tell us about your project</CardTitle>
               <CardDescription>
@@ -137,17 +137,22 @@ export default function ContactPage() {
               </Button>
             </CardContent>
           </Card>
-          <div className='flex flex-col'>
-            <Text variant='hd-lg'>Socials</Text>
-            <Text variant='bd-sm'>Here's where you can find us.</Text>
-            <div className='flex flex-col gap-4 mt-4'>
+          <div className={cn('flex flex-col fade-in-from-bottom', getDelayClass(4))}>
+            <Text variant='hd-lg' className={cn('fade-in-from-bottom', getDelayClass(5))}>
+              Socials
+            </Text>
+            <Text variant='bd-sm' className={cn('fade-in-from-bottom', getDelayClass(6))}>
+              Here's where you can find us.
+            </Text>
+            <div className={cn('flex flex-col gap-4 mt-4', getDelayClass(7))}>
               <Link
                 href='https://www.linkedin.com/in/nostew/'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='border border-foreground/40 rounded-xl h-20 drop-shadow-lg flex
-                  items-center justify-between gap-4 p-4 bg-accent hover:bg-accent/50
-                  t200e'
+                className={cn(
+                  'border border-foreground/40 rounded-xl h-20 drop-shadow-lg flex items-center justify-between gap-4 p-4 bg-accent hover:bg-accent/50 t200e fade-in-from-bottom',
+                  getDelayClass(8)
+                )}
               >
                 <Image
                   src='/icons/linkedin-linked-in-svgrepo-com.svg'
@@ -162,9 +167,10 @@ export default function ContactPage() {
                 href='https://www.linkedin.com/in/rinmeng/'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='border border-foreground/40 rounded-xl h-20 drop-shadow-lg flex
-                  items-center justify-between gap-4 p-4 bg-accent hover:bg-accent/50
-                  t200e'
+                className={cn(
+                  'border border-foreground/40 rounded-xl h-20 drop-shadow-lg flex items-center justify-between gap-4 p-4 bg-accent hover:bg-accent/50 t200e fade-in-from-bottom',
+                  getDelayClass(9)
+                )}
               >
                 <Image
                   src='/icons/linkedin-linked-in-svgrepo-com.svg'

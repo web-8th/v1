@@ -109,8 +109,10 @@ export default function HomePage() {
     <div className='nb-padding'>
       <div className='mx-auto flex w-full max-w-6xl flex-col gap-20 px-4 sm:px-6 lg:px-8'>
         <section
-          className='relative overflow-hidden rounded-2xl border bg-card/60 p-8
-            fade-in-from-bottom md:p-12'
+          className={cn(
+            'relative overflow-hidden rounded-2xl border bg-card/60 p-8 fade-in-from-bottom md:p-12',
+            getDelayClass(0)
+          )}
         >
           <div
             className='pointer-events-none absolute inset-0 bg-gradient-to-b from-muted/70
@@ -180,7 +182,7 @@ export default function HomePage() {
         </section>
 
         <section className='space-y-6'>
-          <div className='space-y-2 fade-in-from-bottom'>
+          <div className={cn('space-y-2 fade-in-from-bottom', getDelayClass(1))}>
             <Text variant='hd-xl' className='text-3xl tracking-tight md:text-4xl'>
               Services at a glance
             </Text>
@@ -218,7 +220,10 @@ export default function HomePage() {
           <div className='space-y-5'>
             <Text
               variant='hd-xl'
-              className='text-3xl tracking-tight fade-in-from-bottom md:text-4xl'
+              className={cn(
+                'text-3xl tracking-tight fade-in-from-bottom md:text-4xl',
+                getDelayClass(1)
+              )}
             >
               Why local businesses choose Web8th
             </Text>
@@ -263,7 +268,7 @@ export default function HomePage() {
         </section>
 
         <section className='space-y-6'>
-          <div className='space-y-2 fade-in-from-bottom'>
+          <div className={cn('space-y-2 fade-in-from-bottom', getDelayClass(1))}>
             <Text variant='hd-xl' className='text-3xl tracking-tight md:text-4xl'>
               A few recent builds
             </Text>
@@ -320,7 +325,10 @@ export default function HomePage() {
         </section>
 
         <section
-          className='rounded-2xl border bg-accent/50 p-8 text-center fade-in-from-bottom'
+          className={cn(
+            'rounded-2xl border bg-accent/50 p-8 text-center fade-in-from-bottom',
+            getDelayClass(1)
+          )}
         >
           <Text variant='hd-xl' className='text-3xl tracking-tight'>
             Ready to get started?

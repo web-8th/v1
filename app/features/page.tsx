@@ -93,14 +93,17 @@ export default function Features() {
       <div className='mx-auto max-w-6xl'>
         {/* Header */}
         <div className='mb-12 text-center'>
-          <Text variant='hd-xxl' className='mb-4 text-5xl font-bold fade-in-from-right'>
+          <Text
+            variant='hd-xxl'
+            className={cn('mb-4 text-5xl font-bold fade-in-from-right', getDelayClass(1))}
+          >
             Features
           </Text>
           <Text
             variant='muted'
             className={cn(
               'text-xl text-muted-foreground max-w-2xl mx-auto fade-in-from-right',
-              getDelayClass(1)
+              getDelayClass(2)
             )}
           >
             A comprehensive starter template with everything you need to build modern web

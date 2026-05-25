@@ -138,8 +138,10 @@ export default function LoginPage() {
     <div className='flex min-h-screen'>
       {/* Left Side - Logo */}
       <div
-        className='hidden lg:flex lg:w-1/2 bg-primary/5 items-center justify-center p-12
-          fade-in-from-left-full'
+        className={cn(
+          'hidden lg:flex lg:w-1/2 bg-primary/5 items-center justify-center p-12 fade-in-from-left-full',
+          getDelayClass(1)
+        )}
       >
         <div className='text-center space-y-6'>
           <Logo
@@ -161,8 +163,10 @@ export default function LoginPage() {
 
       {/* Right Side - Login/Signup Form */}
       <div
-        className='flex w-full lg:w-1/2 items-center justify-center p-6 sm:p-12
-          fade-in-from-top'
+        className={cn(
+          'flex w-full lg:w-1/2 items-center justify-center p-6 sm:p-12 fade-in-from-top',
+          getDelayClass(1)
+        )}
       >
         <Card className='w-full max-w-md'>
           <CardHeader className='space-y-1'>

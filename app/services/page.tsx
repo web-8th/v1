@@ -141,7 +141,12 @@ export default function ServicesPage() {
       >
         {/* Fixed tiers, 2-column grid */}
         <section id='pricing' className='flex flex-col gap-4'>
-          <Text variant='hd-xl'>Our Pricing</Text>
+          <Text
+            variant='hd-xl'
+            className={cn('fade-in-from-bottom', getDelayClass(1))}
+          >
+            Our Pricing
+          </Text>
           <div className='grid gap-4 md:grid-cols-2'>
             {fixedTiers.map((tier, index) => (
               <Card
@@ -253,7 +258,7 @@ export default function ServicesPage() {
         {/* Non-profit */}
         <div
           className={cn(
-            'flex gap-4 flex-col items-center justify-between',
+            'flex gap-4 flex-col items-center justify-between fade-in-from-bottom',
             getDelayClass(6)
           )}
         >
@@ -300,7 +305,7 @@ export default function ServicesPage() {
 
         {/* Guaranteed services */}
         <section className='space-y-4'>
-          <div className='space-y-1 fade-in-from-bottom'>
+          <div className={cn('space-y-1 fade-in-from-bottom', getDelayClass(1))}>
             <Text variant='hd-xl' className='tracking-tight'>
               Included in every project
             </Text>
@@ -333,7 +338,10 @@ export default function ServicesPage() {
 
         {/* Not sure */}
         <section
-          className='rounded-2xl border bg-muted/60 p-6 text-center fade-in-from-bottom'
+          className={cn(
+            'rounded-2xl border bg-muted/60 p-6 text-center fade-in-from-bottom',
+            getDelayClass(1)
+          )}
         >
           <Text variant='hd-xl' className='tracking-tight md:text-3xl'>
             Not sure which fits?

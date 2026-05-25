@@ -6,6 +6,7 @@ import {
   CardTitle,
 } from '@/components/ui';
 import { Text } from '@/components/Text';
+import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -81,7 +82,7 @@ export default function TechStack() {
     <div className='container nb-padding mx-auto px-4'>
       <div className='mx-auto max-w-6xl'>
         {/* Header */}
-        <div className='mb-12 text-center fade-in-from-top'>
+        <div className={cn('mb-12 text-center fade-in-from-top', getDelayClass(1))}>
           <Text variant='hd-xxl' className='mb-4 text-5xl font-bold'>
             Tech Stack
           </Text>

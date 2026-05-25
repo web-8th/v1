@@ -14,6 +14,8 @@ import {
 } from '@/components/ui/card';
 import { CheckCircle2, LogIn, XCircle } from 'lucide-react';
 import { Spinner } from '@/components/ui/spinner';
+import { cn } from '@/lib/utils';
+import { getDelayClass } from '@/utils/animations';
 
 function AuthResultContent() {
   const router = useRouter();
@@ -52,7 +54,12 @@ function AuthResultContent() {
   }
 
   return (
-    <div className='flex min-h-screen items-center justify-center p-4 fade-in-from-bottom'>
+    <div
+      className={cn(
+        'flex min-h-screen items-center justify-center p-4 fade-in-from-bottom',
+        getDelayClass(1)
+      )}
+    >
       <Card className='w-full max-w-md'>
         <CardHeader className='text-center'>
           <div

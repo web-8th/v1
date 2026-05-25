@@ -7,11 +7,18 @@ import {
   CardTitle,
 } from '@/components/ui';
 import { Text } from '@/components/Text';
+import { cn } from '@/lib/utils';
+import { getDelayClass } from '@/utils/animations';
 import { Shield, Lock, SquareArrowOutUpRight } from 'lucide-react';
 
 export default function Admin() {
   return (
-    <div className='nb-padding max-w-2xl mx-auto px-4 fade-in-from-right'>
+    <div
+      className={cn(
+        'nb-padding max-w-2xl mx-auto px-4 fade-in-from-right',
+        getDelayClass(1)
+      )}
+    >
       <Card>
         <CardHeader className='text-center'>
           <div className='flex justify-center mb-4'>
