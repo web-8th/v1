@@ -17,9 +17,9 @@ import {
   CardTitle,
 } from '@/components/ui';
 import { Text } from '@/components/Text';
-import { GravityStarsBackground } from '@/components/animate-ui/components/backgrounds/gravity-stars';
 import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
+import { StarsBackground } from '@/components/animate-ui/components/backgrounds/stars';
 
 const allFeatures = [
   'Custom web design',
@@ -130,7 +130,7 @@ export default function ServicesPage() {
         className='relative flex h-screen flex-col items-center justify-center gap-4
           overflow-hidden text-center'
       >
-        <GravityStarsBackground className='absolute inset-0 rounded-xl' />
+        <StarsBackground className='absolute inset-0 rounded-xl' />
         <div className='relative z-10 flex max-w-3xl flex-col items-center gap-4'>
           <Text
             variant='hd-xxl'
