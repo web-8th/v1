@@ -139,8 +139,9 @@ export default function ContactPage() {
                 href='https://www.linkedin.com/in/nostew/'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='border rounded h-20 drop-shadow flex items-center
-                  justify-between gap-4 p-4'
+                className='border border-foreground/40 rounded-xl h-20 drop-shadow-lg flex
+                  items-center justify-between gap-4 p-4 bg-accent hover:bg-accent/50
+                  t200e'
               >
                 <Image
                   src='/icons/linkedin-linked-in-svgrepo-com.svg'
@@ -155,8 +156,9 @@ export default function ContactPage() {
                 href='https://www.linkedin.com/in/rinmeng/'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='border rounded h-20 drop-shadow flex items-center
-                  justify-between gap-4 p-4'
+                className='border border-foreground/40 rounded-xl h-20 drop-shadow-lg flex
+                  items-center justify-between gap-4 p-4 bg-accent hover:bg-accent/50
+                  t200e'
               >
                 <Image
                   src='/icons/linkedin-linked-in-svgrepo-com.svg'

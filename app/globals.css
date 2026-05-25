@@ -10,6 +10,10 @@
     @apply py-24;
   }
 
+  .t200e {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
   .fade-in-from-bottom {
     @apply animate-in slide-in-from-bottom-10 fade-in fill-mode-both duration-500;
   }
