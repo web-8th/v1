@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Check, X } from 'lucide-react';
+import { ArrowDown, ArrowRight, Check, X } from 'lucide-react';
 
 import {
   Badge,
@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from '@/components/ui';
 import { Text } from '@/components/Text';
+import { GravityStarsBackground } from '@/components/animate-ui/components/backgrounds/gravity-stars';
 import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
 
@@ -101,28 +102,46 @@ const guaranteedServices = [
 
 export default function ServicesPage() {
   return (
-    <div className='nb-padding'>
-      <div className='mx-auto flex w-full max-w-6xl flex-col gap-14 px-4 sm:px-6 lg:px-8'>
-        {/* Hero */}
-        <section className='space-y-4'>
-          <Badge className='fade-in-from-bottom'>Services</Badge>
+    <div>
+      {/* Hero */}
+      <section
+        className='relative flex h-screen flex-col items-center justify-center gap-4
+          overflow-hidden text-center'
+      >
+        <GravityStarsBackground className='absolute inset-0 rounded-xl' />
+        <div className='relative z-10 flex max-w-3xl flex-col items-center gap-4'>
           <Text
             variant='hd-xxl'
-            className='tracking-tight fade-in-from-bottom delay-[100ms]'
+            className={cn('tracking-tight fade-in-from-bottom', getDelayClass(1))}
           >
             Flexible support for where your business is right now
           </Text>
           <Text
             variant='muted'
-            className='max-w-3xl text-muted-foreground fade-in-from-bottom delay-[200ms]'
+            className={cn('text-muted-foreground fade-in-from-bottom', getDelayClass(2))}
           >
             Start with a one-time launch, keep momentum with ongoing help, or send us a
             list when you need updates.
           </Text>
-        </section>
+          <Button
+            asChild
+            variant='secondary'
+            className={cn('mt-4 fade-in-from-bottom', getDelayClass(3))}
+          >
+            <Link href='#pricing'>
+              View pricing <ArrowDown />
+            </Link>
+          </Button>
+        </div>
+      </section>
 
+      <div
+        className='nb-padding mx-auto flex w-full max-w-6xl flex-col gap-14 px-4 sm:px-6
+          lg:px-8'
+      >
         {/* Fixed tiers, 2-column grid */}
-        <section className='flex flex-col gap-4'>
+        <section id='pricing' className='flex flex-col gap-4'>
+          <Text variant='hd-xl'>Our Pricing</Text>
           <div className='grid gap-4 md:grid-cols-2'>
             {fixedTiers.map((tier, index) => (
               <Card

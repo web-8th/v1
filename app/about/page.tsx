@@ -64,23 +64,25 @@ export default function AboutPage() {
           <Badge className='fade-in-from-bottom'>About Web8th</Badge>
           <Text
             variant='hd-xxl'
-            className='text-4xl leading-tight tracking-tight fade-in-from-bottom
-              delay-[100ms] md:text-5xl'
+            className={cn(
+              'text-4xl leading-tight tracking-tight fade-in-from-bottom md:text-5xl',
+              getDelayClass(1)
+            )}
           >
             Born on the same day. Built for this.
           </Text>
           <div className='max-w-4xl space-y-4 text-muted-foreground'>
-            <Text variant='muted' className='fade-in-from-bottom delay-[200ms]'>
+            <Text variant='muted' className={cn('fade-in-from-bottom', getDelayClass(2))}>
               We are birthday twins who got into building websites for fun. One project
               became another. Before long, friends and local business owners were asking
               us to build for them too.
             </Text>
-            <Text variant='muted' className='fade-in-from-bottom delay-[300ms]'>
+            <Text variant='muted' className={cn('fade-in-from-bottom', getDelayClass(3))}>
               What started as a side hustle stayed personal, but it grew quickly. Instead
               of running as two separate freelancers, we brought every project under one
               shared name: Web8th.
             </Text>
-            <Text variant='muted' className='fade-in-from-bottom delay-[400ms]'>
+            <Text variant='muted' className={cn('fade-in-from-bottom', getDelayClass(4))}>
               That gives our clients a stronger team, a clearer process, and one trusted
               place to find us. Different strengths, one standard, and a shared commitment
               to doing the work right.

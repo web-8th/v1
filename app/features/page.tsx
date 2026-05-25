@@ -7,6 +7,7 @@ import {
   CardTitle,
 } from '@/components/ui';
 import { Text } from '@/components/Text';
+import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
 import {
   Shield,
@@ -97,8 +98,10 @@ export default function Features() {
           </Text>
           <Text
             variant='muted'
-            className='text-xl text-muted-foreground max-w-2xl mx-auto fade-in-from-right
-              delay-[100ms]'
+            className={cn(
+              'text-xl text-muted-foreground max-w-2xl mx-auto fade-in-from-right',
+              getDelayClass(1)
+            )}
           >
             A comprehensive starter template with everything you need to build modern web
             applications

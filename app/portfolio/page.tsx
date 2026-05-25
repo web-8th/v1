@@ -51,7 +51,10 @@ export default function PortfolioPage() {
           </Text>
           <Text
             variant='muted'
-            className='max-w-3xl text-muted-foreground fade-in-from-bottom delay-[100ms]'
+            className={cn(
+              'max-w-3xl text-muted-foreground fade-in-from-bottom',
+              getDelayClass(1)
+            )}
           >
             A selection of sites we&apos;ve built for local businesses and individuals.
           </Text>

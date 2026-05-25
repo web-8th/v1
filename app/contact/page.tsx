@@ -21,6 +21,8 @@ import {
 } from '@/components/ui';
 import { Text } from '@/components/Text';
 import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
+import { getDelayClass } from '@/utils/animations';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -42,17 +44,21 @@ export default function ContactPage() {
     <div className='nb-padding'>
       <div className='mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 sm:px-6 lg:px-8'>
         <section className='space-y-3'>
-          <Badge className='fade-in-from-bottom'>Contact</Badge>
           <Text
             variant='hd-xxl'
-            className='text-4xl tracking-tight fade-in-from-bottom delay-[100ms]
-              md:text-5xl'
+            className={cn(
+              'text-4xl tracking-tight fade-in-from-bottom md:text-5xl',
+              getDelayClass(1)
+            )}
           >
             Let&apos;s build something together
           </Text>
           <Text
             variant='muted'
-            className='max-w-3xl text-muted-foreground fade-in-from-bottom delay-[200ms]'
+            className={cn(
+              'max-w-3xl text-muted-foreground fade-in-from-bottom',
+              getDelayClass(2)
+            )}
           >
             Whether you have a full brief or just an idea, we&apos;d love to hear from
             you.

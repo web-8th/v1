@@ -117,26 +117,35 @@ export default function HomePage() {
               to-card'
           />
           <div className='relative z-10 max-w-3xl'>
-            <Badge className='mb-4 fade-in-from-bottom delay-[100ms]'>
+            <Badge className={cn('mb-4 fade-in-from-bottom', getDelayClass(1))}>
               Your work, visible.
             </Badge>
             <Text
               variant='hd-xxl'
-              className='text-4xl leading-tight tracking-tight fade-in-from-bottom
-                delay-[200ms] md:text-6xl'
+              className={cn(
+                'text-4xl leading-tight tracking-tight fade-in-from-bottom md:text-6xl',
+                getDelayClass(2)
+              )}
             >
               Your local web team in Kelowna & Regina
             </Text>
             <Text
               variant='muted'
-              className='mt-5 text-lg text-muted-foreground fade-in-from-bottom
-                delay-[300ms] md:text-xl'
+              className={cn(
+                'mt-5 text-lg text-muted-foreground fade-in-from-bottom md:text-xl',
+                getDelayClass(3)
+              )}
             >
               We are two developers building under one shared name: Web8th. You get direct
               access to the people doing the work, practical advice rooted in local
               markets, and a site that is built to support your business.
             </Text>
-            <div className='mt-8 flex flex-wrap gap-3 fade-in-from-bottom delay-[400ms]'>
+            <div
+              className={cn(
+                'mt-8 flex flex-wrap gap-3 fade-in-from-bottom',
+                getDelayClass(4)
+              )}
+            >
               <Button asChild size='lg'>
                 <Link href='/contact'>
                   Get a Free Quote <ArrowRight />
@@ -150,8 +159,10 @@ export default function HomePage() {
         </section>
 
         <section
-          className='grid gap-4 rounded-2xl border bg-muted/60 p-5 fade-in-from-bottom
-            delay-[100ms] sm:grid-cols-2 lg:grid-cols-4'
+          className={cn(
+            'grid gap-4 rounded-2xl border bg-muted/60 p-5 fade-in-from-bottom sm:grid-cols-2 lg:grid-cols-4',
+            getDelayClass(1)
+          )}
         >
           {trustStats.map((item, index) => (
             <div
@@ -234,7 +245,10 @@ export default function HomePage() {
             </div>
           </div>
           <Card
-            className='fade-in-from-right border-dashed bg-accent/40 p-6 delay-[300ms]'
+            className={cn(
+              'fade-in-from-right border-dashed bg-accent/40 p-6',
+              getDelayClass(3)
+            )}
           >
             <div
               className='flex min-h-64 items-center justify-center rounded-lg border

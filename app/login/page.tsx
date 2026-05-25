@@ -26,9 +26,11 @@ import {
 
 import { signInWithEmail, signUpWithEmail } from '@/hooks/use-auth';
 import { useToast } from '@/hooks/use-toast';
+import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import { LogIn, UserPlus } from 'lucide-react';
 import { DURATIONS } from '@/lib';
+import { getDelayClass } from '@/utils/animations';
 
 const loginSchema = z.object({
   email: z.email('Please enter a valid email address'),
@@ -140,11 +142,16 @@ export default function LoginPage() {
           fade-in-from-left-full'
       >
         <div className='text-center space-y-6'>
-          <Logo iconSize={40} className='text-4xl fade-in-from-left delay-[300ms]' />
+          <Logo
+            iconSize={40}
+            className={cn('text-4xl fade-in-from-left', getDelayClass(3))}
+          />
           <Text
             variant='muted'
-            className='text-muted-foreground text-lg max-w-md fade-in-from-left
-              delay-[400ms]'
+            className={cn(
+              'text-muted-foreground text-lg max-w-md fade-in-from-left',
+              getDelayClass(4)
+            )}
           >
             Welcome the admin demo, here you will be able to create an account and test
             logins for admin control over the message board.
@@ -159,10 +166,12 @@ export default function LoginPage() {
       >
         <Card className='w-full max-w-md'>
           <CardHeader className='space-y-1'>
-            <CardTitle className='text-2xl font-bold fade-in-from-top delay-[100ms]'>
+            <CardTitle
+              className={cn('text-2xl font-bold fade-in-from-top', getDelayClass(1))}
+            >
               {isLogin ? 'Welcome back' : 'Create an account'}
             </CardTitle>
-            <CardDescription className='fade-in-from-top delay-[200ms]'>
+            <CardDescription className={cn('fade-in-from-top', getDelayClass(2))}>
               {isLogin
                 ? 'Enter your credentials to sign in to your account'
                 : 'Enter your information to create a new account'}
@@ -180,7 +189,7 @@ export default function LoginPage() {
                     name='email'
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className='fade-in-from-top delay-[250ms]'>
+                        <FormLabel className={cn('fade-in-from-top', getDelayClass(3))}>
                           Email
                         </FormLabel>
                         <FormControl>
@@ -189,7 +198,7 @@ export default function LoginPage() {
                             placeholder='m@example.com'
                             autoComplete='email'
                             {...field}
-                            className='fade-in-from-top delay-[300ms]'
+                            className={cn('fade-in-from-top', getDelayClass(3))}
                           />
                         </FormControl>
                         <FormMessage />
@@ -201,7 +210,7 @@ export default function LoginPage() {
                     name='password'
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className='fade-in-from-top delay-[350ms]'>
+                        <FormLabel className={cn('fade-in-from-top', getDelayClass(4))}>
                           Password
                         </FormLabel>
                         <FormControl>
@@ -210,7 +219,7 @@ export default function LoginPage() {
                             placeholder='Enter password'
                             autoComplete='current-password'
                             {...field}
-                            className='fade-in-from-top delay-[400ms]'
+                            className={cn('fade-in-from-top', getDelayClass(4))}
                           />
                         </FormControl>
                         <FormMessage />
@@ -219,7 +228,7 @@ export default function LoginPage() {
                   />
                   <Button
                     type='submit'
-                    className='w-full fade-in-from-top delay-[450ms]'
+                    className={cn('w-full fade-in-from-top', getDelayClass(5))}
                     disabled={loading}
                   >
                     {loading ? (
@@ -309,7 +318,9 @@ export default function LoginPage() {
               </Form>
             )}
           </CardContent>
-          <CardFooter className='flex flex-col space-y-4 fade-in-from-top delay-[600ms]'>
+          <CardFooter
+            className={cn('flex flex-col space-y-4 fade-in-from-top', getDelayClass(7))}
+          >
             <Text as='div' variant='muted-sm' className='text-sm text-center text-muted-foreground'>
               {isLogin ? "Don't have an account? " : 'Already have an account? '}
               <button
