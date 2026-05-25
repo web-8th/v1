@@ -9,6 +9,7 @@ import {
   Rocket,
   Sparkles,
   SquareArrowOutUpRight,
+  SquareChartGantt,
   Wrench,
 } from 'lucide-react';
 
@@ -148,13 +149,15 @@ export default function HomePage() {
               getDelayClass(4)
             )}
           >
+            <Button asChild variant='secondary' size='lg'>
+              <Link href='/portfolio'>
+                See Our Work <SquareChartGantt />
+              </Link>
+            </Button>
             <Button asChild size='lg'>
               <Link href='/contact'>
                 Get a Free Quote <ArrowRight />
               </Link>
-            </Button>
-            <Button asChild variant='outline' size='lg'>
-              <Link href='/portfolio'>See Our Work</Link>
             </Button>
           </div>
         </div>
