@@ -3,10 +3,14 @@ import Image from 'next/image';
 import {
   ArrowRight,
   BadgeCheck,
+  Columns3Cog,
+  Component,
+  Globe,
   Handshake,
   MapPin,
   MessageCircle,
   Rocket,
+  ScanEye,
   Sparkles,
   SquareArrowOutUpRight,
   SquareChartGantt,
@@ -33,27 +37,30 @@ const trustStats = [
   { label: 'Local clients served', value: '6+' },
   { label: 'Years building websites', value: '4+' },
   { label: 'Cities covered', value: '2' },
-  { label: 'Founders behind every project', value: '2' },
+  { label: 'Founders on every project', value: '2' },
 ];
 
 const serviceSnapshot = [
   {
     title: 'Launch Package',
-    description: 'Custom design, full development, and on-page SEO setup.',
+    description:
+      'Custom design, full development, and on-page SEO — built from scratch to fit your brand.',
     cta: 'Explore Launch',
     href: '/services',
     icon: Rocket,
   },
   {
     title: 'Growth Plan',
-    description: 'Ongoing updates, maintenance, and priority support.',
+    description:
+      'Ongoing updates, maintenance, and priority support as your business evolves.',
     cta: 'Explore Growth',
     href: '/services',
     icon: Sparkles,
   },
   {
     title: 'À La Carte',
-    description: 'Batch updates quoted as a flat fee when you need help.',
+    description:
+      'Need a specific fix or feature? Batch updates quoted as a flat fee, no retainer required.',
     cta: 'Explore À La Carte',
     href: '/services',
     icon: Wrench,
@@ -62,24 +69,28 @@ const serviceSnapshot = [
 
 const differentiators = [
   {
-    title: 'Local expertise',
-    description: 'We build for real businesses in Kelowna and Regina.',
-    icon: MapPin,
+    title: 'Custom from the ground up',
+    description:
+      'Every site we build is designed and coded specifically for you — no templates, no shortcuts.',
+    icon: Columns3Cog,
   },
   {
-    title: 'Two builders, one team',
-    description: 'You get focused execution without big-agency overhead.',
-    icon: Handshake,
+    title: 'Clean, modern design',
+    description:
+      'We put real thought into how things look and feel. Consistent, polished interfaces that reflect your brand.',
+    icon: Component,
   },
   {
-    title: 'Clear communication',
-    description: 'No technical jargons. Just updates with comprehensible explanations.',
-    icon: MessageCircle,
+    title: 'SEO built in',
+    description:
+      'Structure, metadata, and performance are part of the build process — not something patched in later.',
+    icon: Globe,
   },
   {
-    title: 'No bloated contracts',
-    description: 'Straightforward scopes, practical timelines, and no lock-in.',
-    icon: BadgeCheck,
+    title: 'Direct access to us',
+    description:
+      'You work with the people actually building your site. No account managers, no handoffs, no runaround.',
+    icon: ScanEye,
   },
 ];
 
@@ -139,9 +150,9 @@ export default function HomePage() {
               getDelayClass(3)
             )}
           >
-            We are two developers building under one shared name: Web8th. You get direct
-            access to the people doing the work, practical advice rooted in local markets,
-            and a site that is built to support your business.
+            We are two developers who build custom websites for local businesses — clean
+            design, thoughtful UX, and SEO that works from day one. No templates, no
+            agency overhead.
           </Text>
           <div
             className={cn(
@@ -195,8 +206,8 @@ export default function HomePage() {
                 Services at a glance
               </Text>
               <Text variant='muted' className='max-w-2xl text-muted-foreground'>
-                Pick the level of support that fits your business right now. We keep
-                scopes simple and outcomes clear.
+                Pick the level of support that fits your business right now.
+                Straightforward scopes, clear outcomes, no lock-in.
               </Text>
             </div>
             <div className='grid gap-4 md:grid-cols-3'>
@@ -284,7 +295,7 @@ export default function HomePage() {
                 A few recent builds
               </Text>
               <Text variant='muted' className='max-w-2xl text-muted-foreground'>
-                Real-world websites for people and businesses in our communities.
+                Real websites for people and businesses in our communities.
               </Text>
             </div>
             <div className='grid gap-4 md:grid-cols-3'>
@@ -350,8 +361,8 @@ export default function HomePage() {
               variant='muted'
               className='mx-auto mt-3 max-w-2xl text-muted-foreground'
             >
-              Tell us what you are building and where you are stuck. We will map out the
-              next step together.
+              Tell us about your business and what you need. We'll figure out the right
+              approach together — no commitment required.
             </Text>
             <Separator className='mx-auto my-6 max-w-md' />
             <Button asChild size='lg'>
