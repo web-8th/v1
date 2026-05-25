@@ -8,6 +8,11 @@ const COLORS = {
   border: '#e2e2da',
 };
 
+const FONT_STACK =
+  "'Geist', 'Geist Fallback', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif";
+const FONT_SERIF =
+  "var(--font-serif), ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif";
+
 const escapeHtml = (value: string) =>
   value
     .replace(/&/g, '&amp;')
@@ -51,8 +56,8 @@ export function buildEmailHtml({
     value
       ? `
       <tr>
-        <td style="color:${COLORS.mutedForeground};padding:6px 0;width:140px;vertical-align:top;font-family:Georgia, serif;font-size:13px;text-transform:uppercase;letter-spacing:0.06em;">${label}</td>
-        <td style="color:${COLORS.foreground};padding:6px 0;font-family:Georgia, serif;font-size:13px;">${value}</td>
+        <td style="color:${COLORS.mutedForeground};padding:6px 0;width:140px;vertical-align:top;font-family:${FONT_STACK};font-size:13px;text-transform:uppercase;letter-spacing:0.06em;">${label}</td>
+        <td style="color:${COLORS.foreground};padding:6px 0;font-family:${FONT_STACK};font-size:13px;">${value}</td>
       </tr>`
       : '';
 
@@ -71,16 +76,16 @@ export function buildEmailHtml({
   const optionalMessage = formattedMessage
     ? `
     <div style="border-left:2px solid ${COLORS.primary};padding-left:1rem;margin-bottom:1.5rem;">
-      <p style="font-size:12px;color:${COLORS.mutedForeground};margin:0 0 4px;font-family:Georgia, serif;text-transform:uppercase;letter-spacing:0.08em;">Message</p>
-      <p style="font-size:14px;color:${COLORS.foreground};margin:0;line-height:1.7;font-family:Georgia, serif;">${formattedMessage}</p>
+      <p style="font-size:12px;color:${COLORS.mutedForeground};margin:0 0 4px;font-family:${FONT_STACK};text-transform:uppercase;letter-spacing:0.08em;">Message</p>
+      <p style="font-size:14px;color:${COLORS.foreground};margin:0;line-height:1.7;font-family:${FONT_STACK};">${formattedMessage}</p>
     </div>`
     : '';
 
   return `
-    <div style="font-family:Georgia, serif;max-width:560px;margin:0 auto;background:${COLORS.background};border:1px solid ${COLORS.border};border-radius:6px;overflow:hidden;">
+    <div style="font-family:${FONT_STACK};max-width:560px;margin:0 auto;background:${COLORS.background};border:1px solid ${COLORS.border};border-radius:6px;overflow:hidden;">
 
       <div style="background:${COLORS.primary};padding:2rem;text-align:center;">
-        <p style="color:${COLORS.background};font-size:24px;font-weight:400;margin:0;letter-spacing:0.05em;">You have a new inquiry</p>
+        <p style="color:${COLORS.background};font-size:24px;font-weight:400;margin:0;letter-spacing:0.05em;font-family:${FONT_SERIF};">You have a new inquiry</p>
       </div>
 
       <div style="padding:2rem;">
@@ -131,20 +136,20 @@ export function buildConfirmationHtml({
     : '';
 
   return `
-    <div style="font-family:Georgia, serif;max-width:560px;margin:0 auto;background:${COLORS.background};border:1px solid ${COLORS.border};border-radius:6px;overflow:hidden;">
+    <div style="font-family:${FONT_STACK};max-width:560px;margin:0 auto;background:${COLORS.background};border:1px solid ${COLORS.border};border-radius:6px;overflow:hidden;">
 
       <div style="background:${COLORS.primary};padding:2rem;text-align:center;">
-        <p style="color:${COLORS.background};font-size:24px;font-weight:400;margin:0;letter-spacing:0.05em;">Message received</p>
+        <p style="color:${COLORS.background};font-size:24px;font-weight:400;margin:0;letter-spacing:0.05em;font-family:${FONT_SERIF};">Message received</p>
       </div>
 
       <div style="padding:2rem;">
-        <p style="font-size:15px;color:${COLORS.foreground};margin:0 0 1rem;font-family:Georgia, serif;">Hi ${escapeHtml(
+        <p style="font-size:15px;color:${COLORS.foreground};margin:0 0 1rem;font-family:${FONT_STACK};">Hi ${escapeHtml(
           firstName
         )},</p>
-        <p style="font-size:14px;color:${COLORS.foreground};line-height:1.7;margin:0 0 1.5rem;font-family:Georgia, serif;">
+        <p style="font-size:14px;color:${COLORS.foreground};line-height:1.7;margin:0 0 1.5rem;font-family:${FONT_STACK};">
           Thank you for reaching out. Your message has been received and we will be in touch shortly.
         </p>
-        <p style="font-size:14px;color:${COLORS.mutedForeground};line-height:1.7;margin:0;font-family:Georgia, serif;">
+        <p style="font-size:14px;color:${COLORS.mutedForeground};line-height:1.7;margin:0;font-family:${FONT_STACK};">
           — Web8th Team
         </p>
         ${logoMarkup ? `<div style="margin-top:1.5rem;">${logoMarkup}</div>` : ''}
