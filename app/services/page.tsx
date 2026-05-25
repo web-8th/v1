@@ -130,12 +130,6 @@ export default function ServicesPage() {
         className='relative flex h-screen flex-col items-center justify-center gap-4
           overflow-hidden text-center'
       >
-        <Image
-          src='/okanagan.jpg'
-          alt=''
-          className='absolute inset-0 rounded-xl brightness-20'
-          fill
-        />
         <GravityStarsBackground className='absolute inset-0 rounded-xl' />
         <div className='relative z-10 flex max-w-3xl flex-col items-center gap-4'>
           <Text
