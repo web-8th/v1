@@ -127,7 +127,7 @@ export default function ServicesPage() {
     <div>
       {/* Hero */}
       <section
-        className='relative flex h-screen flex-col items-center justify-center gap-4
+        className='relative flex h-screen flex-col items-center justify-center gap-4 px-6
           overflow-hidden text-center'
       >
         <StarsBackground className='absolute inset-0 rounded-xl' />
