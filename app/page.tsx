@@ -2,36 +2,30 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   ArrowRight,
-  BadgeCheck,
   Columns3Cog,
   Component,
   Globe,
-  Handshake,
-  MapPin,
-  MessageCircle,
   Rocket,
   ScanEye,
   Sparkles,
-  SquareArrowOutUpRight,
   SquareChartGantt,
   Wrench,
 } from 'lucide-react';
 
 import {
-  Badge,
   Button,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-  CardFooter,
   Separator,
 } from '@/components/ui';
 import { Text } from '@/components/Text';
 import { GravityStarsBackground } from '@/components/animate-ui/components/backgrounds/gravity-stars';
 import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
+import { SitePreview } from '@/components/SitePreview';
 
 const trustStats = [
   { label: 'Local clients served', value: '6+' },
@@ -47,6 +41,7 @@ const serviceSnapshot = [
       'Custom design, full development, and on-page SEO — built from scratch to fit your brand.',
     cta: 'Explore Launch',
     href: '/services',
+
     icon: Rocket,
   },
   {
@@ -101,6 +96,8 @@ const teaserProjects = [
       'A website built for a photographer, Matthew Tseng, who had reduced their spending by 88% annually, switching from SquareSpace to a custom-built site.',
     tags: ['Web Design', 'SEO', 'Custom CMS'],
     url: 'https://tsengphoto.ca',
+    imgSrc: '/fullpage-tsengphoto.png',
+    imgHeight: 400,
   },
   {
     title: 'InspirED Sask',
@@ -108,6 +105,8 @@ const teaserProjects = [
       'InspirED aims to educate citizens in society to promote a better environment. They focus on fostering practical education rather than traditional academic education.',
     tags: ['Web Design', 'SEO', 'Custom CMS'],
     url: 'https://www.inspiredsk.ca/',
+    imgSrc: '/fullpage-inspired.png',
+    imgHeight: 400,
   },
   {
     title: 'KPop Dance Team',
@@ -115,6 +114,8 @@ const teaserProjects = [
       'A website for the Kpop Dance Team, a club under the SUO at the University of British Columbia Okanagan.',
     tags: ['Web Design', 'Custom CMS'],
     url: 'https://kdtsuo.vercel.app',
+    imgSrc: '/fullpage-kdtsuo.png',
+    imgHeight: 400,
   },
 ];
 
@@ -286,7 +287,7 @@ export default function HomePage() {
             >
               <div className='relative w-full aspect-3/2'>
                 <Image
-                  src='/tsengphoto.png'
+                  src='/fullpage-tsengphoto.png'
                   alt='tsengphoto'
                   className='object-contain'
                   fill
@@ -304,52 +305,15 @@ export default function HomePage() {
                 Real websites for people and businesses in our communities.
               </Text>
             </div>
-            <div className='grid gap-4 md:grid-cols-3'>
+            <div className='grid gap-4 md:grid-cols-2'>
               {teaserProjects.map((project, index) => (
-                <Card
-                  key={project.title}
-                  className={cn(
-                    'fade-in-from-bottom flex justify-between',
-                    getDelayClass(index + 5)
-                  )}
-                >
-                  <CardHeader className='space-y-4'>
-                    <div
-                      className={cn(
-                        `flex h-36 items-center justify-center rounded-md border text-sm
-                        text-muted-foreground`,
-                        index % 2 === 0 ? 'bg-muted' : 'bg-accent/40'
-                      )}
-                    >
-                      <Text as='span' variant='muted-sm'>
-                        Project preview placeholder
-                      </Text>
-                    </div>
-                    <div>
-                      <CardTitle>{project.title}</CardTitle>
-                      <CardDescription className='mt-1'>
-                        {project.summary}
-                      </CardDescription>
-                    </div>
-                  </CardHeader>
-                  <CardContent className='space-y-4'>
-                    <div className='flex flex-wrap gap-2'>
-                      {project.tags.map((tag) => (
-                        <Badge key={tag} variant='secondary'>
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                    <CardFooter className='px-0 flex justify-end'>
-                      <Link href={project.url} target='_blank'>
-                        <Button variant='link' className='cursor-pointer'>
-                          View Live Site
-                          <SquareArrowOutUpRight />
-                        </Button>
-                      </Link>
-                    </CardFooter>
-                  </CardContent>
-                </Card>
+                <SitePreview
+                  src={project.imgSrc}
+                  alt={project.title}
+                  url={project.url}
+                  title={project.title}
+                  imageHeight={project.imgHeight}
+                />
               ))}
             </div>
           </section>
