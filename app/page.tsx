@@ -175,7 +175,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className='nb-padding container mx-auto px-4'>
+      <div className='nb-padding container mx-auto px-4 flex justify-center'>
         <div className='flex w-full max-w-6xl flex-col gap-20 lg:px-8'>
           <section className='space-y-6'>
             <div className={cn('space-y-2 fade-in-from-bottom', getDelayClass(1))}>
