@@ -377,7 +377,7 @@ export default function ServicesPage() {
             getDelayClass(1)
           )}
         >
-          <Text variant='hd-xl' className='tracking-tight md:text-3xl'>
+          <Text variant='hd-xl' className='tracking-tight'>
             Not sure which fits?
           </Text>
           <Text variant='muted' className='mx-auto mt-2 max-w-2xl text-muted-foreground'>

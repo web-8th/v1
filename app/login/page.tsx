@@ -325,7 +325,7 @@ export default function LoginPage() {
           <CardFooter
             className={cn('flex flex-col space-y-4 fade-in-from-top', getDelayClass(7))}
           >
-            <Text as='div' variant='muted-sm' className='text-sm text-center text-muted-foreground'>
+            <Text as='div' variant='muted-sm' className='text-center text-muted-foreground'>
               {isLogin ? "Don't have an account? " : 'Already have an account? '}
               <button
                 onClick={handleToggleMode}

@@ -182,7 +182,7 @@ export default function HomePage() {
         >
           <section className='space-y-6'>
             <div className={cn('space-y-2 fade-in-from-bottom', getDelayClass(1))}>
-              <Text variant='hd-xl' className='text-3xl tracking-tight md:text-4xl'>
+              <Text variant='hd-xl' className='tracking-tight md:text-4xl'>
                 Services at a glance
               </Text>
               <Text variant='muted' className='max-w-2xl text-muted-foreground'>
@@ -220,7 +220,7 @@ export default function HomePage() {
               <Text
                 variant='hd-xl'
                 className={cn(
-                  'text-3xl tracking-tight fade-in-from-bottom md:text-4xl',
+                  'tracking-tight fade-in-from-bottom md:text-4xl',
                   getDelayClass(1)
                 )}
               >
@@ -240,9 +240,9 @@ export default function HomePage() {
                       <Text variant='label' className='font-medium'>
                         {item.title}
                       </Text>
-                      <Text variant='muted-sm' className='text-sm text-muted-foreground'>
-                        {item.description}
-                      </Text>
+                  <Text variant='muted-sm' className='text-sm text-muted-foreground'>
+                    {item.description}
+                  </Text>
                     </div>
                   </div>
                 ))}
@@ -317,7 +317,7 @@ export default function HomePage() {
 
           <section className='space-y-6'>
             <div className={cn('space-y-2 fade-in-from-bottom', getDelayClass(1))}>
-              <Text variant='hd-xl' className='text-3xl tracking-tight md:text-4xl'>
+              <Text variant='hd-xl' className='tracking-tight md:text-4xl'>
                 A few recent builds
               </Text>
               <Text variant='muted' className='max-w-2xl text-muted-foreground'>
@@ -345,7 +345,7 @@ export default function HomePage() {
               getDelayClass(1)
             )}
           >
-            <Text variant='hd-xl' className='text-3xl tracking-tight'>
+            <Text variant='hd-xl' className='tracking-tight'>
               Ready to get started?
             </Text>
             <Text

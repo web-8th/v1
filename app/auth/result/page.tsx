@@ -85,11 +85,11 @@ function AuthResultContent() {
         </CardHeader>
         <CardContent className='text-center'>
           {success ? (
-            <Text variant='muted-sm' className='text-sm text-muted-foreground'>
+            <Text variant='muted-sm' className='text-muted-foreground'>
               Redirecting to home page in {countdown} seconds...
             </Text>
           ) : (
-            <Text variant='muted-sm' className='text-sm text-muted-foreground'>
+            <Text variant='muted-sm' className='text-muted-foreground'>
               The verification link may have expired or is invalid. Please try signing up
               again.
             </Text>

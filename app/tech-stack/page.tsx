@@ -83,10 +83,10 @@ export default function TechStack() {
       <div className='mx-auto max-w-6xl'>
         {/* Header */}
         <div className={cn('mb-12 text-center fade-in-from-top', getDelayClass(1))}>
-          <Text variant='hd-xxl' className='mb-4 text-5xl font-bold'>
+          <Text variant='hd-xxl' className='mb-4 font-bold'>
             Tech Stack
           </Text>
-          <Text variant='muted' className='text-xl text-muted-foreground max-w-2xl mx-auto'>
+          <Text variant='muted' className='text-muted-foreground max-w-2xl mx-auto'>
             Built with modern, battle-tested technologies for optimal performance and
             developer experience
           </Text>
@@ -122,7 +122,7 @@ export default function TechStack() {
                 </a>
               </CardHeader>
               <CardContent>
-                <Text variant='muted-sm' className='text-sm text-muted-foreground'>
+                <Text variant='muted-sm' className='text-muted-foreground'>
                   {tech.description}
                 </Text>
               </CardContent>

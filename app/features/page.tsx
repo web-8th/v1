@@ -144,7 +144,7 @@ export default function Features() {
                           className='flex items-center gap-2 rounded-md'
                         >
                           <ItemIcon className='text-muted-foreground' />
-                          <Text as='span' variant='bd-sm' className='text-sm'>
+                          <Text as='span' variant='bd-sm'>
                             {item.label}
                           </Text>
                         </Badge>

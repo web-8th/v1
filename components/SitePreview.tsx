@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, SquareArrowOutUpRight } from 'lucide-react';
-import { Badge } from '@/components/ui';
+import { Badge, Button } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 interface SitePreviewProps {
@@ -85,7 +85,10 @@ export function SitePreview({
           target='_blank'
           className='flex items-center gap-1 text-xs text-primary hover:text-foreground'
         >
-          View live <SquareArrowOutUpRight className='size-3' />
+          <Button className='cursor-pointer'>
+            View live
+            <SquareArrowOutUpRight className='size-3' />
+          </Button>
         </Link>
       </div>
     </div>

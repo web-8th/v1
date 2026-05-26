@@ -37,10 +37,10 @@ export default function Admin() {
           <div className='flex items-start gap-3 p-3 sm:p-4 rounded-lg border bg-muted/50'>
             <Lock className='h-5 w-5 text-muted-foreground mt-0.5 shrink-0' />
             <div>
-              <Text variant='label' className='font-medium mb-1 text-sm sm:text-base'>
+              <Text variant='label' className='font-medium mb-1'>
                 Route Protection
               </Text>
-              <Text variant='muted-sm' className='text-xs sm:text-sm text-muted-foreground'>
+              <Text variant='muted-sm' className='text-muted-foreground'>
                 This is an example usage of proxy/middleware to restrict access to
                 authenticated users only.
               </Text>
