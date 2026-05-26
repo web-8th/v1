@@ -54,7 +54,7 @@ const principles = [
     description:
       'We scope based on what you need now, not on long agreements you do not want.',
     icon: Handshake,
-  }
+  },
   {
     title: 'You own your site',
     description:
@@ -158,10 +158,7 @@ export default function AboutPage() {
         <section className='space-y-5'>
           <Text
             variant='hd-xl'
-            className={cn(
-              'tracking-tight fade-in-from-bottom',
-              getDelayClass(1)
-            )}
+            className={cn('tracking-tight fade-in-from-bottom', getDelayClass(1))}
           >
             Meet the team
           </Text>
@@ -197,10 +194,7 @@ export default function AboutPage() {
         <section className='space-y-5'>
           <Text
             variant='hd-xl'
-            className={cn(
-              'tracking-tight fade-in-from-bottom',
-              getDelayClass(1)
-            )}
+            className={cn('tracking-tight fade-in-from-bottom', getDelayClass(1))}
           >
             Our approach
           </Text>
