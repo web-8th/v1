@@ -121,7 +121,7 @@ const teaserProjects = [
 
 export default function HomePage() {
   return (
-    <div>
+    <div className=''>
       {/* Hero */}
       <section
         className='relative flex h-screen flex-col items-center justify-center gap-4 px-6
@@ -175,42 +175,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className='nb-padding'>
-        <div
-          className='mx-auto flex w-full max-w-6xl flex-col gap-20 px-4 sm:px-6 lg:px-8'
-        >
-          {/*<section className='space-y-6 fade-in-from-bottom'>
-            <div className={cn('space-y-2 fade-in-from-bottom', getDelayClass(1))}>
-              <Text variant='hd-xl' className='tracking-tight'>
-                Trusted by local businesses
-              </Text>
-              <Text variant='bd-md' className='text-muted-foreground'>
-                Here's our stats.
-              </Text>
-            </div>
-            <div
-              className={cn(
-                `grid gap-4 rounded-2xl border bg-muted/60 p-5 fade-in-from-bottom
-                sm:grid-cols-2 lg:grid-cols-4`,
-                getDelayClass(1)
-              )}
-            >
-              {trustStats.map((item, index) => (
-                <div
-                  key={item.label}
-                  className={cn('fade-in-from-bottom', getDelayClass(index + 2))}
-                >
-                  <Text variant='bd-xl' className='text-2xl font-semibold'>
-                    {item.value}
-                  </Text>
-                  <Text variant='muted-sm' className='text-sm text-muted-foreground'>
-                    {item.label}
-                  </Text>
-                </div>
-              ))}
-            </div>
-          </section>*/}
-
+      <div className='nb-padding container mx-auto px-4'>
+        <div className='flex w-full max-w-6xl flex-col gap-20 lg:px-8'>
           <section className='space-y-6'>
             <div className={cn('space-y-2 fade-in-from-bottom', getDelayClass(1))}>
               <Text variant='hd-xl' className='text-3xl tracking-tight md:text-4xl'>
@@ -257,7 +223,7 @@ export default function HomePage() {
               >
                 Why local businesses choose Web8th
               </Text>
-              <div className='space-y-4'>
+              <div className='space-y-4 mb-8 md:mb-0'>
                 {differentiators.map((item, index) => (
                   <div
                     key={item.title}
@@ -266,7 +232,7 @@ export default function HomePage() {
                       getDelayClass(index + 3)
                     )}
                   >
-                    <item.icon className='mt-0.5 size-5 text-primary' />
+                    <item.icon size={50} className='text-primary' />
                     <div>
                       <Text variant='label' className='font-medium'>
                         {item.title}
