@@ -175,10 +175,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className='container mx-auto px-4 flex justify-center'>
+      <div className='container mx-auto flex justify-center'>
         <div
-          className='py-24 flex w-full max-w-6xl flex-col gap-20 lg:px-8 justify-center
-            border-x'
+          className='px-4 py-16 flex w-full max-w-6xl flex-col gap-20 lg:px-8
+            justify-center border-x'
         >
           <section className='space-y-6'>
             <div className={cn('space-y-2 fade-in-from-bottom', getDelayClass(1))}>
