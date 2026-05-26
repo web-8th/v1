@@ -272,19 +272,17 @@ export default function HomePage() {
 
               {/* Floating stat card — top right */}
               <Card
-                className='absolute -top-8 left-1/2 -translate-x-1/2 z-10 p-3 rotate-1
-                  shadow-lg flex flex-row gap-4 items-center whitespace-nowrap'
+                className='absolute -top-8 left-1/2 -translate-x-1/2 z-10 p-2 sm:p-3
+                  rotate-1 shadow-lg flex flex-row gap-1 sm:gap-4 items-center
+                  whitespace-nowrap'
               >
                 <div className='flex items-center gap-2'>
                   <TrendingDown className='size-5 text-primary shrink-0' />
                   <div>
-                    <Text variant='bd-xl' className='text-2xl font-semibold'>
+                    <Text variant='bd-lg' className='font-semibold'>
                       88%
                     </Text>
-                    <Text
-                      variant='muted-sm'
-                      className='text-xs text-muted-foreground leading-tight'
-                    >
+                    <Text variant='muted-sm' className='leading-tight'>
                       cost reduction
                     </Text>
                   </div>
@@ -293,13 +291,10 @@ export default function HomePage() {
                 <div className='flex items-center gap-2'>
                   <Users className='size-5 text-primary shrink-0' />
                   <div>
-                    <Text variant='bd-xl' className='text-2xl font-semibold'>
+                    <Text variant='bd-lg' className='font-semibold'>
                       6+
                     </Text>
-                    <Text
-                      variant='muted-sm'
-                      className='text-xs text-muted-foreground leading-tight'
-                    >
+                    <Text variant='muted-sm' className='leading-tight'>
                       clients served
                     </Text>
                   </div>
@@ -308,13 +303,10 @@ export default function HomePage() {
                 <div className='flex items-center gap-2'>
                   <FlaskConical className='size-5 text-primary shrink-0' />
                   <div>
-                    <Text variant='bd-xl' className='text-2xl font-semibold'>
+                    <Text variant='bd-lg' className='font-semibold'>
                       4+
                     </Text>
-                    <Text
-                      variant='muted-sm'
-                      className='text-xs text-muted-foreground leading-tight'
-                    >
+                    <Text variant='muted-sm' className='leading-tight'>
                       years building
                     </Text>
                   </div>
