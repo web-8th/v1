@@ -163,8 +163,8 @@ export default function ServicesPage() {
 
       <div
         id='pricing'
-        className='nb-padding mx-auto flex w-full max-w-6xl flex-col gap-14 px-4 sm:px-6
-          lg:px-8'
+        className='py-16 container mx-auto flex w-full max-w-6xl flex-col gap-14 px-4
+          sm:px-6 border-x lg:px-8'
       >
         {/* Fixed tiers, 2-column grid */}
         <section className='flex flex-col gap-4'>

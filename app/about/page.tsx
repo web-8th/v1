@@ -151,8 +151,8 @@ export default function AboutPage() {
 
       <div
         id='meet-the-team'
-        className='nb-padding mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 sm:px-6
-          lg:px-8'
+        className='py-16 mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 sm:px-6
+          border-x lg:px-8'
       >
         {/* Team */}
         <section className='space-y-5'>
