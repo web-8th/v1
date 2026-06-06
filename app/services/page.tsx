@@ -27,6 +27,7 @@ const allFeatures = [
   'Full development',
   'On-page SEO setup',
   'Small maintenance after launch',
+  'Small bug fixes after launch',
   'Ongoing maintenance',
   'Monthly content updates',
   'Performance & scalability management',
@@ -107,6 +108,7 @@ const fixedTiers = [
       'Full development',
       'On-page SEO setup',
       'Small maintenance after launch',
+      'Small bug fixes after launch',
     ],
     bestFor:
       'Every project starts here — a fully built, SEO-ready site you own outright. One post-launch fix is included, and small maintenance after launch stays covered.',
@@ -120,12 +122,10 @@ const fixedTiers = [
       'Custom web design',
       'Full development',
       'On-page SEO setup',
-      'Small maintenance after launch',
       'Ongoing maintenance',
       'Monthly content updates',
       'Performance & scalability management',
       'Priority support',
-      'Big occasional updates',
     ],
     bestFor:
       'For businesses that want a dedicated partner after launch. We handle ongoing maintenance, content updates, performance, and the small fixes that come after launch.',
@@ -276,7 +276,7 @@ export default function ServicesPage() {
         {/* Fixed tiers, 2-column grid */}
         <section className='flex flex-col gap-4'>
           <Text variant='hd-xl' className={cn('fade-in-from-bottom', getDelayClass(1))}>
-            Support packages
+            Service packages
           </Text>
           <Text
             variant='muted'
@@ -285,15 +285,15 @@ export default function ServicesPage() {
               getDelayClass(2)
             )}
           >
-            Launch, ongoing support, or occasional updates — choose the package that fits
-            how often you need us after the site goes live.
+            Whether you need a site built and handed off, or a long-term partner to keep
+            things running and growing — we have a plan for that.
           </Text>
           <div className='grid gap-4 md:grid-cols-2'>
             {fixedTiers.map((tier, index) => (
               <Card
                 key={tier.name}
                 className={cn(
-                  'fade-in-from-bottom flex flex-col justify-between gap-4',
+                  'fade-in-from-bottom flex flex-col gap-4',
                   tier.popular && 'border-primary ring-1 ring-primary/20',
                   getDelayClass(index + 4)
                 )}
@@ -322,29 +322,17 @@ export default function ServicesPage() {
                   </div>
                 </CardHeader>
 
-                <CardContent className='space-y-4'>
+                <CardContent className='space-y-4 flex-1'>
                   {/* Feature list, X rows quieted */}
                   <div className='space-y-2'>
-                    {allFeatures.map((feature) => {
-                      const included = tier.includes.includes(feature);
-                      return (
+                    {allFeatures
+                      .filter((feature) => tier.includes.includes(feature))
+                      .map((feature) => (
                         <div key={feature} className='flex items-start gap-2'>
-                          {included ? (
-                            <Check className='mt-0.5 size-3.5 shrink-0 text-primary' />
-                          ) : (
-                            <X className='mt-0.5 size-3.5 shrink-0 text-muted-foreground' />
-                          )}
-                          <Text
-                            variant='muted-sm'
-                            className={cn(
-                              included ? 'text-foreground' : 'text-muted-foreground'
-                            )}
-                          >
-                            {feature}
-                          </Text>
+                          <Check className='mt-0.5 size-3.5 shrink-0 text-primary' />
+                          <Text variant='muted-sm'>{feature}</Text>
                         </div>
-                      );
-                    })}
+                      ))}
                   </div>
                 </CardContent>
 
