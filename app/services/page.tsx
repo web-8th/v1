@@ -200,8 +200,8 @@ export default function ServicesPage() {
             </Text>
             <Text variant='muted' className='max-w-3xl text-muted-foreground'>
               A website is usually a mix of page types. We price each page by the work it
-              actually needs, then add an admin page whenever content should stay
-              editable.
+              actually needs — a simple about page costs less than a page with forms,
+              booking, or built-in features.
             </Text>
           </div>
           <div className='grid gap-4 md:grid-cols-3'>
