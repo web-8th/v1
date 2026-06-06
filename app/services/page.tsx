@@ -26,55 +26,122 @@ const allFeatures = [
   'Custom web design',
   'Full development',
   'On-page SEO setup',
+  'Small maintenance after launch',
   'Ongoing maintenance',
   'Monthly content updates',
   'Performance & scalability management',
   'Priority support',
+  'Big occasional updates',
+];
+
+const pageTiers = [
+  {
+    label: 'Tier 1',
+    name: 'Static page',
+    description:
+      'No major functionality. Best for advertising pages, about pages, team pages, and simple landing pages.',
+    examples: ['About', 'Team', 'Landing page'],
+  },
+  {
+    label: 'Tier 2',
+    name: 'Functional page',
+    description:
+      'A page that performs a function, like a contact form, newsletter signup, or booking request.',
+    examples: ['Contact form', 'Newsletter signup', 'Quote request'],
+  },
+  {
+    label: 'Tier 3',
+    name: 'Feature page',
+    description:
+      'A page with built-in functionality, like a blog, admin page, or custom content management system.',
+    examples: ['Blog', 'Admin page', 'Editable content'],
+  },
+  {
+    label: 'Special',
+    name: 'Admin page',
+    description:
+      'Required for any dynamic pages or if you would like to edit content yourself.',
+    examples: ['Blog admin', 'Editable content', 'Custom CMS'],
+  },
+];
+
+const inspiredBreakdown = [
+  {
+    count: '2',
+    label: 'Static pages',
+    detail: 'About, Team',
+    links: [
+      { label: 'About', href: 'https://www.inspiredsk.ca/about' },
+      { label: 'Team', href: 'https://www.inspiredsk.ca/team' },
+    ],
+  },
+  {
+    count: '2',
+    label: 'Feature pages',
+    detail: 'Home, Blog',
+    links: [
+      { label: 'Home', href: 'https://www.inspiredsk.ca/' },
+      { label: 'Blog', href: 'https://www.inspiredsk.ca/blog' },
+    ],
+  },
+  {
+    count: '1',
+    label: 'Functional page',
+    detail: 'Contact',
+    links: [{ label: 'Contact', href: 'https://www.inspiredsk.ca/contact' }],
+  },
+  {
+    count: '1',
+    label: 'Admin page',
+    detail: 'To manage content',
+    links: [],
+  },
 ];
 
 const fixedTiers = [
   {
     name: 'Launch Package',
     model: 'One-time flat fee',
-    includes: ['Custom web design', 'Full development', 'On-page SEO setup'],
-    bestFor:
-      'Every project starts here, a fully built, SEO-ready site you own outright. We will handle from design to deployment.',
-    cta: 'Get a Quote',
-    href: '/contact',
-    popular: true,
-  },
-  {
-    name: 'Growth Plan',
-    model: 'Monthly retainer · starting at 3 months',
     includes: [
       'Custom web design',
       'Full development',
       'On-page SEO setup',
+      'Small maintenance after launch',
+    ],
+    bestFor:
+      'Every project starts here — a fully built, SEO-ready site you own outright. One post-launch fix is included, and small maintenance after launch stays covered.',
+    cta: 'Get a Quote',
+    href: '/contact',
+  },
+  {
+    name: 'Growth Plan',
+    model: 'Monthly retainer · minimum 3 months',
+    includes: [
+      'Custom web design',
+      'Full development',
+      'On-page SEO setup',
+      'Small maintenance after launch',
       'Ongoing maintenance',
       'Monthly content updates',
       'Performance & scalability management',
       'Priority support',
+      'Big occasional updates',
     ],
     bestFor:
-      'For businesses that want a dedicated partner post-launch, we handle content, performance, and infrastructure as you scale.',
+      'For businesses that want a dedicated partner after launch. We handle ongoing maintenance, content updates, performance, and the small fixes that come after launch.',
     cta: 'Get a Quote',
     href: '/contact',
+    popular: true,
   },
 ];
 
 const alaCarte = {
   name: 'À La Carte',
-  model: 'Per-batch flat fee · no retainer',
-  includes: [
-    'Custom web design',
-    'Full development',
-    'On-page SEO setup',
-    'Per-batch flat fee updates',
-    'Small fixes at no extra charge',
-  ],
+  model: 'Per-change flat fee · no retainer',
+  includes: ['Post-launch fix included', 'Big occasional updates'],
   bestFor:
-    'For occasional updates, seasonal changes, or post-launch fixes. No commitment, just send us a list when you need something done.',
-  cta: 'Get a Quote',
+    'For big occasional updates, seasonal changes, or larger batches of edits. We quote the work as a flat fee, and post-launch fixes are included.',
+  cta: 'Send Us Your List',
   href: '/contact',
 };
 
@@ -150,8 +217,8 @@ export default function ServicesPage() {
               getDelayClass(2)
             )}
           >
-            Start with a one-time launch, keep momentum with ongoing help, or send us a
-            list when you need updates.
+            We quote websites by the mix of static, functional, and feature pages they
+            need, then match the right support package for launch and after.
           </Text>
           <Button asChild className={cn('mt-4 fade-in-from-bottom', getDelayClass(3))}>
             <Link href='#pricing'>
@@ -166,10 +233,60 @@ export default function ServicesPage() {
         className='py-16 container mx-auto flex w-full max-w-6xl flex-col gap-14 px-4
           sm:px-6 border-x lg:px-8'
       >
+        <section className='space-y-6'>
+          <div className={cn('space-y-2 fade-in-from-bottom', getDelayClass(1))}>
+            <Text variant='hd-xl' className='tracking-tight md:text-4xl'>
+              How we quote pages
+            </Text>
+            <Text variant='muted' className='max-w-3xl text-muted-foreground'>
+              A website is usually a mix of page types. We price each page by the work it
+              actually needs, then add an admin page whenever content should stay
+              editable.
+            </Text>
+          </div>
+          <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
+            {pageTiers.map((tier, index) => (
+              <Card
+                key={tier.label}
+                className={cn('fade-in-from-bottom', getDelayClass(index + 3))}
+              >
+                <CardHeader className='gap-3'>
+                  <Badge variant='outline' className='w-fit text-muted-foreground'>
+                    {tier.label}
+                  </Badge>
+                  <CardTitle>
+                    <Text topLevel variant='bd-md'>
+                      {tier.name}
+                    </Text>
+                  </CardTitle>
+                  <CardDescription>{tier.description}</CardDescription>
+                </CardHeader>
+                <CardContent className='flex flex-wrap gap-2'>
+                  {tier.examples.map((example) => (
+                    <Badge key={example} variant='secondary'>
+                      {example}
+                    </Badge>
+                  ))}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
         {/* Fixed tiers, 2-column grid */}
         <section className='flex flex-col gap-4'>
           <Text variant='hd-xl' className={cn('fade-in-from-bottom', getDelayClass(1))}>
-            Our Pricing
+            Support packages
+          </Text>
+          <Text
+            variant='muted'
+            className={cn(
+              'max-w-3xl text-muted-foreground fade-in-from-bottom',
+              getDelayClass(2)
+            )}
+          >
+            Launch, ongoing support, or occasional updates — choose the package that fits
+            how often you need us after the site goes live.
           </Text>
           <div className='grid gap-4 md:grid-cols-2'>
             {fixedTiers.map((tier, index) => (
@@ -178,7 +295,7 @@ export default function ServicesPage() {
                 className={cn(
                   'fade-in-from-bottom flex flex-col justify-between gap-4',
                   tier.popular && 'border-primary ring-1 ring-primary/20',
-                  getDelayClass(index + 3)
+                  getDelayClass(index + 4)
                 )}
               >
                 <CardHeader className='gap-2'>
@@ -247,7 +364,7 @@ export default function ServicesPage() {
             className={cn(
               'fade-in-from-bottom rounded-2xl border border-primary border-dashed p-6',
               'flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between',
-              getDelayClass(5)
+              getDelayClass(6)
             )}
           >
             <div className='flex flex-col gap-3'>

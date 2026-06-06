@@ -41,7 +41,7 @@ const serviceSnapshot = [
   {
     title: 'Launch Package',
     description:
-      'Custom design, full development, and on-page SEO — built from scratch to fit your brand.',
+      'Custom design, full development, and on-page SEO — with a post-launch fix and small maintenance window included.',
     cta: 'Explore Launch',
     href: '/services',
 
@@ -50,7 +50,7 @@ const serviceSnapshot = [
   {
     title: 'Growth Plan',
     description:
-      'Ongoing updates, maintenance, and priority support as your business evolves.',
+      'Ongoing maintenance, monthly content updates, and priority support for sites that need regular care.',
     cta: 'Explore Growth',
     href: '/services',
     icon: Sparkles,
@@ -58,7 +58,7 @@ const serviceSnapshot = [
   {
     title: 'À La Carte',
     description:
-      'Need a specific fix or feature? Batch updates quoted as a flat fee, no retainer required.',
+      'Big occasional updates quoted as a flat fee when you need a larger batch of changes.',
     cta: 'Explore À La Carte',
     href: '/services',
     icon: Wrench,
