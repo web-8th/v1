@@ -57,46 +57,6 @@ const pageTiers = [
       'A page with built-in functionality, like a blog, admin page, or custom content management system.',
     examples: ['Blog', 'Admin page', 'Editable content'],
   },
-  {
-    label: 'Special',
-    name: 'Admin page',
-    description:
-      'Required for any dynamic pages or if you would like to edit content yourself.',
-    examples: ['Blog admin', 'Editable content', 'Custom CMS'],
-  },
-];
-
-const inspiredBreakdown = [
-  {
-    count: '2',
-    label: 'Static pages',
-    detail: 'About, Team',
-    links: [
-      { label: 'About', href: 'https://www.inspiredsk.ca/about' },
-      { label: 'Team', href: 'https://www.inspiredsk.ca/team' },
-    ],
-  },
-  {
-    count: '2',
-    label: 'Feature pages',
-    detail: 'Home, Blog',
-    links: [
-      { label: 'Home', href: 'https://www.inspiredsk.ca/' },
-      { label: 'Blog', href: 'https://www.inspiredsk.ca/blog' },
-    ],
-  },
-  {
-    count: '1',
-    label: 'Functional page',
-    detail: 'Contact',
-    links: [{ label: 'Contact', href: 'https://www.inspiredsk.ca/contact' }],
-  },
-  {
-    count: '1',
-    label: 'Admin page',
-    detail: 'To manage content',
-    links: [],
-  },
 ];
 
 const fixedTiers = [
@@ -244,7 +204,7 @@ export default function ServicesPage() {
               editable.
             </Text>
           </div>
-          <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
+          <div className='grid gap-4 md:grid-cols-3'>
             {pageTiers.map((tier, index) => (
               <Card
                 key={tier.label}
