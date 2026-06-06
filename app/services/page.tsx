@@ -105,6 +105,12 @@ const alaCarte = {
   href: '/contact',
 };
 
+const getTierBadgeClass = (index: number) => {
+  if (index === 0) return 'border-primary/50 border-2';
+  if (index === 1) return 'border-primary/70 border-4';
+  return 'border-primary border-6'; // tier 3 = full
+};
+
 const guaranteedServices = [
   {
     title: 'Domain & hosting setup',
@@ -208,10 +214,14 @@ export default function ServicesPage() {
             {pageTiers.map((tier, index) => (
               <Card
                 key={tier.label}
-                className={cn('fade-in-from-bottom', getDelayClass(index + 3))}
+                className={cn(
+                  'fade-in-from-bottom',
+                  getDelayClass(index + 3),
+                  getTierBadgeClass(index)
+                )}
               >
                 <CardHeader className='gap-3'>
-                  <Badge variant='outline' className='w-fit text-muted-foreground'>
+                  <Badge variant='outline' className='w-fit bg-primary text-white'>
                     {tier.label}
                   </Badge>
                   <CardTitle>
