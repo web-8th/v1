@@ -9,7 +9,7 @@ interface SitePreviewProps {
   alt: string;
   url: string;
   title: string;
-  summary?: string;
+  description?: string;
   tags?: string[];
   className?: string;
 }
@@ -19,7 +19,7 @@ export function SitePreview({
   alt,
   url,
   title,
-  summary,
+  description,
   tags,
   className,
 }: SitePreviewProps) {
@@ -60,10 +60,10 @@ export function SitePreview({
         />
       </div>
 
-      {/* Summary */}
-      {summary && (
+      {/* Description */}
+      {description && (
         <div className='flex-1 border-t border-border px-3 pt-3'>
-          <p className='text-sm text-muted-foreground'>{summary}</p>
+          <p className='text-sm text-muted-foreground'>{description}</p>
         </div>
       )}
 

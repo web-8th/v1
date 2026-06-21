@@ -29,6 +29,7 @@ import { GravityStarsBackground } from '@/components/animate-ui/components/backg
 import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
 import { SitePreview } from '@/components/SitePreview';
+import { projects } from '@/data/projects';
 
 const trustStats = [
   { label: 'Local clients served', value: '6+' },
@@ -89,33 +90,6 @@ const differentiators = [
     description:
       'You work with the people actually building your site. No account managers, no handoffs, no runaround.',
     icon: ScanEye,
-  },
-];
-
-const teaserProjects = [
-  {
-    title: 'Tseng Photo',
-    summary:
-      'A website built for a photographer, Matthew Tseng, who had reduced their spending by 88% annually, switching from SquareSpace to a custom-built site.',
-    tags: ['Web Design', 'SEO', 'Custom CMS'],
-    url: 'https://tsengphoto.ca',
-    imgSrc: '/fullpage-tsengphoto.png',
-  },
-  {
-    title: 'InspirED Sask',
-    summary:
-      'InspirED aims to educate citizens in society to promote a better environment. They focus on fostering practical education rather than traditional academic education.',
-    tags: ['Web Design', 'SEO', 'Custom CMS'],
-    url: 'https://www.inspiredsk.ca',
-    imgSrc: '/fullpage-inspired.png',
-  },
-  {
-    title: 'KPop Dance Team',
-    summary:
-      'A website for the Kpop Dance Team, a club under the SUO at the University of British Columbia Okanagan.',
-    tags: ['Web Design', 'Custom CMS'],
-    url: 'https://kdtsuo.vercel.app',
-    imgSrc: '/fullpage-kdtsuo.png',
   },
 ];
 
@@ -240,9 +214,9 @@ export default function HomePage() {
                       <Text variant='label' className='font-medium'>
                         {item.title}
                       </Text>
-                  <Text variant='muted-sm' className='text-sm text-muted-foreground'>
-                    {item.description}
-                  </Text>
+                      <Text variant='muted-sm' className='text-sm text-muted-foreground'>
+                        {item.description}
+                      </Text>
                     </div>
                   </div>
                 ))}
@@ -325,18 +299,33 @@ export default function HomePage() {
               </Text>
             </div>
             <div className='grid gap-4 md:grid-cols-2'>
-              {teaserProjects.map((project, index) => (
+              {projects.slice(0, 4).map((project) => (
                 <SitePreview
                   key={project.url}
                   src={project.imgSrc}
                   alt={project.title}
                   url={project.url}
                   title={project.title}
-                  summary={project.summary}
-                  tags={project.tags}
+                  description={project.description}
+                  tags={[...project.tags]}
                 />
               ))}
             </div>
+            <Card className='flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between p-5'>
+              <div>
+                <Text variant='label' className='font-medium'>
+                  See every project we&apos;ve shipped
+                </Text>
+                <Text variant='muted-sm' className='text-muted-foreground'>
+                  Full breakdowns, live links, and the story behind each build.
+                </Text>
+              </div>
+              <Button asChild className='shrink-0'>
+                <Link href='/portfolio'>
+                  View full portfolio <ArrowRight />
+                </Link>
+              </Button>
+            </Card>
           </section>
 
           <section
