@@ -55,6 +55,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'Web8th',
+  alternateName: ['Web 8th', 'Web8', 'Web-8th'],
   url: 'https://web8th.ca',
   description:
     'Web8th is a two-person web design studio serving local businesses in Kelowna, BC and Regina, SK.',
