@@ -1,88 +1,75 @@
 import { cn } from '@/lib/utils';
 import { type VariantProps, cva } from 'class-variance-authority';
-import type { ElementType, HTMLAttributes, ReactNode } from 'react';
+import React from 'react';
 
 const textVariants = cva('', {
   variants: {
     variant: {
-      // Headings - hd-xs (smallest) to hd-xxl (largest)
+      // Headings — size is self-contained and responsive, `size` prop is ignored
       'hd-xs': 'text-sm md:text-base lg:text-lg font-semibold',
       'hd-sm': 'text-base md:text-lg lg:text-xl font-semibold',
       'hd-md': 'text-lg md:text-xl lg:text-2xl font-bold',
       'hd-lg': 'text-xl md:text-2xl lg:text-3xl font-bold',
       'hd-xl': 'text-2xl md:text-4xl lg:text-5xl font-bold',
       'hd-xxl': 'text-3xl md:text-5xl lg:text-6xl font-bold',
-
-      // Body text - bd-xs (smallest) to bd-xxl (largest)
-      'bd-xs': 'text-xs md:text-sm',
-      'bd-sm': 'text-sm md:text-base',
-      'bd-md': 'text-sm md:text-base lg:text-lg',
-      'bd-lg': 'text-base md:text-lg lg:text-xl',
-      'bd-xl': 'text-lg md:text-xl lg:text-2xl',
-      'bd-xxl': 'text-xl md:text-2xl lg:text-3xl',
-
-      // Special variants
-      caption: 'text-xs md:text-sm text-muted-foreground',
-      label: 'text-sm md:text-base font-medium',
-      muted: 'text-sm md:text-base text-muted-foreground',
-      'muted-sm': 'text-xs md:text-sm text-muted-foreground',
+      // Semantic variants — only style, scale comes from `size` prop
+      default: '',
+      muted: 'text-muted-foreground',
+      caption: 'text-muted-foreground',
+      label: 'font-medium',
+    },
+    size: {
+      xs: 'text-xs',
+      sm: 'text-sm',
+      md: 'text-sm md:text-base lg:text-lg',
+      lg: 'text-base md:text-lg lg:text-xl',
+      xl: 'text-lg md:text-xl lg:text-2xl',
+      xxl: 'text-xl md:text-2xl lg:text-3xl',
     },
   },
   defaultVariants: {
-    variant: 'bd-md',
+    variant: 'default',
+    size: 'md',
   },
 });
 
-type TextVariant = VariantProps<typeof textVariants>['variant'];
+type TextVariant = NonNullable<VariantProps<typeof textVariants>['variant']>;
+type TextSize = NonNullable<VariantProps<typeof textVariants>['size']>;
 
-interface TextProps extends HTMLAttributes<HTMLElement> {
-  as?: ElementType;
-  variant?: TextVariant;
-  topLevel?: boolean;
-  children: ReactNode;
-}
-
-const VARIANT_ELEMENT_MAP: Record<NonNullable<TextVariant>, ElementType> = {
+const VARIANT_ELEMENT_MAP: Record<TextVariant, React.ElementType> = {
   'hd-xxl': 'h1',
   'hd-xl': 'h2',
   'hd-lg': 'h3',
   'hd-md': 'h4',
   'hd-sm': 'h5',
   'hd-xs': 'h6',
-  'bd-xxl': 'p',
-  'bd-xl': 'p',
-  'bd-lg': 'p',
-  'bd-md': 'p',
-  'bd-sm': 'p',
-  'bd-xs': 'p',
-  caption: 'p',
-  label: 'label',
+  default: 'p',
   muted: 'p',
-  'muted-sm': 'p',
+  caption: 'p',
+  label: 'span', // styling only — use as="label" htmlFor="..." for real form labels
 };
 
+interface TextProps extends React.HTMLAttributes<HTMLElement> {
+  variant?: TextVariant;
+  size?: TextSize;
+  as?: React.ElementType;
+  children: React.ReactNode;
+}
+
 export function Text({
+  variant = 'default',
+  size = 'md',
   as,
-  variant = 'bd-md',
-  topLevel,
   className,
   children,
   ...props
 }: TextProps) {
-  const resolvedVariant = variant ?? 'bd-md';
-  const defaultComp = VARIANT_ELEMENT_MAP[resolvedVariant];
-  const Comp = as ?? defaultComp;
-  const isHeadingVariant = resolvedVariant.startsWith('hd-');
-  const shouldUseSerif =
-    topLevel ?? (isHeadingVariant || Comp === 'h1' || Comp === 'h2' || Comp === 'h3');
+  const Comp = as ?? VARIANT_ELEMENT_MAP[variant];
+  const isHeading = variant.startsWith('hd-');
 
   return (
     <Comp
-      className={cn(
-        textVariants({ variant: resolvedVariant }),
-        shouldUseSerif && 'font-serif',
-        className
-      )}
+      className={cn(textVariants({ variant, size: isHeading ? null : size }), className)}
       {...props}
     >
       {children}

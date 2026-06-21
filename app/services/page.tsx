@@ -225,7 +225,7 @@ export default function ServicesPage() {
                     {tier.label}
                   </Badge>
                   <CardTitle>
-                    <Text topLevel variant='bd-md'>
+                    <Text>
                       {tier.name}
                     </Text>
                   </CardTitle>
@@ -271,7 +271,7 @@ export default function ServicesPage() {
                 <CardHeader className='gap-2'>
                   <div className='flex items-center justify-between gap-2'>
                     <CardTitle>
-                      <Text topLevel variant='bd-md'>
+                      <Text>
                         {tier.name}
                       </Text>
                     </CardTitle>
@@ -300,7 +300,7 @@ export default function ServicesPage() {
                       .map((feature) => (
                         <div key={feature} className='flex items-start gap-2'>
                           <Check className='mt-0.5 size-3.5 shrink-0 text-primary' />
-                          <Text variant='muted-sm'>{feature}</Text>
+                          <Text variant='muted' size='sm'>{feature}</Text>
                         </div>
                       ))}
                   </div>
@@ -327,14 +327,14 @@ export default function ServicesPage() {
           >
             <div className='flex flex-col gap-3'>
               <div className='flex flex-wrap items-center gap-2'>
-                <Text topLevel variant='bd-md' className='font-bold'>
+                <Text className='font-bold'>
                   {alaCarte.name}
                 </Text>
                 <Badge variant='outline' className='text-muted-foreground'>
                   {alaCarte.model}
                 </Badge>
               </div>
-              <Text variant='muted-sm' className='max-w-xl text-muted-foreground'>
+              <Text variant='muted' size='sm' className='max-w-xl text-muted-foreground'>
                 {alaCarte.bestFor}
               </Text>
               <div className='flex flex-wrap gap-2'>
@@ -373,7 +373,7 @@ export default function ServicesPage() {
           />
           <div className='relative z-10 flex gap-4 flex-col items-center justify-between'>
             <div className='flex flex-col gap-3'>
-              <Text topLevel variant='hd-xxl' className='tracking-tight text-center'>
+              <Text variant='hd-xl' className='tracking-tight text-center'>
                 Free websites for non-profits
               </Text>
               <div className='flex justify-center'>
@@ -404,7 +404,7 @@ export default function ServicesPage() {
               </Link>
             </Button>
             <Text
-              variant='bd-xs'
+              size='xs'
               className='text-muted-foreground/70 text-center max-w-xl'
             >
               Non-profit projects are completed on a best-effort basis.
@@ -430,13 +430,13 @@ export default function ServicesPage() {
               >
                 <CardHeader className='pb-1'>
                   <CardTitle>
-                    <Text topLevel variant='bd-sm'>
+                    <Text size='sm'>
                       {item.title}
                     </Text>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Text variant='muted-sm' className='text-muted-foreground'>
+                  <Text variant='muted' size='sm' className='text-muted-foreground'>
                     {item.description}
                   </Text>
                 </CardContent>

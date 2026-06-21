@@ -122,7 +122,7 @@ export default function TechStack() {
                 </a>
               </CardHeader>
               <CardContent>
-                <Text variant='muted-sm' className='text-muted-foreground'>
+                <Text variant='muted' size='sm' className='text-muted-foreground'>
                   {tech.description}
                 </Text>
               </CardContent>

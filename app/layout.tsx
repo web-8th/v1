@@ -28,9 +28,19 @@ const merriweather = Merriweather({
 });
 
 export const metadata: Metadata = {
-  title: 'Web8th — Your Work, Visible.',
+  metadataBase: new URL('https://web8th.ca'),
+  title: {
+    template: '%s | Web8th',
+    default: 'Web8th — Web Design Studio in Kelowna & Regina',
+  },
   description:
-    'Web8th is a Kelowna-based web development studio serving local businesses in Kelowna, Regina, and across BC and Saskatchewan. From landing pages to full web apps, we build things worth showing off.',
+    'Web8th is a two-person web design studio serving local businesses in Kelowna, BC and Regina, SK. Custom websites, on-page SEO, and ongoing support — no templates, no agency overhead.',
+  openGraph: {
+    type: 'website',
+    siteName: 'Web8th',
+    locale: 'en_CA',
+    images: [{ url: '/icons/logo_black_bg_png_padded.png', alt: 'Web8th logo' }],
+  },
   icons: {
     icon: [
       { url: '/icons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
@@ -39,6 +49,27 @@ export const metadata: Metadata = {
     apple: [{ url: '/icons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
     shortcut: ['/icons/favicon-32x32.png'],
   },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Web8th',
+  url: 'https://web8th.ca',
+  description:
+    'Web8th is a two-person web design studio serving local businesses in Kelowna, BC and Regina, SK.',
+  logo: 'https://web8th.ca/icons/logo_black_bg_png_padded.png',
+  areaServed: [
+    { '@type': 'City', name: 'Kelowna', containedInPlace: { '@type': 'State', name: 'British Columbia' } },
+    { '@type': 'City', name: 'Regina', containedInPlace: { '@type': 'State', name: 'Saskatchewan' } },
+  ],
+  founder: [
+    { '@type': 'Person', name: 'Rin Meng', jobTitle: 'Co-founder & Developer' },
+    { '@type': 'Person', name: 'Noah Stewart', jobTitle: 'Co-founder & Developer' },
+  ],
+  numberOfEmployees: { '@type': 'QuantitativeValue', value: 2 },
+  serviceType: ['Web Design', 'Web Development', 'SEO', 'Custom CMS'],
+  sameAs: ['https://www.linkedin.com/in/rinmeng/', 'https://www.linkedin.com/in/nostew/'],
 };
 
 export default function RootLayout({
@@ -52,6 +83,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${merriweather.variable}
           antialiased`}
       >
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <AuthProvider>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
             <ToastProvider>

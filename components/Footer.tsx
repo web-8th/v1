@@ -1,4 +1,3 @@
-import { Infinity } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Text } from './Text';
@@ -16,7 +15,7 @@ export function Footer() {
         className='mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 py-6
           text-center sm:px-6 lg:px-8'
       >
-        <p className='text-sm text-muted-foreground'>&copy; {yearLabel}</p>
+        <Text variant='muted' size='sm'>&copy; {yearLabel}</Text>
         <Image
           src='/icons/logo_black_svg_600px.svg'
           alt='Web8th logo'

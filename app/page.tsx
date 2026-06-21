@@ -1,5 +1,21 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'Web8th — Web Design Studio in Kelowna & Regina',
+  },
+  description:
+    'Web8th is a two-person web design studio serving local businesses in Kelowna, BC and Regina, SK. Custom websites, on-page SEO, and ongoing support — no templates, no agency overhead.',
+  alternates: { canonical: '/' },
+  openGraph: {
+    title: 'Web8th — Web Design Studio in Kelowna & Regina',
+    description:
+      'Web8th is a two-person web design studio serving local businesses in Kelowna, BC and Regina, SK. Custom websites, on-page SEO, and ongoing support — no templates, no agency overhead.',
+    url: '/',
+  },
+};
 import {
   ArrowRight,
   Columns3Cog,
@@ -214,7 +230,7 @@ export default function HomePage() {
                       <Text variant='label' className='font-medium'>
                         {item.title}
                       </Text>
-                      <Text variant='muted-sm' className='text-sm text-muted-foreground'>
+                      <Text variant='muted' size='sm' className='text-sm text-muted-foreground'>
                         {item.description}
                       </Text>
                     </div>
@@ -238,7 +254,7 @@ export default function HomePage() {
                 <SitePreview
                   className='drop-shadow-none shadow-md'
                   src='/fullpage-tsengphoto.png'
-                  alt='tsengphoto'
+                  alt='Tseng Photo website preview'
                   url='https://tsengphoto.ca'
                   title='Tseng Photo'
                 />
@@ -253,10 +269,10 @@ export default function HomePage() {
                 <div className='flex items-center gap-2'>
                   <TrendingDown className='size-5 text-primary shrink-0' />
                   <div>
-                    <Text variant='bd-lg' className='font-semibold'>
+                    <Text size='lg' className='font-semibold'>
                       88%
                     </Text>
-                    <Text variant='muted-sm' className='leading-tight'>
+                    <Text variant='muted' size='sm' className='leading-tight'>
                       cost reduction
                     </Text>
                   </div>
@@ -265,10 +281,10 @@ export default function HomePage() {
                 <div className='flex items-center gap-2'>
                   <Users className='size-5 text-primary shrink-0' />
                   <div>
-                    <Text variant='bd-lg' className='font-semibold'>
+                    <Text size='lg' className='font-semibold'>
                       6+
                     </Text>
-                    <Text variant='muted-sm' className='leading-tight'>
+                    <Text variant='muted' size='sm' className='leading-tight'>
                       clients served
                     </Text>
                   </div>
@@ -277,10 +293,10 @@ export default function HomePage() {
                 <div className='flex items-center gap-2'>
                   <FlaskConical className='size-5 text-primary shrink-0' />
                   <div>
-                    <Text variant='bd-lg' className='font-semibold'>
+                    <Text size='lg' className='font-semibold'>
                       4+
                     </Text>
-                    <Text variant='muted-sm' className='leading-tight'>
+                    <Text variant='muted' size='sm' className='leading-tight'>
                       years building
                     </Text>
                   </div>
@@ -316,7 +332,7 @@ export default function HomePage() {
                 <Text variant='label' className='font-medium'>
                   See every project we&apos;ve shipped
                 </Text>
-                <Text variant='muted-sm' className='text-muted-foreground'>
+                <Text variant='muted' size='sm' className='text-muted-foreground'>
                   Full breakdowns, live links, and the story behind each build.
                 </Text>
               </div>

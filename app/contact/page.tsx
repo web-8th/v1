@@ -232,7 +232,7 @@ export default function ContactPage() {
           <Text variant='hd-lg' className={cn('fade-in-from-bottom', getDelayClass(5))}>
             Socials
           </Text>
-          <Text variant='bd-sm' className={cn('fade-in-from-bottom', getDelayClass(6))}>
+          <Text size='sm' className={cn('fade-in-from-bottom', getDelayClass(6))}>
             Here's where you can find us.
           </Text>
           <div className={cn('flex flex-col gap-4 mt-4', getDelayClass(7))}>

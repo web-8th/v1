@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, SquareArrowOutUpRight } from 'lucide-react';
 import { Badge, Button } from '@/components/ui';
 import { cn } from '@/lib/utils';
+import { Text } from '@/components/Text';
 
 interface SitePreviewProps {
   src: string;
@@ -63,7 +64,7 @@ export function SitePreview({
       {/* Description */}
       {description && (
         <div className='flex-1 border-t border-border px-3 pt-3'>
-          <p className='text-sm text-muted-foreground'>{description}</p>
+          <Text variant='muted' size='sm'>{description}</Text>
         </div>
       )}
 

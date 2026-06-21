@@ -181,7 +181,7 @@ export default function AboutPage() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <Text variant='muted-sm' className='text-muted-foreground'>
+                  <Text variant='muted' size='sm' className='text-muted-foreground'>
                     {founder.bio}
                   </Text>
                 </CardContent>
