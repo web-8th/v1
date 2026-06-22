@@ -2,7 +2,7 @@ export const projects = [
   {
     title: "Don's Fences & Services",
     description:
-      "A website and custom invoicing system built for Don's Fences & Services, a fencing and contracting business in Kelowna. The site went from concept to live in 2 days. Don previously filled out every invoice by hand in a Word document — the new system replaces that with a simple flow: add a client, create an invoice, add line items, and send. The client receives a professional PDF invoice by email within seconds, all built in 6 hours.",
+      "A website and custom invoicing system built for Don's Fences & Services, a fencing and contracting business in Enderby. The site went from concept to live in 2 days. Don previously filled out every invoice by hand in a Word document — the new system replaces that with a simple flow: add a client, create an invoice, add line items, and send. The client receives a professional PDF invoice by email within seconds, all built in 6 hours.",
     tags: ['Web Design', 'SEO', 'Custom CMS', 'Invoicing System'],
     url: 'https://donsfences.ca',
     imgSrc: '/fullpage-donsfns.png',
