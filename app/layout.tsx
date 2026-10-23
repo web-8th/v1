@@ -61,8 +61,16 @@ const jsonLd = {
     'Web8th is a two-person web design studio serving local businesses in Kelowna, BC and Regina, SK.',
   logo: 'https://web8th.ca/icons/logo_black_bg_png_padded.png',
   areaServed: [
-    { '@type': 'City', name: 'Kelowna', containedInPlace: { '@type': 'State', name: 'British Columbia' } },
-    { '@type': 'City', name: 'Regina', containedInPlace: { '@type': 'State', name: 'Saskatchewan' } },
+    {
+      '@type': 'City',
+      name: 'Kelowna',
+      containedInPlace: { '@type': 'State', name: 'British Columbia' },
+    },
+    {
+      '@type': 'City',
+      name: 'Regina',
+      containedInPlace: { '@type': 'State', name: 'Saskatchewan' },
+    },
   ],
   founder: [
     { '@type': 'Person', name: 'Rin Meng', jobTitle: 'Co-founder & Developer' },

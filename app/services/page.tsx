@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 
-import { ArrowDown, ArrowRight, Check, X } from 'lucide-react';
+import { ArrowDown, ArrowRight, Check } from 'lucide-react';
 
 import {
   Badge,
@@ -225,9 +225,7 @@ export default function ServicesPage() {
                     {tier.label}
                   </Badge>
                   <CardTitle>
-                    <Text>
-                      {tier.name}
-                    </Text>
+                    <Text>{tier.name}</Text>
                   </CardTitle>
                   <CardDescription>{tier.description}</CardDescription>
                 </CardHeader>
@@ -271,9 +269,7 @@ export default function ServicesPage() {
                 <CardHeader className='gap-2'>
                   <div className='flex items-center justify-between gap-2'>
                     <CardTitle>
-                      <Text>
-                        {tier.name}
-                      </Text>
+                      <Text>{tier.name}</Text>
                     </CardTitle>
                     {tier.popular ? <Badge>Most Popular</Badge> : null}
                   </div>
@@ -300,7 +296,9 @@ export default function ServicesPage() {
                       .map((feature) => (
                         <div key={feature} className='flex items-start gap-2'>
                           <Check className='mt-0.5 size-3.5 shrink-0 text-primary' />
-                          <Text variant='muted' size='sm'>{feature}</Text>
+                          <Text variant='muted' size='sm'>
+                            {feature}
+                          </Text>
                         </div>
                       ))}
                   </div>
@@ -327,9 +325,7 @@ export default function ServicesPage() {
           >
             <div className='flex flex-col gap-3'>
               <div className='flex flex-wrap items-center gap-2'>
-                <Text className='font-bold'>
-                  {alaCarte.name}
-                </Text>
+                <Text className='font-bold'>{alaCarte.name}</Text>
                 <Badge variant='outline' className='text-muted-foreground'>
                   {alaCarte.model}
                 </Badge>
@@ -399,14 +395,11 @@ export default function ServicesPage() {
             </div>
             <Button asChild className='shrink-0 sm:self-center'>
               <Link href='/contact'>
-                I'm a non-profit
+                I&apos;m a non-profit
                 <ArrowRight />
               </Link>
             </Button>
-            <Text
-              size='xs'
-              className='text-muted-foreground/70 text-center max-w-xl'
-            >
+            <Text size='xs' className='text-muted-foreground/70 text-center max-w-xl'>
               Non-profit projects are completed on a best-effort basis.
             </Text>
           </div>
@@ -430,9 +423,7 @@ export default function ServicesPage() {
               >
                 <CardHeader className='pb-1'>
                   <CardTitle>
-                    <Text size='sm'>
-                      {item.title}
-                    </Text>
+                    <Text size='sm'>{item.title}</Text>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>

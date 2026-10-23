@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import {
-  Badge,
   Button,
   Card,
   CardContent,
@@ -185,7 +184,7 @@ export default function ContactPage() {
                       <SelectValue placeholder='Select a range' />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value='non-profit'>I'm a non-profit</SelectItem>
+                      <SelectItem value='non-profit'>I&apos;m a non-profit</SelectItem>
                       <SelectItem value='under-2k'>Under $250</SelectItem>
                       <SelectItem value='2k-5k'>$250 - $500</SelectItem>
                       <SelectItem value='5k-10k'>$500 - $1,000</SelectItem>
@@ -233,7 +232,7 @@ export default function ContactPage() {
             Socials
           </Text>
           <Text size='sm' className={cn('fade-in-from-bottom', getDelayClass(6))}>
-            Here's where you can find us.
+            Here&apos;s where you can find us.
           </Text>
           <div className={cn('flex flex-col gap-4 mt-4', getDelayClass(7))}>
             <Link

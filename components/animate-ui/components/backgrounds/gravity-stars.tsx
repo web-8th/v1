@@ -87,7 +87,7 @@ function GravityStarsBackground({
         };
       });
     },
-    [starsCount, movementSpeed, starsOpacity, starsSize],
+    [starsCount, movementSpeed, starsOpacity, starsSize]
   );
 
   const redistributeStars = React.useCallback((w: number, h: number) => {
@@ -134,7 +134,7 @@ function GravityStarsBackground({
       }
       mouseRef.current = { x: clientX - rect.left, y: clientY - rect.top };
     },
-    [],
+    []
   );
 
   const updateStars = React.useCallback(() => {
@@ -187,10 +187,7 @@ function GravityStarsBackground({
           p.glowMultiplier = targetGlow;
         } else if (glowAnimation === 'ease') {
           const ease = 0.08;
-          p.glowMultiplier = Math.max(
-            1,
-            currentGlow + (targetGlow - currentGlow) * ease,
-          );
+          p.glowMultiplier = Math.max(1, currentGlow + (targetGlow - currentGlow) * ease);
         } else {
           const spring = (targetGlow - currentGlow) * 0.15;
           const damping = 0.9;
@@ -281,7 +278,7 @@ function GravityStarsBackground({
         ctx.restore();
       }
     },
-    [dpr, glowIntensity, readColor],
+    [dpr, glowIntensity, readColor]
   );
 
   const animate = React.useCallback(() => {
@@ -298,9 +295,7 @@ function GravityStarsBackground({
     resizeCanvas();
     const container = containerRef.current;
     const ro =
-      typeof ResizeObserver !== 'undefined'
-        ? new ResizeObserver(resizeCanvas)
-        : null;
+      typeof ResizeObserver !== 'undefined' ? new ResizeObserver(resizeCanvas) : null;
     if (container && ro) ro.observe(container);
     const onResize = () => resizeCanvas();
     window.addEventListener('resize', onResize);
@@ -346,13 +341,13 @@ function GravityStarsBackground({
   return (
     <div
       ref={containerRef}
-      data-slot="gravity-stars-background"
+      data-slot='gravity-stars-background'
       className={cn('relative size-full overflow-hidden', className)}
       onMouseMove={(e) => handlePointerMove(e)}
       onTouchMove={(e) => handlePointerMove(e)}
       {...props}
     >
-      <canvas ref={canvasRef} className="block w-full h-full" />
+      <canvas ref={canvasRef} className='block w-full h-full' />
     </div>
   );
 }

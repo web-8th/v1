@@ -9,7 +9,6 @@ import { Text } from '@/components/Text';
 import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
 import Image from 'next/image';
-import Link from 'next/link';
 
 const techStack = [
   {

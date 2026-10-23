@@ -4,8 +4,7 @@ import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-const rand = (min: number, max: number): number =>
-  Math.random() * (max - min) + min;
+const rand = (min: number, max: number): number => Math.random() * (max - min) + min;
 
 const randInt = (min: number, max: number): number =>
   Math.floor(Math.random() * (max - min) + min);
@@ -38,7 +37,7 @@ function createParticle(
   direction: number,
   gravity: number,
   friction: number,
-  size: number,
+  size: number
 ): ParticleType {
   const vx = Math.cos(direction) * speed;
   const vy = Math.sin(direction) * speed;
@@ -108,7 +107,7 @@ function createFirework(
   size: number,
   particleSpeed: { min: number; max: number } | number,
   particleSize: { min: number; max: number } | number,
-  onExplode: (particles: ParticleType[]) => void,
+  onExplode: (particles: ParticleType[]) => void
 ): FireworkType {
   const angle = -Math.PI / 2 + rand(-0.3, 0.3);
   const vx = Math.cos(angle) * speed;
@@ -159,8 +158,8 @@ function createFirework(
             particleAngle,
             0.05,
             0.98,
-            localParticleSize,
-          ),
+            localParticleSize
+          )
         );
       }
       onExplode(particles);
@@ -272,8 +271,8 @@ function FireworksBackground({
           size,
           particleSpeed,
           particleSize,
-          handleExplosion,
-        ),
+          handleExplosion
+        )
       );
       const timeout = rand(300, 800) / population;
       setTimeout(launchFirework, timeout);
@@ -326,8 +325,8 @@ function FireworksBackground({
           size,
           particleSpeed,
           particleSize,
-          handleExplosion,
-        ),
+          handleExplosion
+        )
       );
     };
 
@@ -338,19 +337,12 @@ function FireworksBackground({
       container.removeEventListener('click', handleClick);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [
-    population,
-    color,
-    fireworkSpeed,
-    fireworkSize,
-    particleSpeed,
-    particleSize,
-  ]);
+  }, [population, color, fireworkSpeed, fireworkSize, particleSpeed, particleSize]);
 
   return (
     <div
       ref={containerRef}
-      data-slot="fireworks-background"
+      data-slot='fireworks-background'
       className={cn('relative size-full overflow-hidden', className)}
       {...props}
     >

@@ -15,7 +15,9 @@ export function Footer() {
         className='mx-auto flex max-w-7xl flex-col items-center gap-3 px-4 py-6
           text-center sm:px-6 lg:px-8'
       >
-        <Text variant='muted' size='sm'>&copy; {yearLabel}</Text>
+        <Text variant='muted' size='sm'>
+          &copy; {yearLabel}
+        </Text>
         <Image
           src='/icons/logo_black_svg_600px.svg'
           alt='Web8th logo'

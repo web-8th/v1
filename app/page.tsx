@@ -230,7 +230,11 @@ export default function HomePage() {
                       <Text variant='label' className='font-medium'>
                         {item.title}
                       </Text>
-                      <Text variant='muted' size='sm' className='text-sm text-muted-foreground'>
+                      <Text
+                        variant='muted'
+                        size='sm'
+                        className='text-sm text-muted-foreground'
+                      >
                         {item.description}
                       </Text>
                     </div>
@@ -327,7 +331,10 @@ export default function HomePage() {
                 />
               ))}
             </div>
-            <Card className='flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between p-5'>
+            <Card
+              className='flex flex-col gap-2 sm:flex-row sm:items-center
+                sm:justify-between p-5'
+            >
               <div>
                 <Text variant='label' className='font-medium'>
                   See every project we&apos;ve shipped
@@ -357,8 +364,8 @@ export default function HomePage() {
               variant='muted'
               className='mx-auto mt-3 max-w-2xl text-muted-foreground'
             >
-              Tell us about your business and what you need. We'll figure out the right
-              approach together — no commitment required.
+              Tell us about your business and what you need. We&apos;ll figure out the
+              right approach together — no commitment required.
             </Text>
             <Separator className='mx-auto my-6 max-w-md' />
             <Button asChild size='lg'>

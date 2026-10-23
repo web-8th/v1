@@ -9,8 +9,5 @@ export function createClient() {
     return createBrowserClient('https://placeholder.supabase.co', 'placeholder-key');
   }
 
-  return createBrowserClient(
-    supabaseUrl,
-    supabaseKey
-  );
+  return createBrowserClient(supabaseUrl, supabaseKey);
 }
