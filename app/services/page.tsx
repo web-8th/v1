@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 
-import { ArrowDown, ArrowRight, Check } from 'lucide-react';
+import { ArrowDown, ArrowRight, Check, Plus } from 'lucide-react';
 
 import {
   Badge,
@@ -11,7 +11,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui';
@@ -21,19 +20,6 @@ import { useTheme } from 'next-themes';
 import { getDelayClass } from '@/utils/animations';
 import { StarsBackground } from '@/components/animate-ui/components/backgrounds/stars';
 import { FireworksBackground } from '@/components/animate-ui/components/backgrounds/fireworks';
-
-const allFeatures = [
-  'Custom web design',
-  'Full development',
-  'On-page SEO setup',
-  'Small maintenance after launch',
-  'Small bug fixes after launch',
-  'Ongoing maintenance',
-  'Monthly content updates',
-  'Performance & scalability management',
-  'Priority support',
-  'Big occasional updates',
-];
 
 const pageTiers = [
   {
@@ -47,63 +33,35 @@ const pageTiers = [
     label: 'Tier 2',
     name: 'Functional page',
     description:
-      'A page that performs a function, like a contact form, newsletter signup, or booking request.',
-    examples: ['Contact form', 'Newsletter signup', 'Quote request'],
+      'A page that does something, like a contact form, newsletter signup, or booking request.',
+    examples: ['Contact form', 'Booking request', 'Quote request'],
   },
   {
     label: 'Tier 3',
-    name: 'Feature page',
+    name: 'Custom feature or tool',
     description:
-      'A page with built-in functionality, like a blog, admin page, or custom content management system.',
-    examples: ['Blog', 'Admin page', 'Editable content'],
+      'Built-in functionality your business runs on, like a blog, admin dashboard, client portal, or integration with your existing tools.',
+    examples: ['Blog', 'Admin dashboard', 'Client portal', 'Integrations'],
   },
 ];
 
-const fixedTiers = [
-  {
-    name: 'Launch Package',
-    model: 'One-time flat fee',
-    includes: [
-      'Custom web design',
-      'Full development',
-      'On-page SEO setup',
-      'Small maintenance after launch',
-      'Small bug fixes after launch',
-    ],
-    bestFor:
-      'Every project starts here — a fully built, SEO-ready site you own outright. One post-launch fix is included, and small maintenance after launch stays covered.',
-    cta: 'Get a Quote',
-    href: '/contact',
-  },
-  {
-    name: 'Growth Plan',
-    model: 'Monthly retainer · minimum 3 months',
-    includes: [
-      'Custom web design',
-      'Full development',
-      'On-page SEO setup',
-      'Ongoing maintenance',
-      'Monthly content updates',
-      'Performance & scalability management',
-      'Priority support',
-    ],
-    bestFor:
-      'For businesses that want a dedicated partner after launch. We handle ongoing maintenance, content updates, performance, and the small fixes that come after launch.',
-    cta: 'Get a Quote',
-    href: '/contact',
-    popular: true,
-  },
+const fixesCovered = [
+  'Bugs in anything we built',
+  'Small tweaks like text or image swaps',
+  'Anything not working the way we quoted it',
 ];
 
-const alaCarte = {
-  name: 'À La Carte',
-  model: 'Per-change flat fee · no retainer',
-  includes: ['Post-launch fix included', 'Big occasional updates'],
-  bestFor:
-    'For big occasional updates, seasonal changes, or larger batches of edits. We quote the work as a flat fee, and post-launch fixes are included.',
-  cta: 'Send Us Your List',
-  href: '/contact',
-};
+const fixesQuoted = [
+  'New pages or features',
+  'Redesigns or larger batches of changes',
+  'Changes to what the site or tool does',
+];
+
+const carePlan = [
+  'Hosting, domain, and SSL renewals',
+  'Security and dependency updates',
+  'Backups and uptime monitoring',
+];
 
 const getTierBadgeClass = (index: number) => {
   if (index === 0) return 'border-primary/50 border-2';
@@ -174,7 +132,7 @@ export default function ServicesPage() {
               getDelayClass(1)
             )}
           >
-            Flexible support for where your business is right now
+            From a simple site to the tools that run your business
           </Text>
           <Text
             variant='muted'
@@ -183,12 +141,12 @@ export default function ServicesPage() {
               getDelayClass(2)
             )}
           >
-            We quote websites by the mix of static, functional, and feature pages they
-            need, then match the right support package for launch and after.
+            One quote, one job. We price by what each page needs to do, from a simple
+            landing page up to a full admin dashboard, and fix what we build if it breaks.
           </Text>
           <Button asChild className={cn('mt-4 fade-in-from-bottom', getDelayClass(3))}>
             <Link href='#pricing'>
-              View pricing <ArrowDown />
+              How we quote <ArrowDown />
             </Link>
           </Button>
         </div>
@@ -206,8 +164,9 @@ export default function ServicesPage() {
             </Text>
             <Text variant='muted' className='max-w-3xl text-muted-foreground'>
               A website is usually a mix of page types. We price each page by the work it
-              actually needs — a simple about page costs less than a page with forms,
-              booking, or built-in features.
+              actually needs, so a simple about page costs less than a page with forms,
+              bookings, or a custom tool behind it. You get one flat quote for the whole
+              job.
             </Text>
           </div>
           <div className='grid gap-4 md:grid-cols-3'>
@@ -241,10 +200,10 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        {/* Fixed tiers, 2-column grid */}
+        {/* One quote, one job */}
         <section className='flex flex-col gap-4'>
           <Text variant='hd-xl' className={cn('fade-in-from-bottom', getDelayClass(1))}>
-            Service packages
+            One quote. One job.
           </Text>
           <Text
             variant='muted'
@@ -253,69 +212,74 @@ export default function ServicesPage() {
               getDelayClass(2)
             )}
           >
-            Whether you need a site built and handed off, or a long-term partner to keep
-            things running and growing — we have a plan for that.
+            Tell us what you need, whether it&apos;s a new site, a blog, a booking system,
+            or an internal tool. We scope it, quote it once, and build it. No packages, no
+            retainers, no lock-in.
           </Text>
           <div className='grid gap-4 md:grid-cols-2'>
-            {fixedTiers.map((tier, index) => (
-              <Card
-                key={tier.name}
-                className={cn(
-                  'fade-in-from-bottom flex flex-col gap-4',
-                  tier.popular && 'border-primary ring-1 ring-primary/20',
-                  getDelayClass(index + 4)
-                )}
-              >
-                <CardHeader className='gap-2'>
-                  <div className='flex items-center justify-between gap-2'>
-                    <CardTitle>
-                      <Text>{tier.name}</Text>
-                    </CardTitle>
-                    {tier.popular ? <Badge>Most Popular</Badge> : null}
+            <Card
+              className={cn(
+                'fade-in-from-bottom border-primary ring-1 ring-primary/20',
+                getDelayClass(3)
+              )}
+            >
+              <CardHeader className='gap-2'>
+                <CardTitle>
+                  <Text>If something breaks, we fix it</Text>
+                </CardTitle>
+                <CardDescription>
+                  <Badge variant='outline' className='text-muted-foreground'>
+                    Free, on every job
+                  </Badge>
+                </CardDescription>
+              </CardHeader>
+              <CardContent className='space-y-2'>
+                {fixesCovered.map((item) => (
+                  <div key={item} className='flex items-start gap-2'>
+                    <Check className='mt-0.5 size-3.5 shrink-0 text-primary' />
+                    <Text variant='muted' size='sm'>
+                      {item}
+                    </Text>
                   </div>
-                  <CardDescription>
-                    <Badge variant='outline' className='text-muted-foreground'>
-                      {tier.model}
-                    </Badge>
-                  </CardDescription>
-                  {/* Best for, elevated above feature list */}
-                  <div
-                    className='rounded-lg bg-muted/60 px-3 py-2.5 text-sm
-                      text-muted-foreground'
-                  >
-                    <span className='font-semibold text-foreground'>Best for: </span>
-                    {tier.bestFor}
+                ))}
+              </CardContent>
+            </Card>
+            <Card className={cn('fade-in-from-bottom', getDelayClass(4))}>
+              <CardHeader className='gap-2'>
+                <CardTitle>
+                  <Text>Bigger changes get a new quote</Text>
+                </CardTitle>
+                <CardDescription>
+                  <Badge variant='outline' className='text-muted-foreground'>
+                    Flat fee, same as the first job
+                  </Badge>
+                </CardDescription>
+              </CardHeader>
+              <CardContent className='space-y-2'>
+                {fixesQuoted.map((item) => (
+                  <div key={item} className='flex items-start gap-2'>
+                    <Plus className='mt-0.5 size-3.5 shrink-0 text-primary' />
+                    <Text variant='muted' size='sm'>
+                      {item}
+                    </Text>
                   </div>
-                </CardHeader>
-
-                <CardContent className='space-y-4 flex-1'>
-                  {/* Feature list, X rows quieted */}
-                  <div className='space-y-2'>
-                    {allFeatures
-                      .filter((feature) => tier.includes.includes(feature))
-                      .map((feature) => (
-                        <div key={feature} className='flex items-start gap-2'>
-                          <Check className='mt-0.5 size-3.5 shrink-0 text-primary' />
-                          <Text variant='muted' size='sm'>
-                            {feature}
-                          </Text>
-                        </div>
-                      ))}
-                  </div>
-                </CardContent>
-
-                <CardFooter>
-                  <Button asChild className='w-full'>
-                    <Link href={tier.href}>
-                      {tier.cta} <ArrowRight />
-                    </Link>
-                  </Button>
-                </CardFooter>
-              </Card>
-            ))}
+                ))}
+              </CardContent>
+            </Card>
           </div>
+          <Text
+            size='xs'
+            className={cn(
+              'text-muted-foreground/70 fade-in-from-bottom',
+              getDelayClass(5)
+            )}
+          >
+            Free fixes cover what we built. Issues caused by outside edits, third-party
+            services, or hosting we don&apos;t manage are quoted separately. Full terms
+            are in your project agreement.
+          </Text>
 
-          {/* À La Carte, horizontal, dashed, visually distinct */}
+          {/* Care plan, dashed, visually distinct */}
           <div
             className={cn(
               'fade-in-from-bottom rounded-2xl border border-primary border-dashed p-6',
@@ -325,26 +289,35 @@ export default function ServicesPage() {
           >
             <div className='flex flex-col gap-3'>
               <div className='flex flex-wrap items-center gap-2'>
-                <Text className='font-bold'>{alaCarte.name}</Text>
+                <Text className='font-bold'>Optional care plan</Text>
                 <Badge variant='outline' className='text-muted-foreground'>
-                  {alaCarte.model}
+                  Monthly · cancel anytime
                 </Badge>
               </div>
               <Text variant='muted' size='sm' className='max-w-xl text-muted-foreground'>
-                {alaCarte.bestFor}
+                Want us to keep it running? We handle the upkeep so your site and tools
+                stay fast, secure, and online. Content and feature work stay quoted jobs.
               </Text>
               <div className='flex flex-wrap gap-2'>
-                {alaCarte.includes.map((feature) => (
-                  <Badge key={feature} variant={'secondary'}>
+                {carePlan.map((item) => (
+                  <Badge key={item} variant='secondary'>
                     <Check />
-                    {feature}
+                    {item}
                   </Badge>
                 ))}
               </div>
             </div>
             <Button asChild variant='secondary' className='shrink-0 sm:self-center'>
-              <Link href={alaCarte.href}>
-                {alaCarte.cta} <ArrowRight />
+              <Link href='/contact'>
+                Ask about care <ArrowRight />
+              </Link>
+            </Button>
+          </div>
+
+          <div className={cn('fade-in-from-bottom', getDelayClass(7))}>
+            <Button asChild>
+              <Link href='/contact'>
+                Get a Quote <ArrowRight />
               </Link>
             </Button>
           </div>
@@ -412,7 +385,7 @@ export default function ServicesPage() {
               Included in every project
             </Text>
             <Text variant='muted' className='text-muted-foreground'>
-              No matter which plan you choose, these come standard.
+              Every job comes with these at no extra cost.
             </Text>
           </div>
           <div className='grid gap-4 sm:grid-cols-2'>
@@ -444,10 +417,11 @@ export default function ServicesPage() {
           )}
         >
           <Text variant='hd-xl' className='tracking-tight'>
-            Not sure which fits?
+            Not sure what you need?
           </Text>
           <Text variant='muted' className='mx-auto mt-2 max-w-2xl text-muted-foreground'>
-            Tell us where you are now and we&apos;ll recommend the simplest path forward.
+            Tell us how your business runs today and we&apos;ll recommend the simplest
+            thing that fixes it.
           </Text>
           <Button asChild className='mt-5'>
             <Link href='/contact'>
