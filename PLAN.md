@@ -25,10 +25,10 @@
 
 ### Services (/services)
 
-- [x] Tier 1 — Launch Package card
-- [x] Tier 2 — Growth Plan card
-- [x] Tier 3 — À La Carte card
-- [x] "Not sure which fits?" CTA
+- [x] Page-type tiers (static / functional / custom feature or tool)
+- [x] "One quote. One job." section (free fixes vs new quote)
+- [x] Optional care plan block
+- [x] "Not sure what you need?" CTA
 - [x] Add-ons accordion
 
 ### Portfolio (/portfolio)

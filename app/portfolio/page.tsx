@@ -4,12 +4,12 @@ import { Text } from '@/components/Text';
 export const metadata: Metadata = {
   title: 'Portfolio',
   description:
-    "A selection of custom websites built by Web8th for local businesses and individuals — including Don's Fences & Services, Tseng Photo, InspirED Sask, and KDT at UBC Okanagan.",
+    "A selection of custom websites built by Web8th for local businesses and individuals, including Don's Fences & Services, Tseng Photo, InspirED Sask, and KDT at UBC Okanagan.",
   alternates: { canonical: '/portfolio' },
   openGraph: {
     title: 'Portfolio | Web8th',
     description:
-      "A selection of custom websites built by Web8th for local businesses and individuals — including Don's Fences & Services, Tseng Photo, InspirED Sask, and KDT at UBC Okanagan.",
+      "A selection of custom websites built by Web8th for local businesses and individuals, including Don's Fences & Services, Tseng Photo, InspirED Sask, and KDT at UBC Okanagan.",
     url: '/portfolio',
   },
 };

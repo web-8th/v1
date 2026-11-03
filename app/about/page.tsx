@@ -133,7 +133,7 @@ export default function AboutPage() {
             place to find us. Different strengths, one standard, and a shared commitment
             to doing the work right.
           </Text>
-          <div className='flex justify-end'>
+          <div className='flex justify-center'>
             <Button
               asChild
               className={cn(

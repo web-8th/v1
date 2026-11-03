@@ -31,10 +31,10 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://web8th.ca'),
   title: {
     template: '%s | Web8th',
-    default: 'Web8th — Web Design Studio in Kelowna & Regina',
+    default: 'Web8th | Websites and Web Tools in Kelowna & Regina',
   },
   description:
-    'Web8th is a two-person web design studio serving local businesses in Kelowna, BC and Regina, SK. Custom websites, on-page SEO, and ongoing support — no templates, no agency overhead.',
+    'Web8th is a two-person studio in Kelowna, BC and Regina, SK. We build websites that do real work for your business: blogs, bookings, client portals, admin dashboards, and integrations with the tools you already use.',
   openGraph: {
     type: 'website',
     siteName: 'Web8th',
