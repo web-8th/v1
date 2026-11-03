@@ -10,8 +10,8 @@ export const projects = [
   {
     title: 'Tseng Photo',
     description:
-      'A photography portfolio and booking website built for Matthew Tseng, our first real client outside of school projects, taken on pro bono to prove what we could deliver. Migrated him off Squarespace, cutting his annual costs by 88%. Fast, smooth animations, and an image system built to keep every photo loading quickly at scale.',
-    tags: ['Web Design', 'SEO', 'Custom CMS'],
+      'A photography portfolio and booking website built for Matthew Tseng, our first real client outside of school projects, taken on pro bono to prove what we could deliver. Migrated him off Squarespace, cutting his annual costs by 88%. We built him an internal media manager to create albums and collections and upload photos and videos, so he runs all of the site content himself without needing us. Fast, smooth animations and an image system built to keep every photo loading quickly at scale.',
+    tags: ['Web Design', 'SEO', 'Custom CMS', 'Media Manager'],
     url: 'https://tsengphoto.ca',
     imgSrc: '/fullpage-tsengphoto.png',
   },
