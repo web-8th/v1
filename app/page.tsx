@@ -27,10 +27,10 @@ import {
   LayoutDashboard,
   Newspaper,
   Plug,
-  ReceiptText,
   ScanEye,
   ShieldCheck,
   SquareChartGantt,
+  TrendingDown,
   Users,
   Wrench,
 } from 'lucide-react';
@@ -246,7 +246,9 @@ export default function HomePage() {
                 </Card>
               ))}
             </div>
-            <div className={cn('fade-in-from-bottom', getDelayClass(6))}>
+            <div
+              className={cn('flex justify-center fade-in-from-bottom', getDelayClass(6))}
+            >
               <Button asChild variant='link' className='px-0'>
                 <Link href='/services'>
                   How quoting works <ArrowRight />
@@ -307,10 +309,10 @@ export default function HomePage() {
               <div className='relative'>
                 <SitePreview
                   className='drop-shadow-none shadow-md'
-                  src='/fullpage-donsfns.png'
-                  alt="Don's Fences & Services website preview"
-                  url='https://donsfences.ca'
-                  title="Don's Fences & Services"
+                  src='/fullpage-tsengphoto.png'
+                  alt='Tseng Photo website preview'
+                  url='https://tsengphoto.ca'
+                  title='Tseng Photo'
                 />
               </div>
 
@@ -321,13 +323,13 @@ export default function HomePage() {
                   whitespace-nowrap'
               >
                 <div className='flex items-center gap-2'>
-                  <ReceiptText className='size-5 text-primary shrink-0' />
+                  <TrendingDown className='size-5 text-primary shrink-0' />
                   <div>
                     <Text size='lg' className='font-semibold'>
-                      0
+                      88%
                     </Text>
                     <Text variant='muted' size='sm' className='leading-tight'>
-                      handwritten invoices
+                      cost reduction
                     </Text>
                   </div>
                 </div>
@@ -381,10 +383,7 @@ export default function HomePage() {
                 />
               ))}
             </div>
-            <Card
-              className='flex flex-col gap-2 sm:flex-row sm:items-center
-                sm:justify-between p-5'
-            >
+            <Card className='flex flex-col items-center gap-4 p-6 text-center'>
               <div>
                 <Text variant='label' className='font-medium'>
                   See every project we&apos;ve shipped

@@ -283,12 +283,12 @@ export default function ServicesPage() {
           <div
             className={cn(
               'fade-in-from-bottom rounded-2xl border border-primary border-dashed p-6',
-              'flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between',
+              'flex flex-col items-center gap-4 text-center',
               getDelayClass(6)
             )}
           >
-            <div className='flex flex-col gap-3'>
-              <div className='flex flex-wrap items-center gap-2'>
+            <div className='flex flex-col items-center gap-3'>
+              <div className='flex flex-wrap items-center justify-center gap-2'>
                 <Text className='font-bold'>Optional care plan</Text>
                 <Badge variant='outline' className='text-muted-foreground'>
                   Monthly · cancel anytime
@@ -298,7 +298,7 @@ export default function ServicesPage() {
                 Want us to keep it running? We handle the upkeep so your site and tools
                 stay fast, secure, and online. Content and feature work stay quoted jobs.
               </Text>
-              <div className='flex flex-wrap gap-2'>
+              <div className='flex flex-wrap justify-center gap-2'>
                 {carePlan.map((item) => (
                   <Badge key={item} variant='secondary'>
                     <Check />
@@ -307,14 +307,16 @@ export default function ServicesPage() {
                 ))}
               </div>
             </div>
-            <Button asChild variant='secondary' className='shrink-0 sm:self-center'>
+            <Button asChild variant='secondary'>
               <Link href='/contact'>
                 Ask about care <ArrowRight />
               </Link>
             </Button>
           </div>
 
-          <div className={cn('fade-in-from-bottom', getDelayClass(7))}>
+          <div
+            className={cn('flex justify-center fade-in-from-bottom', getDelayClass(7))}
+          >
             <Button asChild>
               <Link href='/contact'>
                 Get a Quote <ArrowRight />
