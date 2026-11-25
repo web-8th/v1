@@ -25,6 +25,7 @@ import {
   Textarea,
 } from '@/components/ui';
 import { Text } from '@/components/Text';
+import { useAuth } from '@/hooks/use-auth';
 import { useToast } from '@/hooks/use-toast';
 import { canSendEmail, getRemainingCooldown, markEmailSent } from '@/lib/rateLimit';
 import { cn } from '@/lib/utils';
@@ -34,6 +35,8 @@ import Link from 'next/link';
 
 export default function ContactPage() {
   const { toast } = useToast();
+  // Logged-in users (owners) skip the cooldown.
+  const { user } = useAuth();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [businessName, setBusinessName] = useState('');
@@ -72,7 +75,7 @@ export default function ContactPage() {
       return;
     }
 
-    if (!canSendEmail()) {
+    if (!user && !canSendEmail()) {
       const remaining = getRemainingCooldown();
       form.setError('formError', {
         message: `Please wait ${formatCooldown(remaining)} before sending again.`,
@@ -102,7 +105,7 @@ export default function ContactPage() {
         throw new Error(payload?.error || 'Failed to send message.');
       }
 
-      markEmailSent();
+      if (!user) markEmailSent();
       toast.success('Thanks for reaching out. We will get back to you soon.');
       form.clearErrors('formError');
       setName('');
