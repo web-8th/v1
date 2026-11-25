@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import {
@@ -39,6 +39,13 @@ export default function ContactPage() {
   const [businessName, setBusinessName] = useState('');
   const [budgetRange, setBudgetRange] = useState('');
   const [message, setMessage] = useState('');
+  // Honeypot. Hidden from real users; bots that fill it get dropped server-side.
+  const [website, setWebsite] = useState('');
+  // Time trap: the server rejects submissions made too soon after the form loads.
+  const renderedAt = useRef(0);
+  useEffect(() => {
+    renderedAt.current = performance.now();
+  }, []);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<{ formError: string }>({
     defaultValues: { formError: '' },
@@ -73,6 +80,7 @@ export default function ContactPage() {
       return;
     }
 
+    const submittedAt = performance.now();
     setIsSubmitting(true);
     try {
       const response = await fetch('/api/contact', {
@@ -84,6 +92,8 @@ export default function ContactPage() {
           businessName: businessName.trim() || undefined,
           budgetRange: budgetRange || undefined,
           message: message.trim(),
+          website,
+          formElapsedMs: Math.round(submittedAt - renderedAt.current),
         }),
       });
 
@@ -100,6 +110,8 @@ export default function ContactPage() {
       setBusinessName('');
       setBudgetRange('');
       setMessage('');
+      setWebsite('');
+      renderedAt.current = submittedAt;
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : 'Failed to send message.';
@@ -201,6 +213,23 @@ export default function ContactPage() {
                     placeholder='Your message here...'
                     onChange={(event) => setMessage(event.target.value)}
                     rows={6}
+                  />
+                </div>
+
+                {/* Honeypot. Moved offscreen rather than display:none, since some bots
+                    skip hidden inputs. Hidden from screen readers and keyboard focus. */}
+                <div
+                  aria-hidden='true'
+                  className='absolute -left-[9999px] h-px w-px overflow-hidden'
+                >
+                  <Label htmlFor='website'>Website</Label>
+                  <Input
+                    id='website'
+                    name='website'
+                    tabIndex={-1}
+                    autoComplete='off'
+                    value={website}
+                    onChange={(event) => setWebsite(event.target.value)}
                   />
                 </div>
 

@@ -1,4 +1,5 @@
 import { buildConfirmationHtml, buildEmailHtml } from '@/lib/email';
+import { checkSpam, sendSpamNotification } from '@/lib/spam';
 import { Resend } from 'resend';
 
 const budgetLabels: Record<string, string> = {
@@ -36,6 +37,33 @@ export async function POST(req: Request) {
   const resend = new Resend(resendApiKey);
   const toEmail = process.env.NEXT_PUBLIC_RESEND_EMAIL_TO || 'mail@rinm.dev';
   const fromEmail = process.env.NEXT_PUBLIC_RESEND_EMAIL_FROM || 'mail@rinm.dev';
+
+  // Runs before any email goes out. Spam gets the same success response a real
+  // customer would, so senders can't tell they were filtered.
+  const spam = checkSpam({ website: body?.website, formElapsedMs: body?.formElapsedMs });
+  if (spam.isSpam) {
+    console.warn('Contact form submission dropped as spam:', {
+      reason: spam.reason,
+      email,
+      name,
+      message: message.slice(0, 300),
+    });
+    await sendSpamNotification(resend, {
+      from: fromEmail,
+      siteName: 'Web8th',
+      reason: spam.reason ?? 'unknown',
+      fields: {
+        Name: name,
+        Email: email,
+        'Business name': businessName,
+        'Budget range': budgetRange,
+        'Honeypot (website)': body?.website,
+        'Elapsed ms': body?.formElapsedMs ?? 'missing',
+        Message: message,
+      },
+    });
+    return Response.json({ success: true }, { status: 200 });
+  }
   const logoUrl =
     'https://drive.google.com/uc?export=download&id=1ZH_A1lRxNfZgDiryP9yc2ARPGqmiICg5';
 
