@@ -26,7 +26,7 @@ import {
 } from '@/components/ui';
 import { Text } from '@/components/Text';
 import { useToast } from '@/hooks/use-toast';
-import { canSendEmail, getRemainingCooldown, markEmailSent } from '@/lib/rate-limit';
+import { canSendEmail, getRemainingCooldown, markEmailSent } from '@/lib/rateLimit';
 import { cn } from '@/lib/utils';
 import { getDelayClass } from '@/utils/animations';
 import Image from 'next/image';
